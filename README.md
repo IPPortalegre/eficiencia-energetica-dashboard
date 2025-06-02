@@ -28,17 +28,17 @@ Uma dashboard para a monitorização de métricas de eficiência energética do 
 
 Para rodar este projeto, vais precisar adicionar as seguintes variáveis de ambiente ao teu ficheiro .env
 
-`THINGSBOARD_URL`= https://o-teu-url-do-thingsboard
+- `THINGSBOARD_URL`= https://o-teu-url-do-thingsboard
 
-`THINGSBOARD_USERNAME`= seu_utilizador
+- `THINGSBOARD_USERNAME`= seu_utilizador
 
-`THINGSBOARD_PASSWORD`= sua_palavra_passe
+- `THINGSBOARD_PASSWORD`= sua_palavra_passe
 
-`THINGSBOARD_ASSETID`= seu_id_de_asset
+- `THINGSBOARD_ASSETID`= seu_id_de_asset
 
-`PORT`= 3000
+- `PORT`= 3000
 
-`CACHE_TTL`= 300
+- `CACHE_TTL`= 300
 
 
 ## Pré-requisitos
