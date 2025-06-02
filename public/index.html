@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eficiência Energética | Campus IPP</title>
+
+  <!-- Estilos e bibliotecas -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+  <script src="https://kit.fontawesome.com/2f941c78c7.js" crossorigin="anonymous"></script>
+
+  <meta http-equiv="refresh" content="60">
+
+  <style>
+    .card h1 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .highlight-card {
+      border-radius: 12px;
+      padding: 10px;
+      color: white;
+    }
+    .green-bg { 
+      background-color: #8cd9b3; 
+    }
+    .yellow-bg { 
+      background-color: #ffe082; 
+      color: #333; 
+    }
+    .header-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-left:8px;
+    }
+    .cardnormal {
+      width: auto;
+      height: auto;
+      margin-top: 10px;
+      margin-left: -10px;
+    }
+    .card-body-fonten {
+      padding-left: 20px;
+      padding-right: 10px;
+    }
+    .chart-card {
+      border-radius: 12px;
+      background-color: #f8f9fa;
+      margin-left: 10px;
+      margin-right: -17px;
+    }
+    .card {
+      box-shadow: 0 4px 8px rgba(48, 48, 48, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      
+    }
+    .card:hover {
+      transform: scale(1.03);
+      cursor: pointer;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+    }
+    .square-card {
+      width: 200px;
+      height: 200px;
+    }
+    .badge-date {
+      font-size: 1.48rem;
+      font-weight: bold;
+      border-radius: 12px;
+    }
+    .icon-tree {
+      font-size: 36px;
+      color: #f8f9fa !important;
+    }
+    .material-icons {
+      color: #343a40;
+    }
+    .badge-light {
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .badge-light:hover {
+      transform: scale(1.03);
+      cursor: pointer;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .energy-source {
+      display: flex;
+      align-items: center;
+      margin: 15px 0;
+    }
+
+    .cardfonte{
+      width: 284px;
+      height: 224px;
+      margin-left: -1px;
+      padding-bottom: 12px;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+      <h1>TESTE</h1>
+      <h2 class="header-title">EFICIÊNCIA ENERGÉTICA | CAMPUS IPP</h2>
+      <div class="d-flex align-items-center gap-3">
+        <span class="badge badge-light p-2 mr-2" data-toggle="tooltip" data-placement="top" title="Temperatura">
+          <i class="material-icons md-18 align-middle">device_thermostat</i>
+          <span class="align-middle ml-1" id="tempEx"></span>
+          <span class="align-middle ml-1">°C</span>
+        </span>
+        <span class="badge badge-light p-2 mr-2" data-toggle="tooltip" data-placement="top" title="Humidade">
+          <i class="material-icons md-18 align-middle">opacity</i>
+          <span class="align-middle ml-1" id="humidity"></span>
+          <span class="align-middle ml-1">%</span>
+        </span>
+        <span class="badge badge-light p-2 badge-date" id="currentDate">-</span>
+      </div>
+    </div>
+
+    <!-- Cards principais -->
+    <div class="row text-center mb-3">
+      <div class="col-md-2 mx-auto">
+        <div class="card cardnormal highlight-card green-bg square-card">
+          <div class="card-body">
+            <h5>CO2 Evitado (acumulado)</h5>
+            <h1 class="value" id="_ECD_co2save">-</h1>
+            <h5 class="unities">ton</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 mx-auto">
+        <div class="card cardnormal highlight-card green-bg square-card">
+          <div class="card-body">
+            <h5>CO2 Equivalente</h5>
+            <h1>1<i class="material-icons icon-tree md-18 align-middle">forest</i></h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 mx-auto">
+        <div class="card cardnormal highlight-card green-bg square-card">
+          <div class="card-body">
+            <h5>Produção Global Energia</h5>
+            <h1 class="value">200</h1>
+            <h5 class="unities">kWh</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 mx-auto">
+        <div class="card cardnormal highlight-card yellow-bg square-card">
+          <div class="card-body">
+            <h5>Energia Consumida (instantâneo)</h5>
+            <h1 class="value" id="deltaEa+Total">-</h1>
+            <h5 class="unities">kWh</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 mx-auto">
+        <div class="card cardnormal highlight-card yellow-bg square-card">
+          <div class="card-body">
+            <h5>Energia Produzida (instantâneo)</h5>
+            <h1 class="value">200</h1>
+            <h5 class="unities">kWh</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gráficos -->
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <div class="card chart-card">
+          <div class="card-body">
+            <h5 class="text-center">Evolução Temporal - CO2</h5>
+            <div class="chart-container">
+              <canvas id="chart-co2"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 mb-3">
+        <div class="card chart-card cardfonte">
+          <div class="card-body card-body-fonten text-center">
+            <h5>Fontes de Energia</h5>
+            <canvas id="ensource-chart" width="100" height="100"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5 mb-3">
+        <div class="card chart-card">
+          <div class="card-body">
+            <h5 class="text-center">Evolução Temporal - Energia</h5>
+            <div class="chart-container">
+              <canvas id="chart-energia"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--gráficos scripts -->
+  <script>
+
+    let co2Chart;
+
+    // gráfico de CO2
+    function createCO2Chart() {
+    const ctx = document.getElementById('chart-co2').getContext('2d');
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [
+          'Jun 2024', 'Jul 2024', 'Ago 2024', 'Set 2024', 'Out 2024', 'Nov 2024',
+          'Dez 2024', 'Jan 2025', 'Fev 2025', 'Mar 2025', 'Abr 2025', 'Mai 2025'
+        ],
+        datasets: [
+          {
+            label: 'CO₂ Evitado (ton)',
+            data: [0.2, 0.25, 0.3, 0.28, 0.32, 0.33, 0.35, 0.36, 0.37, 0.38, 0.36, 0.34],
+            backgroundColor: '#00bcd4'
+          },
+          {
+            label: 'CO₂ Emitido (ton)',
+            data: [0.86, 0.88, 0.9, 0.85, 0.8, 0.75, 0.7, 0.65, 0.6, 0.55, 0.5, 0.48, 0.46],
+            backgroundColor: '#4caf50'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'top'
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false
+          }
+        },
+        scales: {
+          x: {
+            stacked: false
+          },
+          y: {
+            beginAtZero: true,
+            title: {
+              display: false,
+              text: 'Toneladas de CO₂'
+            }
+          }
+        }
+      }
+    });
+  }
+
+    
+   
+
+      
+    // Gráfico de Fontes de Energia
+      function createEnergySourceChart() {
+        const ctx = document.getElementById('ensource-chart').getContext('2d');
+        energySourceChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Fontes de Energia'], 
+            datasets: [
+              {
+                label: 'Solar',
+                data: [25],
+                backgroundColor: '#4caf50',
+                borderRadius: 18,
+                borderSkipped: false,
+                barThickness: 40
+              },
+              {
+                label: 'Elétrica',
+                data: [75],
+                backgroundColor: '#ffc107',
+                borderRadius: 18,
+                borderSkipped: false,
+                barThickness: 40
+              }
+            ]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                  usePointStyle: true,
+                  pointStyle: 'rectRounded'
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    const value = context.raw;
+                    return `${context.dataset.label}: ${value}%`;
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                min: 0,
+                max: 100,
+                title: {
+                  display: false,
+                  text: 'Energia (%)'
+                },
+                ticks: {
+                  callback: (val) => `${val}%`
+                }
+              },
+              y: {
+                display: false 
+              }
+            }
+          },
+
+        plugins: [{
+          
+          id: 'materialIconPlugin',
+          afterDatasetsDraw(chart) {
+            const { ctx, chartArea, scales: { y } } = chart;
+            const icons = ['solar_power', 'bolt']; //material icons
+            const labels = chart.data.labels;
+
+            ctx.save();
+            ctx.font = '24px "Material Icons"';
+            ctx.textAlign = 'right';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = '#15200258'; 
+
+            chart.data.datasets.forEach((dataset, index) => {
+              const barHeight = 36;
+              const yOffset = chartArea.top + (barHeight + 10) * index + 30; // Ajuste manual
+              ctx.fillText(icons[index], chartArea.left + 34, yOffset);
+            });
+
+            ctx.restore();
+          }
+        }]
+      });
+    }
+
+
+       let energiaChart; 
+
+       // gráfico energia prod e consumida
+      function createEnergiaChart() {
+      const ctx = document.getElementById('chart-energia').getContext('2d');
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            'Jun 2024', 'Jul 2024', 'Ago 2024', 'Set 2024', 'Out 2024', 'Nov 2024',
+            'Dez 2024', 'Jan 2025', 'Fev 2025', 'Mar 2025', 'Abr 2025', 'Mai 2025'
+          ],
+          datasets: [
+            {
+              label: 'Energia Produzida (kWh)',
+              data: [70, 100, 110, 115, 119, 100, 90, 85, 56, 39, 29, 20],
+              backgroundColor: '#4caf50'
+            },
+            {
+              label: 'Energia Consumida (kWh)',
+              data: [120, 150, 170, 180, 160, 140, 130, 110, 100, 90, 80, 75],
+              backgroundColor: '#ff9800'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top'
+            },
+            tooltip: {
+              mode: 'index',
+              intersect: false
+            }
+          },
+          scales: {
+            x: {
+              stacked: true,
+          title: {
+            display: false,
+            text: 'Mês'
+          }
+            },
+            y: {
+              stacked: true,
+              display: false
+            }
+          }
+        }
+      });
+    }
+
+    let date = moment();
+
+    let currentDate = date.format('D/MM/YYYY');
+    console.log(currentDate);
+    console.log(currentDate); 
+    document.getElementById("currentDate").innerHTML = currentDate;
+
+    
+    // Arredodnda o valor da temperatura
+   
+
+    document.addEventListener("DOMContentLoaded", () => {
+      createEnergiaChart();
+      createCO2Chart();
+      refreshData();
+      createEnergySourceChart();
+    
+    });
+
+
+  </script>
+  <script src="api.js"></script>
+</body>
+</html>

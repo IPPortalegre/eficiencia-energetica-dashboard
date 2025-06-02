@@ -1,0 +1,21 @@
+
+services:
+  node-app:
+    build: .
+    image: blackeyes2006/node-app
+    container_name: node-app
+    ports:
+      - "3000:3000"
+    # volumes:
+    #   - .:/app
+    #   - /app/node_modules
+    env_file:
+      - .env
+    command: node server.js
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+        - action: rebuild
+          path: Dockerfile
