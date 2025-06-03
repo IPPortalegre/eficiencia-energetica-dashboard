@@ -30,6 +30,7 @@
     .yellow-bg { 
       background-color: #ffe082; 
       color: #333; 
+      
     }
     .header-title {
       font-size: 1.8rem;
@@ -82,8 +83,9 @@
     }
     .badge-light {
       border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); 
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background-color:#ffffff;
     }
     .badge-light:hover {
       transform: scale(1.03);
@@ -104,6 +106,24 @@
       margin-left: -1px;
       padding-bottom: 12px;
     }
+    #tempicon{
+      color: #ff3300;
+    }
+    #humicon{
+      color: #00bcd4;
+    }
+    .green-card{
+      margin-left: 12px!important;
+      
+    }
+    .yellow-card{
+      margin-left: 14px!important;
+      margin-right:46px!important;
+      
+    }
+    .last-card{
+      margin-right: 14px!important;
+    }
     
   </style>
 </head>
@@ -113,14 +133,14 @@
       <h2 class="header-title">EFICIÊNCIA ENERGÉTICA | CAMPUS IPP</h2>
       <div class="d-flex align-items-center gap-3">
         <span class="badge badge-light p-2 mr-2" data-toggle="tooltip" data-placement="top" title="Temperatura">
-          <i class="material-icons md-18 align-middle">device_thermostat</i>
+          <i class="material-icons md-18 align-middle" id="tempicon">device_thermostat</i>
           <span class="align-middle ml-1" id="tempEx"></span>
-          <span class="align-middle ml-1">°C</span>
+          <span class="align-middle ml-1" id="tempicon">°C</span>
         </span>
         <span class="badge badge-light p-2 mr-2" data-toggle="tooltip" data-placement="top" title="Humidade">
-          <i class="material-icons md-18 align-middle">opacity</i>
+          <i class="material-icons md-18 align-middle" id="humicon">opacity</i>
           <span class="align-middle ml-1" id="humidity"></span>
-          <span class="align-middle ml-1">%</span>
+          <span class="align-middle ml-1" id="humicon">%</span>
         </span>
         <span class="badge badge-light p-2 badge-date" id="currentDate">-</span>
       </div>
@@ -128,24 +148,7 @@
 
     <!-- Cards principais -->
     <div class="row text-center mb-3">
-      <div class="col-md-2 mx-auto">
-        <div class="card cardnormal highlight-card green-bg square-card">
-          <div class="card-body">
-            <h5>CO2 Evitado (acumulado)</h5>
-            <h1 class="value" id="co2evitadototal">-</h1>
-            <h5 class="unities">ton</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-2 mx-auto">
-        <div class="card cardnormal highlight-card green-bg square-card">
-          <div class="card-body">
-            <h5>CO2 Equivalente</h5>
-            <h1 id="co2equivalente">-<i class="material-icons icon-tree md-18 align-middle">forest</i></h1>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-2 mx-auto">
+      <div class="col-md-2 mx-auto green-card">
         <div class="card cardnormal highlight-card green-bg square-card">
           <div class="card-body">
             <h5>Produção Global Energia</h5>
@@ -154,7 +157,36 @@
           </div>
         </div>
       </div>
-      <div class="col-md-2 mx-auto">
+      
+      <div class="col-md-2 mx-auto green-card">
+        <div class="card cardnormal highlight-card green-bg square-card">
+          <div class="card-body">
+            <h5>CO2 Evitado (acumulado)</h5>
+            <h1 class="value" id="co2evitadototal">-</h1>
+            <h5 class="unities">ton</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 mx-auto green-card">
+        <div class="card cardnormal highlight-card green-bg square-card">
+          <div class="card-body">
+            <h5>CO2 Equivalente</h5>
+            <h1 id="co2equivalente">-</h1><i class="material-icons icon-tree md-18 align-middle">forest</i>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2 mx-auto yellow-card">
+        <div class="card cardnormal highlight-card yellow-bg square-card">
+          <div class="card-body">
+            <h5>Energia Produzida (instantâneo)</h5>
+            <h1 class="value" id="producaoinstantaneo">-</h1>
+            <h5 class="unities">kWh</h5>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-2 mx-auto yellow-card last-card">
         <div class="card cardnormal highlight-card yellow-bg square-card">
           <div class="card-body">
             <h5>Energia Consumida (instantâneo)</h5>
@@ -163,19 +195,22 @@
           </div>
         </div>
       </div>
-      <div class="col-md-2 mx-auto">
-        <div class="card cardnormal highlight-card yellow-bg square-card">
-          <div class="card-body">
-            <h5>Energia Produzida (instantâneo)</h5>
-            <h1 class="value" id="producaoinstantaneo">200</h1>
-            <h5 class="unities">kWh</h5>
-          </div>
-        </div>
-      </div>
+      
     </div>
 
-    <!-- Gráficos -->
+    <!-- Gráficos com historico -->
+
     <div class="row">
+      <div class="col-md-3 mb-3">
+          <div class="card chart-card cardfonte">
+            <div class="card-body card-body-fonten text-center">
+              <h5>Fontes de Energia</h5>
+              <canvas id="ensource-chart" width="100" height="100"></canvas>
+            </div>
+          </div>
+      </div>
+
+    
       <div class="col-md-4 mb-3">
         <div class="card chart-card">
           <div class="card-body">
@@ -188,14 +223,7 @@
       </div>
 
       
-      <div class="col-md-3 mb-3">
-        <div class="card chart-card cardfonte">
-          <div class="card-body card-body-fonten text-center">
-            <h5>Fontes de Energia</h5>
-            <canvas id="ensource-chart" width="100" height="100"></canvas>
-          </div>
-        </div>
-      </div>
+      
 
       <div class="col-md-5 mb-3">
         <div class="card chart-card">
@@ -223,8 +251,8 @@
       type: 'bar',
       data: {
         labels: [
-          'Jun 2024', 'Jul 2024', 'Ago 2024', 'Set 2024', 'Out 2024', 'Nov 2024',
-          'Dez 2024', 'Jan 2025', 'Fev 2025', 'Mar 2025', 'Abr 2025', 'Mai 2025'
+          'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov',
+          'Dez', 'Jan', 'Fev', 'Mar', 'Abr', 'Mai'
         ],
         datasets: [
           {
@@ -374,8 +402,8 @@
         type: 'bar',
         data: {
           labels: [
-            'Jun 2024', 'Jul 2024', 'Ago 2024', 'Set 2024', 'Out 2024', 'Nov 2024',
-            'Dez 2024', 'Jan 2025', 'Fev 2025', 'Mar 2025', 'Abr 2025', 'Mai 2025'
+            'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov',
+            'Dez', 'Jan', 'Fev', 'Mar', 'Abr', 'Mai'
           ],
           datasets: [
             {

@@ -33,23 +33,17 @@ async function refreshData() {
         if (data.hasOwnProperty(key)) {
           const targetElement = document.getElementById(key);
           if (targetElement) {
-     
             if (key === "tempEx") {
               const tempValue = parseFloat(data[key][0].value.replace(",", "."));
               targetElement.textContent = isNaN(tempValue) ? "-" : Math.round(tempValue);
-            } else {
-              targetElement.textContent = data[key][0].value;
+            } else if (key === "co2equivalente") {
+              const co2Value = parseFloat(data[key][0].value);
+              targetElement.textContent = isNaN(co2Value) ? "-" : co2Value.toFixed(0);
+            }else if (key === "co2evitadototal") {
+              const co2Saved = parseFloat(data[key][0].value);
+              targetElement.textContent = isNaN(co2Saved) ? "-" : co2Saved.toFixed(2);
             }
-          }
-        }
-        else if (data.hasOwnProperty(key)) {
-          const targetElement = document.getElementById(key);
-          if (targetElement) {
-     
-            if (key === "co2equivalente") {
-              const eqValue = parseFloat(data[key][0].value.replace(",", "."));
-              targetElement.textContent = isNaN(eqValue) ? "-" : Math.round(eqValue);
-            } else {
+             else {
               targetElement.textContent = data[key][0].value;
             }
           }
