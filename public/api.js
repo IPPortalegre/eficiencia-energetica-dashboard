@@ -42,6 +42,18 @@ async function refreshData() {
             }
           }
         }
+        else if (data.hasOwnProperty(key)) {
+          const targetElement = document.getElementById(key);
+          if (targetElement) {
+     
+            if (key === "co2equivalente") {
+              const eqValue = parseFloat(data[key][0].value.replace(",", "."));
+              targetElement.textContent = isNaN(eqValue) ? "-" : Math.round(eqValue);
+            } else {
+              targetElement.textContent = data[key][0].value;
+            }
+          }
+        }
       }
     }
   } catch (error) {
