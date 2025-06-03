@@ -12,7 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   <script src="https://kit.fontawesome.com/2f941c78c7.js" crossorigin="anonymous"></script>
 
-  <meta http-equiv="refresh" content="60">
+  <meta http-equiv="refresh" content="300">
 
   <style>
     .card h1 {
@@ -25,11 +25,12 @@
       color: white;
     }
     .green-bg { 
-      background-color: #8cd9b3; 
+      background-color: #06a04e; 
     }
     .yellow-bg { 
-      background-color: #ffe082; 
+      background-color: #FECB08;
       color: #333; 
+      width:220px!important;
       
     }
     .header-title {
@@ -118,11 +119,25 @@
     }
     .yellow-card{
       margin-left: 14px!important;
-      margin-right:46px!important;
+      margin-right:30px!important;
+  
       
     }
     .last-card{
-      margin-right: 14px!important;
+      margin-right: 32px!important;
+    }
+    .graphrow {
+      margin-top: 20px;
+  
+    }
+    .cardfonte{
+      margin-left:2px;
+    }
+    .humid{
+      color: #00bcd4;
+    }
+    .tempid{
+      color:#ff3300;
     }
     
   </style>
@@ -134,12 +149,12 @@
       <div class="d-flex align-items-center gap-3">
         <span class="badge badge-light p-2 mr-2" data-toggle="tooltip" data-placement="top" title="Temperatura">
           <i class="material-icons md-18 align-middle" id="tempicon">device_thermostat</i>
-          <span class="align-middle ml-1" id="tempEx"></span>
+          <span class="align-middle ml-1 tempid" id="temperatura"></span>
           <span class="align-middle ml-1" id="tempicon">°C</span>
         </span>
         <span class="badge badge-light p-2 mr-2" data-toggle="tooltip" data-placement="top" title="Humidade">
           <i class="material-icons md-18 align-middle" id="humicon">opacity</i>
-          <span class="align-middle ml-1" id="humidity"></span>
+          <span class="align-middle ml-1 humid" id="humidade"></span>
           <span class="align-middle ml-1" id="humicon">%</span>
         </span>
         <span class="badge badge-light p-2 badge-date" id="currentDate">-</span>
@@ -198,9 +213,9 @@
       
     </div>
 
-    <!-- Gráficos com historico -->
+    <!-- Gráficos -->
 
-    <div class="row">
+    <div class="row graphrow">
       <div class="col-md-3 mb-3">
           <div class="card chart-card cardfonte">
             <div class="card-body card-body-fonten text-center">
@@ -241,67 +256,15 @@
   <!--gráficos scripts -->
   <script>
 
-    let co2Chart;
-
-    // gráfico de CO2
-    function createCO2Chart() {
-    const ctx = document.getElementById('chart-co2').getContext('2d');
-
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: [
-          'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov',
-          'Dez', 'Jan', 'Fev', 'Mar', 'Abr', 'Mai'
-        ],
-        datasets: [
-          {
-            label: 'CO₂ Evitado (ton)',
-            data: [0.2, 0.25, 0.3, 0.28, 0.32, 0.33, 0.35, 0.36, 0.37, 0.38, 0.36, 0.34],
-            backgroundColor: '#00bcd4'
-          },
-          {
-            label: 'CO₂ Emitido (ton)',
-            data: [0.86, 0.88, 0.9, 0.85, 0.8, 0.75, 0.7, 0.65, 0.6, 0.55, 0.5, 0.48, 0.46],
-            backgroundColor: '#4caf50'
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'top'
-          },
-          tooltip: {
-            mode: 'index',
-            intersect: false
-          }
-        },
-        scales: {
-          x: {
-            stacked: false
-          },
-          y: {
-            beginAtZero: true,
-            title: {
-              display: false,
-              text: 'Toneladas de CO₂'
-            }
-          }
-        }
-      }
-    });
-  }
-
-    
-   
-
-      
-    // Gráfico de Fontes de Energia
-      function createEnergySourceChart() {
+   //gráfico fonte de energia
+      function createEnergySourceChart(solarValue, redeValue) {
         const ctx = document.getElementById('ensource-chart').getContext('2d');
+        
+        // Calcular porcentagens se necessário (caso os valores não venham já em porcentagem)
+        const total = solarValue + redeValue;
+        const solarPercent = Math.round((solarValue / total) * 100);
+        const redePercent = Math.round((redeValue / total) * 100);
+
         energySourceChart = new Chart(ctx, {
           type: 'bar',
           data: {
@@ -309,17 +272,17 @@
             datasets: [
               {
                 label: 'Solar',
-                data: [25],
+                data: [solarPercent],
                 backgroundColor: '#4caf50',
-                borderRadius: 18,
+                borderRadius: 14,
                 borderSkipped: false,
                 barThickness: 40
               },
               {
                 label: 'Elétrica',
-                data: [75],
+                data: [redePercent],
                 backgroundColor: '#ffc107',
-                borderRadius: 18,
+                borderRadius: 14,
                 borderSkipped: false,
                 barThickness: 40
               }
@@ -332,9 +295,9 @@
             plugins: {
               legend: {
                 display: true,
-                position: 'bottom',
+                position: 'top',
                 labels: {
-                  usePointStyle: true,
+                  usePointStyle: false,
                   pointStyle: 'rectRounded'
                 }
               },
@@ -374,7 +337,7 @@
             const labels = chart.data.labels;
 
             ctx.save();
-            ctx.font = '24px "Material Icons"';
+            ctx.font = '20px "Material Icons"';
             ctx.textAlign = 'right';
             ctx.textBaseline = 'middle';
             ctx.fillStyle = '#15200258'; 
@@ -382,7 +345,7 @@
             chart.data.datasets.forEach((dataset, index) => {
               const barHeight = 36;
               const yOffset = chartArea.top + (barHeight + 10) * index + 30; // Ajuste manual
-              ctx.fillText(icons[index], chartArea.left + 34, yOffset);
+              ctx.fillText(icons[index], chartArea.left + 22, yOffset);
             });
 
             ctx.restore();
@@ -391,61 +354,142 @@
       });
     }
 
-
-       let energiaChart; 
-
-       // gráfico energia prod e consumida
-      function createEnergiaChart() {
-      const ctx = document.getElementById('chart-energia').getContext('2d');
-
-      new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: [
-            'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov',
-            'Dez', 'Jan', 'Fev', 'Mar', 'Abr', 'Mai'
-          ],
-          datasets: [
-            {
-              label: 'Energia Produzida (kWh)',
-              data: [70, 100, 110, 115, 119, 100, 90, 85, 56, 39, 29, 20],
-              backgroundColor: '#4caf50'
-            },
-            {
-              label: 'Energia Consumida (kWh)',
-              data: [120, 150, 170, 180, 160, 140, 130, 110, 100, 90, 80, 75],
-              backgroundColor: '#ff9800'
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              position: 'top'
-            },
-            tooltip: {
-              mode: 'index',
-              intersect: false
-            }
-          },
-          scales: {
-            x: {
-              stacked: true,
-          title: {
-            display: false,
-            text: 'Mês'
-          }
-            },
-            y: {
-              stacked: true,
-              display: false
-            }
-          }
+      function updateEnergySourceChart(solarValue, redeValue) {
+        if (!energySourceChart) {
+          createEnergySourceChart();
         }
-      });
+
+        // Calcular porcentagens
+        const total = solarValue + redeValue;
+        const solarPercent = Math.round((solarValue / total) * 100);
+        const redePercent = Math.round((redeValue / total) * 100);
+
+        // Atualizar os dados do gráfico
+        energySourceChart.data.datasets[0].data = [solarPercent];
+        energySourceChart.data.datasets[1].data = [redePercent];
+        energySourceChart.update();
+      }
+
+    let co2Chart, energiaChart, energySourceChart;
+
+  // Initialize CO2 chart with empty data
+  function createCO2Chart() {
+    const ctx = document.getElementById('chart-co2').getContext('2d');
+    
+    // Generate last 12 months labels
+    const now = new Date();
+    const labels = [];
+    for (let i = 11; i >= 0; i--) {
+      const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
+      labels.push(date.toLocaleString('default', { month: 'short' }));
     }
+    
+    co2Chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'CO₂ Evitado (ton)',
+            data: Array(12).fill(0),
+            backgroundColor: '#00bcd4'
+          },
+          {
+            label: 'CO₂ Emitido (ton)',
+            data: Array(12).fill(0),
+            backgroundColor: '#4caf50'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top' },
+          tooltip: { mode: 'index', intersect: false }
+        },
+        scales: {
+          x: { stacked: false },
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  }
+
+  // Update CO2 chart with real data
+  function updateCO2Chart(labels, evitadoData, emitidoData) {
+    if (!co2Chart) createCO2Chart();
+    
+    co2Chart.data.labels = labels;
+    co2Chart.data.datasets[0].data = evitadoData;
+    co2Chart.data.datasets[1].data = emitidoData;
+    co2Chart.update();
+  }
+
+  // Initialize Energy chart with empty data
+  function createEnergiaChart() {
+    const ctx = document.getElementById('chart-energia').getContext('2d');
+    
+    // Generate last 12 months labels
+    const now = new Date();
+    const labels = [];
+    for (let i = 11; i >= 0; i--) {
+      const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
+      labels.push(date.toLocaleString('default', { month: 'short' }));
+    }
+  
+  energiaChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Energia Produzida (kWh)',
+          data: Array(12).fill(0),
+          backgroundColor: '#4caf50'
+        },
+        {
+          label: 'Energia Consumida (kWh)',
+          data: Array(12).fill(0),
+          backgroundColor: '#ff9800'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top' },
+        tooltip: { mode: 'index', intersect: false }
+      },
+      scales: {
+        x: { stacked: true },
+        y: { stacked: true }
+      }
+    }
+  });
+}
+
+// Update Energy chart with real data
+function updateEnergiaChart(labels, solarData, redeData) {
+  if (!energiaChart) createEnergiaChart();
+  
+  energiaChart.data.labels = labels;
+  energiaChart.data.datasets[0].data = solarData;
+  energiaChart.data.datasets[1].data = redeData;
+  energiaChart.update();
+}
+
+// Initialize on DOM load
+    document.addEventListener("DOMContentLoaded", () => {
+      createCO2Chart();
+      createEnergiaChart();
+      refreshData();
+      
+      // Update current date
+      const date = moment();
+      document.getElementById("currentDate").textContent = date.format('D/MM/YYYY');
+    });
 
     let date = moment();
 
@@ -462,7 +506,6 @@
       createEnergiaChart();
       createCO2Chart();
       refreshData();
-      createEnergySourceChart();
     
     });
 
