@@ -43,6 +43,7 @@ Para rodar este projeto, vais precisar adicionar as seguintes variáveis de ambi
 
 ## Pré-requisitos
 - Node.js (versão 14 ou superior)
+- Git
 - Docker (opcional)
 - Conta ThingsBoard com acesso à API
 
