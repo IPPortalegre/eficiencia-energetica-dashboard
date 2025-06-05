@@ -12,7 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   <script src="https://kit.fontawesome.com/2f941c78c7.js" crossorigin="anonymous"></script>
 
-  <meta http-equiv="refresh" content="300">
+  <meta http-equiv="refresh" content="600">
 
   <style>
     .card h1 {
@@ -237,9 +237,6 @@
         </div>
       </div>
 
-      
-      
-
       <div class="col-md-5 mb-3">
         <div class="card chart-card">
           <div class="card-body">
@@ -359,12 +356,12 @@
           createEnergySourceChart();
         }
 
-        // Calcular porcentagens
+        // calcula porcentagens
         const total = solarValue + redeValue;
         const solarPercent = Math.round((solarValue / total) * 100);
         const redePercent = Math.round((redeValue / total) * 100);
 
-        // Atualizar os dados do gráfico
+        // atualiza os dados do gráfico
         energySourceChart.data.datasets[0].data = [solarPercent];
         energySourceChart.data.datasets[1].data = [redePercent];
         energySourceChart.update();
@@ -372,124 +369,145 @@
 
     let co2Chart, energiaChart, energySourceChart;
 
-  // Initialize CO2 chart with empty data
-  function createCO2Chart() {
-    const ctx = document.getElementById('chart-co2').getContext('2d');
-    
-    // Generate last 12 months labels
-    const now = new Date();
-    const labels = [];
-    for (let i = 11; i >= 0; i--) {
-      const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
-      labels.push(date.toLocaleString('default', { month: 'short' }));
-    }
-    
-    co2Chart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            label: 'CO₂ Evitado (ton)',
-            data: Array(12).fill(0),
-            backgroundColor: '#00bcd4'
+    // gráfico de CO2
+    async function createCO2Chart() {
+      const now = new Date();
+      const endTs = now.getTime();
+      const startDate = new Date(now.getFullYear(), now.getMonth() - 11, 1);
+      const startTs = startDate.getTime();
+
+      console.log("CO2 Chart - startTs:", new Date(startTs), "endTs:", new Date(endTs));
+
+      const avoidedData = await getHistoricalData('co2evitado', startTs, endTs);
+      const emittedData = await getHistoricalData('co2emitido', startTs, endTs);
+
+      console.log("CO2 Data - Avoided:", avoidedData, "Emitted:", emittedData);
+
+      if (!avoidedData || !emittedData) {
+        console.warn("No data available for CO2 chart");
+        return;
+      }
+
+      const avoided = processMonthlyData(avoidedData);
+      const emitted = processMonthlyData(emittedData);
+
+      const ctx = document.getElementById('chart-co2').getContext('2d');
+
+      co2Chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: avoided.labels,
+          datasets: [
+            {
+              label: 'CO₂ Evitado (ton)',
+              data: avoided.values,
+              backgroundColor: '#00bcd4'
+            },
+            {
+              label: 'CO₂ Emitido (ton)',
+              data: emitted.values,
+              backgroundColor: '#4caf50'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'top' },
+            tooltip: {
+              mode: 'index',
+              intersect: false
+            }
           },
-          {
-            label: 'CO₂ Emitido (ton)',
-            data: Array(12).fill(0),
-            backgroundColor: '#4caf50'
+          scales: {
+            x: { stacked: false },
+            y: {
+              beginAtZero: true,
+              title: { display: false }
+            }
           }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { position: 'top' },
-          tooltip: { mode: 'index', intersect: false }
-        },
-        scales: {
-          x: { stacked: false },
-          y: { beginAtZero: true }
         }
-      }
-    });
-  }
-
-  // Update CO2 chart with real data
-  function updateCO2Chart(labels, evitadoData, emitidoData) {
-    if (!co2Chart) createCO2Chart();
-    
-    co2Chart.data.labels = labels;
-    co2Chart.data.datasets[0].data = evitadoData;
-    co2Chart.data.datasets[1].data = emitidoData;
-    co2Chart.update();
-  }
-
-  // Initialize Energy chart with empty data
-  function createEnergiaChart() {
-    const ctx = document.getElementById('chart-energia').getContext('2d');
-    
-    // Generate last 12 months labels
-    const now = new Date();
-    const labels = [];
-    for (let i = 11; i >= 0; i--) {
-      const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
-      labels.push(date.toLocaleString('default', { month: 'short' }));
+      });
     }
-  
-  energiaChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: 'Energia Produzida (kWh)',
-          data: Array(12).fill(0),
-          backgroundColor: '#4caf50'
-        },
-        {
-          label: 'Energia Consumida (kWh)',
-          data: Array(12).fill(0),
-          backgroundColor: '#ff9800'
+
+
+    // Initialize Energy chart with empty data
+    // gráfico energia prod e consumida
+      async function createEnergiaChart() {
+        const now = new Date();
+        const endTs = now.getTime();
+        const startDate = new Date(now.getFullYear(), now.getMonth() - 11, 1);
+        const startTs = startDate.getTime();
+
+        console.log("Energia Chart - startTs:", new Date(startTs), "endTs:", new Date(endTs));
+
+        const producedData = await getHistoricalData('energiasolarconsumida', startTs, endTs);
+        const consumedData = await getHistoricalData('energiaredeconsumida', startTs, endTs);
+
+        console.log("Energia Data - Produced:", producedData, "Consumed:", consumedData);
+
+        if (!producedData || !consumedData) {
+          console.warn("No data available for Energia chart");
+          return;
         }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'top' },
-        tooltip: { mode: 'index', intersect: false }
-      },
-      scales: {
-        x: { stacked: true },
-        y: { stacked: true }
-      }
-    }
-  });
-}
 
-// Update Energy chart with real data
-function updateEnergiaChart(labels, solarData, redeData) {
-  if (!energiaChart) createEnergiaChart();
-  
-  energiaChart.data.labels = labels;
-  energiaChart.data.datasets[0].data = solarData;
-  energiaChart.data.datasets[1].data = redeData;
-  energiaChart.update();
-}
+        const produced = processMonthlyData(producedData);
+        const consumed = processMonthlyData(consumedData);
+
+        const ctx = document.getElementById('chart-energia').getContext('2d');
+
+        energiaChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: produced.labels,
+            datasets: [
+              {
+                label: 'Energia Produzida (kWh)',
+                data: produced.values,
+                backgroundColor: '#4caf50'
+              },
+              {
+                label: 'Energia Consumida (kWh)',
+                data: consumed.values,
+                backgroundColor: '#ff9800'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'top' },
+              tooltip: {
+                mode: 'index',
+                intersect: false
+              }
+            },
+            scales: {
+              x: {
+                stacked: true,
+                title: { display: false }
+              },
+              y: {
+                stacked: true,
+                display: false
+              }
+            }
+          }
+        });
+      }
+
 
 // Initialize on DOM load
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", async () => {
       createCO2Chart();
       createEnergiaChart();
-      refreshData();
-      
-      // Update current date
+     
       const date = moment();
       document.getElementById("currentDate").textContent = date.format('D/MM/YYYY');
     });
+
 
     let date = moment();
 
@@ -499,17 +517,7 @@ function updateEnergiaChart(labels, solarData, redeData) {
     document.getElementById("currentDate").innerHTML = currentDate;
 
     
-    // Arredodnda o valor da temperatura
    
-
-    document.addEventListener("DOMContentLoaded", () => {
-      createEnergiaChart();
-      createCO2Chart();
-      refreshData();
-    
-    });
-
-
   </script>
   <script src="api.js"></script>
 </body>
