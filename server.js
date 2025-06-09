@@ -60,6 +60,40 @@ app.get('/api/getdata', async (req, res) => {
   }
 });
 
+// Add this endpoint to your server.js
+app.get('/api/gethistory', async (req, res) => {
+  try {
+    const accessToken = await authenticateThingsBoard();
+    const thingsboardUrl = process.env.THINGSBOARD_URL;
+    const deviceId = process.env.THINGSBOARD_ASSETID;
+
+    const { key, startTs, endTs } = req.query;
+    
+
+    const url = `${thingsboardUrl}/api/plugins/telemetry/ASSET/${deviceId}/values/timeseries?keys=${key}&startTs=${startTs}&endTs=${endTs}&limit=100`;
+
+    const response = await fetch(url, {
+      headers: { 'X-Authorization': `Bearer ${accessToken}` }
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`ThingsBoard API error: ${response.status} - ${errorText}`);
+    }
+
+    const data = await response.json();
+    res.json(data[key] || []);
+  } catch (error) {
+    console.error('ThingsBoard Telemetry History Error:', error);
+    res.status(500).json({ 
+      error: error.message,
+      details: error.stack 
+    });
+  }
+});
+
+
+
 // Serve main page
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));

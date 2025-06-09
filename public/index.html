@@ -12,7 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   <script src="https://kit.fontawesome.com/2f941c78c7.js" crossorigin="anonymous"></script>
 
-  <meta http-equiv="refresh" content="600">
+  
 
   <style>
     .card h1 {
@@ -47,6 +47,8 @@
     .card-body-fonten {
       padding-left: 20px;
       padding-right: 10px;
+      width:100%;
+    
     }
     .chart-card {
       border-radius: 12px;
@@ -102,10 +104,7 @@
     }
 
     .cardfonte{
-      width: 284px;
-      height: 224px;
-      margin-left: -1px;
-      padding-bottom: 12px;
+     width:200px;
     }
     #tempicon{
       color: #ff3300;
@@ -138,6 +137,26 @@
     }
     .tempid{
       color:#ff3300;
+    }
+    .chart-container{
+      height:200px!important;
+     
+    }
+    .chart-container-fonte {
+      height: 200px;
+      
+    }
+    .chart-container2{
+      height:200px!important;
+      
+     
+    }
+    .card-body{
+      width:100%;
+    }
+    .cardco2{
+      width:424px;
+      margin-left:-60px;
     }
     
   </style>
@@ -218,19 +237,25 @@
     <div class="row graphrow">
       <div class="col-md-3 mb-3">
           <div class="card chart-card cardfonte">
+            <!--TODO card-body-fonten tem que ser modificdo no css (width)-->
             <div class="card-body card-body-fonten text-center">
               <h5>Fontes de Energia</h5>
-              <canvas id="ensource-chart" width="100" height="100"></canvas>
+              <div class="chart-container-fonte">
+              
+              <canvas id="ensource-chart"></canvas>
+             </div>
             </div>
           </div>
       </div>
+     
 
     
       <div class="col-md-4 mb-3">
-        <div class="card chart-card">
+        <div class="card chart-card cardco2">
+          <!--TODO modificar card-body no css (width)-->
           <div class="card-body">
             <h5 class="text-center">Evolução Temporal - CO2</h5>
-            <div class="chart-container">
+            <div class="chart-container2">
               <canvas id="chart-co2"></canvas>
             </div>
           </div>
@@ -265,7 +290,7 @@
         energySourceChart = new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: ['Fontes de Energia'], 
+            labels: ['Fontes de Energia'],
             datasets: [
               {
                 label: 'Solar',
@@ -293,8 +318,14 @@
               legend: {
                 display: true,
                 position: 'top',
+                align: 'center',
+                maxHeight: 40,
+                padding: 10,
                 labels: {
-                  usePointStyle: false,
+                  font: {
+                    size: 12
+                  },
+                  usePointStyle: true,
                   pointStyle: 'rectRounded'
                 }
               },
@@ -311,45 +342,40 @@
               x: {
                 min: 0,
                 max: 100,
-                title: {
-                  display: false,
-                  text: 'Energia (%)'
-                },
+                title: { display: false },
                 ticks: {
-                  callback: (val) => `${val}%`
-                }
+                  callback: (val) => `${val}%`,
+                  font: { size: 10 }
+                },
+                grid: { display: false }
               },
               y: {
-                display: false 
+                display: false,
+                grid: { display: false }
               }
             }
           },
+          plugins: [{
+            id: 'materialIconPlugin',
+            afterDatasetsDraw(chart) {
+              const { ctx, chartArea } = chart;
+              const icons = ['solar_power', 'bolt']; //material icons
+              ctx.save();
+              ctx.font = '16px "Material Icons"';
+              ctx.textAlign = 'right';
+              ctx.textBaseline = 'middle';
+              ctx.fillStyle = '#15200258';
+              chart.data.datasets.forEach((dataset, index) => {
+                const barHeight = 36;
+                const yOffset = chartArea.top + (barHeight + 10) * index + 46;
+                ctx.fillText(icons[index], chartArea.left + 16, yOffset);
+              });
 
-        plugins: [{
-          
-          id: 'materialIconPlugin',
-          afterDatasetsDraw(chart) {
-            const { ctx, chartArea, scales: { y } } = chart;
-            const icons = ['solar_power', 'bolt']; //material icons
-            const labels = chart.data.labels;
-
-            ctx.save();
-            ctx.font = '20px "Material Icons"';
-            ctx.textAlign = 'right';
-            ctx.textBaseline = 'middle';
-            ctx.fillStyle = '#15200258'; 
-
-            chart.data.datasets.forEach((dataset, index) => {
-              const barHeight = 36;
-              const yOffset = chartArea.top + (barHeight + 10) * index + 30; // Ajuste manual
-              ctx.fillText(icons[index], chartArea.left + 22, yOffset);
-            });
-
-            ctx.restore();
-          }
-        }]
-      });
-    }
+              ctx.restore();
+            }
+          }]
+        });
+      }
 
       function updateEnergySourceChart(solarValue, redeValue) {
         if (!energySourceChart) {
@@ -367,147 +393,188 @@
         energySourceChart.update();
       }
 
-    let co2Chart, energiaChart, energySourceChart;
+    // Update your chart initialization in index.html
+      let co2Chart, energiaChart, energySourceChart;
 
-    // gráfico de CO2
-    async function createCO2Chart() {
-      const now = new Date();
-      const endTs = now.getTime();
-      const startDate = new Date(now.getFullYear(), now.getMonth() - 11, 1);
-      const startTs = startDate.getTime();
+      
 
-      console.log("CO2 Chart - startTs:", new Date(startTs), "endTs:", new Date(endTs));
+      async function createCO2Chart() {
+        const now = new Date();
+        const endTs = now.getTime();
+        const startDate = new Date(now.getFullYear(), now.getMonth() - 11, 1);
+        const startTs = startDate.getTime();
 
-      const avoidedData = await getHistoricalData('co2evitado', startTs, endTs);
-      const emittedData = await getHistoricalData('co2emitido', startTs, endTs);
+        try {
+          const [avoidedData, emittedData] = await Promise.all([
+            getHistory('co2evitado', startTs, endTs),
+            getHistory('co2emitido', startTs, endTs)
+          ]);
 
-      console.log("CO2 Data - Avoided:", avoidedData, "Emitted:", emittedData);
+          const avoided = processMonthlyData(avoidedData, 'co2evitado');
+          const emitted = processMonthlyData(emittedData, 'co2emitido');
 
-      if (!avoidedData || !emittedData) {
-        console.warn("No data available for CO2 chart");
-        return;
+          const ctx = document.getElementById('chart-co2').getContext('2d');
+          
+          if (co2Chart) {
+            co2Chart.data.labels = avoided.labels;
+            co2Chart.data.datasets[0].data = avoided.values;
+            co2Chart.data.datasets[1].data = emitted.values;
+            co2Chart.update();
+          } else {
+            co2Chart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: avoided.labels,
+                datasets: [
+                  {
+                    label: 'CO₂ Evitado (ton)',
+                    data: avoided.values,
+                    backgroundColor: 'rgba(0, 188, 212, 0.7)',
+                    borderColor: 'rgba(0, 151, 167, 1)',
+                    borderWidth: 1
+                  },
+                  {
+                    label: 'CO₂ Emitido (ton)',
+                    data: emitted.values,
+                    backgroundColor: 'rgba(76, 175, 80, 0.7)',
+                    borderColor: 'rgba(56, 142, 60, 1)',
+                    borderWidth: 1
+                  }
+                ]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: { position: 'top',
+                    labels: {
+                      font: {
+                        size: 12
+                      },
+                      usePointStyle: true,
+                      pointStyle: 'rectRounded'
+                    }
+                  },
+                  tooltip: {
+                    mode: 'index',
+                    intersect: false
+                  }
+                },
+                scales: {
+                  x: { 
+                    stacked: false,
+                    grid: { display: false }  // <= adicionado
+                  },
+                  y: {
+                    beginAtZero: true,
+                    title: { display: true, text: 'Toneladas' },
+                    grid: { display: false }  // <= adicionado
+                  }
+
+                }
+              }
+            });
+          }
+        } catch (error) {
+          console.error('Error creating CO2 chart:', error);
+        }
       }
 
-      const avoided = processMonthlyData(avoidedData);
-      const emitted = processMonthlyData(emittedData);
+      
 
-      const ctx = document.getElementById('chart-co2').getContext('2d');
-
-      co2Chart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: avoided.labels,
-          datasets: [
-            {
-              label: 'CO₂ Evitado (ton)',
-              data: avoided.values,
-              backgroundColor: '#00bcd4'
-            },
-            {
-              label: 'CO₂ Emitido (ton)',
-              data: emitted.values,
-              backgroundColor: '#4caf50'
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { position: 'top' },
-            tooltip: {
-              mode: 'index',
-              intersect: false
-            }
-          },
-          scales: {
-            x: { stacked: false },
-            y: {
-              beginAtZero: true,
-              title: { display: false }
-            }
-          }
-        }
-      });
-    }
-
-
-    // Initialize Energy chart with empty data
-    // gráfico energia prod e consumida
       async function createEnergiaChart() {
         const now = new Date();
         const endTs = now.getTime();
         const startDate = new Date(now.getFullYear(), now.getMonth() - 11, 1);
         const startTs = startDate.getTime();
 
-        console.log("Energia Chart - startTs:", new Date(startTs), "endTs:", new Date(endTs));
+        try {
+          const [producedData, consumedData] = await Promise.all([
+            getHistory('energiasolarconsumida', startTs, endTs),
+            getHistory('energiaredeconsumida', startTs, endTs)
+          ]);
 
-        const producedData = await getHistoricalData('energiasolarconsumida', startTs, endTs);
-        const consumedData = await getHistoricalData('energiaredeconsumida', startTs, endTs);
+          const produced = processMonthlyData(producedData, 'energiasolarconsumida');
+          const consumed = processMonthlyData(consumedData, 'energiaredeconsumida');
 
-        console.log("Energia Data - Produced:", producedData, "Consumed:", consumedData);
-
-        if (!producedData || !consumedData) {
-          console.warn("No data available for Energia chart");
-          return;
-        }
-
-        const produced = processMonthlyData(producedData);
-        const consumed = processMonthlyData(consumedData);
-
-        const ctx = document.getElementById('chart-energia').getContext('2d');
-
-        energiaChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: produced.labels,
-            datasets: [
-              {
-                label: 'Energia Produzida (kWh)',
-                data: produced.values,
-                backgroundColor: '#4caf50'
+          const ctx = document.getElementById('chart-energia').getContext('2d');
+          
+          if (energiaChart) {
+            energiaChart.data.labels = produced.labels;
+            energiaChart.data.datasets[0].data = produced.values;
+            energiaChart.data.datasets[1].data = consumed.values;
+            energiaChart.update();
+          } else {
+            energiaChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: produced.labels,
+                datasets: [
+                  {
+                    label: 'Energia Solar (kWh)',
+                    data: produced.values,
+                    backgroundColor: 'rgba(76, 175, 80, 0.7)',
+                    borderColor: 'rgba(56, 142, 60, 1)',
+                    borderWidth: 1
+                  },
+                  {
+                    label: 'Energia da Rede (kWh)',
+                    data: consumed.values,
+                    backgroundColor: 'rgba(255, 152, 0, 0.7)',
+                    borderColor: 'rgba(245, 124, 0, 1)',
+                    borderWidth: 1
+                  }
+                ]
               },
-              {
-                label: 'Energia Consumida (kWh)',
-                data: consumed.values,
-                backgroundColor: '#ff9800'
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: { position: 'top',
+                    labels: {
+                      font: {
+                        size: 12
+                      },
+                      usePointStyle: true,
+                      pointStyle: 'rectRounded'
+                    }
+                   },
+                  tooltip: {
+                    mode: 'index',
+                    intersect: false
+                  }
+                },
+                scales: {
+                  x: { 
+                    stacked: true,
+                    grid: { display: false }  // <= adicionado
+                  },
+                  y: {
+                    stacked: true,
+                    beginAtZero: true,
+                    title: { display: true, text: 'kWh' },
+                    grid: { display: false }  // <= adicionado
+                  }
+                }
               }
-            ]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: { position: 'top' },
-              tooltip: {
-                mode: 'index',
-                intersect: false
-              }
-            },
-            scales: {
-              x: {
-                stacked: true,
-                title: { display: false }
-              },
-              y: {
-                stacked: true,
-                display: false
-              }
-            }
+            });
           }
-        });
+        } catch (error) {
+          console.error('Error creating Energy chart:', error);
+        }
       }
-
 
 // Initialize on DOM load
     document.addEventListener("DOMContentLoaded", async () => {
-      createCO2Chart();
-      createEnergiaChart();
-     
       const date = moment();
       document.getElementById("currentDate").textContent = date.format('D/MM/YYYY');
+      
+      await createCO2Chart();
+      await createEnergiaChart();
+      
+      
+    
     });
-
 
     let date = moment();
 
@@ -516,6 +583,9 @@
     console.log(currentDate); 
     document.getElementById("currentDate").innerHTML = currentDate;
 
+    //refresh pagina
+
+    
     
    
   </script>
