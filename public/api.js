@@ -61,7 +61,7 @@ function processMonthlyData(data, debugKey = '') {
   for (let i = 0; i < 12; i++) {
     const monthOffset = i;
     const date = new Date(currentYear, currentMonth - monthOffset, 1);
-    const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+    const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 0).padStart(2, '0')}`;
     
     monthlyData[monthKey] = {
       monthName: date.toLocaleString('pt-PT', { month: 'short' }),
@@ -164,34 +164,6 @@ async function refreshData() {
   }
 }
 
-function checkForChartErrors() {
-  let hasErrors = false;
-  
-  // Check CO2 chart
-  if (!co2Chart || co2Chart.data.labels.length === 0 || co2Chart.data.datasets.some(d => d.data.length === 0)) {
-    console.error('CO2 chart has errors or missing data');
-    hasErrors = true;
-  }
-  
-  // Check Energy chart
-  if (!energiaChart || energiaChart.data.labels.length === 0 || energiaChart.data.datasets.some(d => d.data.length === 0)) {
-    console.error('Energy chart has errors or missing data');
-    hasErrors = true;
-  }
-  
-  // Check Energy Source chart
-  if (!energySourceChart || energySourceChart.data.datasets.some(d => d.data.length === 0)) {
-    console.error('Energy source chart has errors or missing data');
-    hasErrors = true;
-  }
-  
-  if (hasErrors) {
-    console.log('Reloading page due to chart errors...');
-    setTimeout(() => {
-      window.location.reload();
-    }, 5000); // Reload after 5 seconds
-  }
-}
 
 // Initialize
 refreshData();
