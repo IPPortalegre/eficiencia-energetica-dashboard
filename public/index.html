@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Eficiência Energética | Campus IPP</title>
 
   <!-- Estilos e bibliotecas -->
@@ -26,11 +26,16 @@
     }
     .green-bg { 
       background-color: #06a04e; 
+      width:320px!important;
+      height:320px!important;
+      margin-left: -8px!important;
+   
     }
     .yellow-bg { 
-      background-color: #f8e80d;
+      background-color: #f9de29;
       color: #333; 
-      width:220px!important;
+      width:320px!important;
+      height:320px!important;
       
     }
     .header-title {
@@ -53,8 +58,8 @@
     .chart-card {
       border-radius: 12px;
       background-color: #f8f9fa;
-      margin-left: 10px;
-      margin-right: -17px;
+      margin-left: 18px;
+      margin-right: -24px;
     }
     .card {
       box-shadow: 0 4px 8px rgba(48, 48, 48, 0.1);
@@ -68,10 +73,7 @@
       box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 
     }
-    .square-card {
-      width: 200px;
-      height: 200px;
-    }
+ 
     .badge-date {
       font-size: 1.48rem;
       font-weight: bold;
@@ -103,8 +105,11 @@
       margin: 15px 0;
     }
 
+    /* Ajustar a width do card fonte de energia */
     .cardfonte{
-     width:200px;
+     width:320px;
+     min-width:120px;
+     
     }
     #tempicon{
       color: #ff3300;
@@ -113,17 +118,18 @@
       color: #00bcd4;
     }
     .green-card{
-      margin-left: 12px!important;
+      margin-left: 8px!important;
       
     }
     .yellow-card{
-      margin-left: 14px!important;
+      margin-left: 10px!important;
       margin-right:30px!important;
   
       
     }
     .last-card{
-      margin-right: 32px!important;
+      margin-right: 76px!important;
+    
     }
     .graphrow {
       margin-top: 20px;
@@ -139,28 +145,31 @@
       color:#ff3300;
     }
     .chart-container{
-      height:200px!important;
+      height:250px;
+      
      
     }
     .chart-container-fonte {
-      height: 200px;
-      
+      height: 250px;
+   
     }
     .chart-container2{
-      height:200px!important;
+      height:250px;
       
-     
     }
     .card-body{
       width:100%;
     }
+    /* Ajustar a width do card de CO2 */
     .cardco2{
-      width:424px;
-      margin-left:-60px;
+      width:656px;
+      margin-left:-86px;
+      
     }
     body{
       background-color: #f5fff9;
-      padding:-100px;
+      padding:0;
+      width:100%;
     }
     .spacechart{
       margin-right: 8px;
@@ -173,27 +182,47 @@
       padding: 0;
     }
     .sub-title {
-      font-size: 24px;
-      color: #2fb43a;
+      font-size: 22.9px;
+      color: #1a8623;
       margin-top:10px;
       margin-bottom:20px;
       
     }
     .h4bold {
       font-weight: bold;
-      color: #2fb43a;
+      color: #1a8623;
     }
     .h4light {
       font-weight: 400;
       
     }
-    
+    .fontes-card{
+      margin-left:-4px;
+    }
+    .container{
+      max-width: 1700px;
+      max-height:1200px;
+      padding:5px;
+    }
+   
+    .card-title{
+      font-size: 28px;
+      font-weight: 500;
+      padding:0 auto;
+      margin-top:32px;
+      
+    }
+    /* Ajustar o width do chart de energia */
+    .carden{
+      width:650px;
+    }
+ 
   </style>
 </head>
 <body>
   <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap"> 
-      <h2 class="header-title">EFICIÊNCIA ENERGÉTICA</h2>
+      <h2 class="header-title ">EFICIÊNCIA ENERGÉTICA</h2>
       <div class="d-flex align-items-center gap-3">
         <span class="badge badge-light p-2 mr-2" data-toggle="tooltip" data-placement="top" title="Temperatura">
           <i class="material-icons md-18 align-middle" id="tempicon">device_thermostat</i>
@@ -207,16 +236,17 @@
         </span>
         <span class="badge badge-light p-2 badge-date" id="currentDate">-</span>
       </div>
-      <h4 class="sub-title"><span class="h4light">PRODUÇAÕ DE ENERGIA RENOVÁVEL</span> | <span class="h4bold">CAMPUS POLITÉCNICO</span></h4>
       
     </div>
 
+    <h4 class="sub-title"><span class="h4light">PRODUÇÃO DE ENERGIA RENOVÁVEL</span> | <span class="h4bold">CAMPUS POLITÉCNICO</span></h4>
+
     <!-- Cards principais -->
     <div class="row text-center mb-3">
-      <div class="col-md-2 mx-auto green-card">
-        <div class="card cardnormal highlight-card green-bg square-card">
-          <div class="card-body">
-            <h5>Produção Global Energia</h5>
+      <div class="col-md-2 mx-auto  green-card">
+        <div class="card cardnormal  highlight-card green-bg square-card">
+          <div class="card-body ">
+            <h5 class="card-title">Produção Global Energia</h5>
             <h1 class="value" id="energiasolartotal">-</h1>
             <h5 class="unities">kWh</h5>
           </div>
@@ -226,7 +256,7 @@
       <div class="col-md-2 mx-auto green-card">
         <div class="card cardnormal highlight-card green-bg square-card">
           <div class="card-body">
-            <h5>CO2 Evitado (acumulado)</h5>
+            <h5 class="card-title">CO2 Evitado (acumulado)</h5>
             <h1 class="value" id="co2evitadototal">-</h1>
             <h5 class="unities">ton</h5>
           </div>
@@ -235,16 +265,16 @@
       <div class="col-md-2 mx-auto green-card">
         <div class="card cardnormal highlight-card green-bg square-card">
           <div class="card-body">
-            <h5>CO2 Equivalente</h5>
+            <h5 class="card-title">CO2 Equivalente</h5>
             <h1 id="co2equivalente">-</h1><i class="material-icons icon-tree md-18 align-middle">forest</i>
           </div>
         </div>
       </div>
-
+      
       <div class="col-md-2 mx-auto yellow-card">
         <div class="card cardnormal highlight-card yellow-bg square-card">
           <div class="card-body">
-            <h5>Energia Produzida (instantâneo)</h5>
+            <h5 class="card-title">Energia Produzida (instantâneo)</h5>
             <h1 class="value" id="producaoinstantaneo">-</h1>
             <h5 class="unities">kWh</h5>
           </div>
@@ -254,7 +284,7 @@
       <div class="col-md-2 mx-auto yellow-card last-card">
         <div class="card cardnormal highlight-card yellow-bg square-card">
           <div class="card-body">
-            <h5>Energia Consumida (instantâneo)</h5>
+            <h5 class="card-title">Energia Consumida (instantâneo)</h5>
             <h1 class="value" id="consumoinstantaneo">-</h1>
             <h5 class="unities">kWh</h5>
           </div>
@@ -266,9 +296,9 @@
     <!-- Gráficos -->
 
     <div class="row graphrow">
-      <div class="col-md-3 mb-3">
+      <div class="col-md-3 mb-3 fontes-card">
           <div class="card chart-card cardfonte">
-            <!--TODO card-body-fonten tem que ser modificdo no css (width)-->
+            
             <div class="card-body card-body-fonten text-center">
               <h5>Fontes de Energia</h5>
               <div class="chart-container-fonte">
@@ -283,7 +313,7 @@
     
       <div class="col-md-4 mb-3">
         <div class="card chart-card cardco2">
-          <!--TODO modificar card-body no css (width)-->
+      
           <div class="card-body">
             <h5 class="text-center"><span class="spacechart">Evolução Temporal</span> |   <span class="spacechart2">CO2</span></h5>
             <div class="chart-container2">
@@ -294,7 +324,7 @@
       </div>
 
       <div class="col-md-5 mb-3">
-        <div class="card chart-card">
+        <div class="card chart-card carden">
           <div class="card-body">
             <h5 class="text-center"><span class="spacechart">Evolução Temporal</span> |   <span class="spacechart2">Energia</span></h5>
             <div class="chart-container">
@@ -327,7 +357,7 @@
               {
                 label: 'Solar',
                 data: [solarPercent],
-                backgroundColor: '#4caf50',
+                backgroundColor: '#4fac50',
                 borderRadius: 14,
                 borderSkipped: false,
                 barThickness: 40
@@ -335,7 +365,7 @@
               {
                 label: 'Elétrica',
                 data: [redePercent],
-                backgroundColor: '#ffc107',
+                backgroundColor: '#eb9e0a',
                 borderRadius: 14,
                 borderSkipped: false,
                 barThickness: 40
@@ -349,7 +379,7 @@
             plugins: {
               legend: {
                 display: true,
-                position: 'top',
+                position: 'bottom',
                 align: 'center',
                 maxHeight: 40,
                 padding: 10,
@@ -460,15 +490,15 @@
                   {
                     label: 'CO₂ Evitado (ton)',
                     data: avoided.values, 
-                    backgroundColor: 'rgba(0, 188, 212, 0.7)',
+                    backgroundColor: 'rgba(27,220,215,255)',
                     borderColor: 'rgba(0, 151, 167, 1)',
                     borderWidth: 1
                   },
                   {
                     label: 'CO₂ Emitido (ton)',
                     data: emitted.values, 
-                    backgroundColor: 'rgba(76, 175, 80, 0.7)',
-                    borderColor: 'rgba(56, 142, 60, 1)',
+                    backgroundColor: 'rgba(248,109,34,255)',
+                    borderColor: 'rgba(248,109,34,255)',
                     borderWidth: 1
                   }
                 ]
@@ -477,7 +507,7 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                  legend: { position: 'top',
+                  legend: { position: 'bottom',
                     labels: {
                       font: {
                         size: 12
@@ -494,12 +524,12 @@
                 scales: {
                   x: { 
                     stacked: false,
-                    grid: { display: false }  // <= adicionado
+                    grid: { display: false }  
                   },
                   y: {
                     beginAtZero: true,
                     title: { display: true, text: 'Toneladas' },
-                    grid: { display: false }  // <= adicionado
+                    grid: { display: false }  
                   }
 
                 }
@@ -545,15 +575,15 @@
                   {
                     label: 'Energia Solar (kWh)',
                     data: produced.values,
-                    backgroundColor: 'rgba(76, 175, 80, 0.7)',
-                    borderColor: 'rgba(56, 142, 60, 1)',
+                    backgroundColor: 'rgba(8,158,84,255)',
+                    borderColor: 'rgba(8,158,84,255)',
                     borderWidth: 1
                   },
                   {
                     label: 'Energia da Rede (kWh)',
                     data: consumed.values,
-                    backgroundColor: 'rgba(255, 152, 0, 0.7)',
-                    borderColor: 'rgba(245, 124, 0, 1)',
+                    backgroundColor: 'rgba(235,158,10,255)',
+                    borderColor: 'rgba(235,158,10,255)',
                     borderWidth: 1
                   }
                 ]
@@ -562,7 +592,7 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                  legend: { position: 'top',
+                  legend: { position: 'bottom',
                     labels: {
                       font: {
                         size: 12
@@ -606,8 +636,6 @@
       
       await createCO2Chart();
       await createEnergiaChart();
-      
-      
     
     });
 
