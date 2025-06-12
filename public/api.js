@@ -14,10 +14,12 @@ async function getData() {
   }
 }
 
+
+
 /**
  * Get historical data from API
  */
-// In your getHistory function
+
 async function getHistory(key, startTs, endTs) {
   try {
     const url = `/api/gethistory?key=${encodeURIComponent(key)}&startTs=${startTs}&endTs=${endTs}`;
@@ -41,9 +43,8 @@ async function getHistory(key, startTs, endTs) {
 }
 
 
-
 /**
- * Process time-series data into monthly sums for the last 12 months
+ * Process time-series data to get latest value for each month
  */
 function processMonthlyData(data, debugKey = '') {
   if (!Array.isArray(data)) {
@@ -52,63 +53,64 @@ function processMonthlyData(data, debugKey = '') {
   }
 
   const now = new Date();
-  const monthlyData = {};
+  const monthlyData = new Map();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth();
 
-  // Initialize last 12 months with proper date objects
+  // Initialize last 12 months
   for (let i = 0; i < 12; i++) {
-    const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
-    const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
-    
-    
-    monthlyData[monthKey] = {
-      monthName: date.toLocaleString('pt-PT', { month: 'short' }),
-      sum: 0
-    };
+    const date = new Date(currentYear, currentMonth - i, 1);
+    const monthKey = date.toLocaleString('pt-PT', { month: 'short' });
+    monthlyData.set(monthKey, {
+      value: 0,
+      timestamp: 0
+    });
   }
 
-  // Process each data point
+  // Process data points
   data.forEach(item => {
     try {
-      if (!item || !item.ts || item.value === undefined) {
-        console.warn('Invalid data point:', item);
-        return;
-      }
-
-      const timestamp = typeof item.ts === 'string' ? parseInt(item.ts) : item.ts;
+      if (!item || !item.ts) return;
+      
+      const timestamp = parseInt(item.ts);
       const date = new Date(timestamp);
-
-      if (isNaN(date.getTime())) {
-        console.warn('Invalid timestamp:', item.ts);
-        return;
-      }
-
-      const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
-      if (monthlyData[monthKey]) {
+      
+      // Skip future dates
+      if (date > now) return;
+      
+      const monthKey = date.toLocaleString('pt-PT', { month: 'short' });
+      
+      if (monthlyData.has(monthKey)) {
         const value = parseFloat(String(item.value).replace(',', '.'));
-        monthlyData[monthKey].sum += isNaN(value) ? 0 : value;
+        if (!isNaN(value)) {
+          monthlyData.set(monthKey, {
+            value,
+            timestamp
+          });
+        }
       }
     } catch (e) {
-      console.warn('Error processing item:', item, e);
+      console.warn('Error processing item:', e);
     }
   });
 
-  // Prepare result in chronological order
+  // Prepare chronological result
   const result = {
     labels: [],
     values: []
   };
 
-  Object.keys(monthlyData)
-    .sort((a, b) => new Date(a) - new Date(b))
-    .forEach(monthKey => {
-      result.labels.push(monthlyData[monthKey].monthName);
-      result.values.push(monthlyData[monthKey].sum);
-    });
+  // Generate sorted month labels (oldest first)
+  for (let i = 11; i >= 0; i--) {
+    const date = new Date(currentYear, currentMonth - i, 1);
+    const monthKey = date.toLocaleString('pt-PT', { month: 'short' });
+    result.labels.push(monthKey);
+    result.values.push(monthlyData.get(monthKey).value);
+  }
 
-  console.log(`Processed monthly data for ${debugKey}:`, result);
-  
   return result;
 }
+
 /**
  * Refresh data
  */
@@ -149,6 +151,8 @@ async function refreshData() {
     console.error('refreshData error:', error);
   }
 }
+
+
 
 // Initialize
 refreshData();

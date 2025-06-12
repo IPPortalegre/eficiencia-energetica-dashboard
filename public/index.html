@@ -28,7 +28,7 @@
       background-color: #06a04e; 
     }
     .yellow-bg { 
-      background-color: #FECB08;
+      background-color: #f8e80d;
       color: #333; 
       width:220px!important;
       
@@ -158,6 +158,35 @@
       width:424px;
       margin-left:-60px;
     }
+    body{
+      background-color: #f5fff9;
+      padding:-100px;
+    }
+    .spacechart{
+      margin-right: 8px;
+    }
+    .spacechart2{
+      margin-left: 8px;
+    }
+    .header-title, .sub-title {
+      margin: 0;
+      padding: 0;
+    }
+    .sub-title {
+      font-size: 24px;
+      color: #2fb43a;
+      margin-top:10px;
+      margin-bottom:20px;
+      
+    }
+    .h4bold {
+      font-weight: bold;
+      color: #2fb43a;
+    }
+    .h4light {
+      font-weight: 400;
+      
+    }
     
   </style>
 </head>
@@ -178,6 +207,8 @@
         </span>
         <span class="badge badge-light p-2 badge-date" id="currentDate">-</span>
       </div>
+      <h4 class="sub-title"><span class="h4light">PRODUÇAÕ DE ENERGIA RENOVÁVEL</span> | <span class="h4bold">CAMPUS POLITÉCNICO</span></h4>
+      
     </div>
 
     <!-- Cards principais -->
@@ -254,7 +285,7 @@
         <div class="card chart-card cardco2">
           <!--TODO modificar card-body no css (width)-->
           <div class="card-body">
-            <h5 class="text-center">Evolução Temporal - CO2</h5>
+            <h5 class="text-center"><span class="spacechart">Evolução Temporal</span> |   <span class="spacechart2">CO2</span></h5>
             <div class="chart-container2">
               <canvas id="chart-co2"></canvas>
             </div>
@@ -265,7 +296,7 @@
       <div class="col-md-5 mb-3">
         <div class="card chart-card">
           <div class="card-body">
-            <h5 class="text-center">Evolução Temporal - Energia</h5>
+            <h5 class="text-center"><span class="spacechart">Evolução Temporal</span> |   <span class="spacechart2">Energia</span></h5>
             <div class="chart-container">
               <canvas id="chart-energia"></canvas>
             </div>
@@ -281,6 +312,7 @@
    //gráfico fonte de energia
       function createEnergySourceChart(solarValue, redeValue) {
         const ctx = document.getElementById('ensource-chart').getContext('2d');
+        
         
         // Calcular porcentagens se necessário (caso os valores não venham já em porcentagem)
         const total = solarValue + redeValue;
@@ -376,6 +408,7 @@
           }]
         });
       }
+      let energySourceChart;
 
       function updateEnergySourceChart(solarValue, redeValue) {
         if (!energySourceChart) {
@@ -394,9 +427,7 @@
       }
 
     // Update your chart initialization in index.html
-      let co2Chart, energiaChart, energySourceChart;
-
-      
+      let co2Chart, energiaChart;     
 
       async function createCO2Chart() {
         const now = new Date();
@@ -428,14 +459,14 @@
                 datasets: [
                   {
                     label: 'CO₂ Evitado (ton)',
-                    data: avoided.values,
+                    data: avoided.values, 
                     backgroundColor: 'rgba(0, 188, 212, 0.7)',
                     borderColor: 'rgba(0, 151, 167, 1)',
                     borderWidth: 1
                   },
                   {
                     label: 'CO₂ Emitido (ton)',
-                    data: emitted.values,
+                    data: emitted.values, 
                     backgroundColor: 'rgba(76, 175, 80, 0.7)',
                     borderColor: 'rgba(56, 142, 60, 1)',
                     borderWidth: 1
@@ -487,6 +518,7 @@
         const endTs = now.getTime();
         const startDate = new Date(now.getFullYear(), now.getMonth() - 11, 1);
         const startTs = startDate.getTime();
+       
 
         try {
           const [producedData, consumedData] = await Promise.all([
@@ -547,13 +579,13 @@
                 scales: {
                   x: { 
                     stacked: true,
-                    grid: { display: false }  // <= adicionado
+                    grid: { display: false }  
                   },
                   y: {
                     stacked: true,
                     beginAtZero: true,
                     title: { display: true, text: 'kWh' },
-                    grid: { display: false }  // <= adicionado
+                    grid: { display: false }  
                   }
                 }
               }
@@ -563,6 +595,9 @@
           console.error('Error creating Energy chart:', error);
         }
       }
+
+      
+
 
 // Initialize on DOM load
     document.addEventListener("DOMContentLoaded", async () => {
@@ -583,7 +618,7 @@
     console.log(currentDate); 
     document.getElementById("currentDate").innerHTML = currentDate;
 
-    //refresh pagina
+
 
     
     

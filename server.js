@@ -30,7 +30,7 @@ async function authenticateThingsBoard() {
 
     const data = await response.json();
     console.log('ThingsBoard access token:', data.token);
-    return data.token; // Return the access token
+    return data.token; 
   } catch (error) {
     console.error('ThingsBoard Authentication Error:', error);
     throw new Error('Failed to authenticate with ThingsBoard');
@@ -61,16 +61,16 @@ app.get('/api/getdata', async (req, res) => {
 });
 
 // Add this endpoint to your server.js
+
 app.get('/api/gethistory', async (req, res) => {
   try {
     const accessToken = await authenticateThingsBoard();
-    const thingsboardUrl = process.env.THINGSBOARD_URL;
-    const deviceId = process.env.THINGSBOARD_ASSETID;
-
     const { key, startTs, endTs } = req.query;
     
-
-    const url = `${thingsboardUrl}/api/plugins/telemetry/ASSET/${deviceId}/values/timeseries?keys=${key}&startTs=${startTs}&endTs=${endTs}&limit=100`;
+    // Use monthly aggregation with LAST function
+    const interval = 30 * 24 * 60 * 60 * 1000; // 30 days in ms
+    const url = `${thingsboardUrl}/api/plugins/telemetry/ASSET/${deviceId}/values/timeseries?` +
+      `keys=${key}&startTs=${startTs}&endTs=${endTs}&interval=${interval}&agg=LAST&limit=12`;
 
     const response = await fetch(url, {
       headers: { 'X-Authorization': `Bearer ${accessToken}` }
@@ -84,11 +84,8 @@ app.get('/api/gethistory', async (req, res) => {
     const data = await response.json();
     res.json(data[key] || []);
   } catch (error) {
-    console.error('ThingsBoard Telemetry History Error:', error);
-    res.status(500).json({ 
-      error: error.message,
-      details: error.stack 
-    });
+    console.error('Telemetry History Error:', error);
+    res.status(500).json({ error: error.message });
   }
 });
 
