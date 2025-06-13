@@ -177,10 +177,7 @@
     .spacechart2{
       margin-left: 8px;
     }
-    .header-title, .sub-title {
-      margin: 0;
-      padding: 0;
-    }
+   
     .sub-title {
       font-size: 22.9px;
       color: #1a8623;
@@ -206,7 +203,7 @@
     }
    
     .card-title{
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 500;
       padding:0 auto;
       margin-top:32px;
@@ -216,7 +213,265 @@
     .carden{
       width:650px;
     }
- 
+    .chart-title{
+      font-size:26px;
+    } 
+    /* Ajusta o padding to card de produção global */
+    .value1, .unities1{
+      padding-top:10px;
+    }
+    .value2, .unities2{
+      padding-top:10px;
+    }
+    .icon{
+      padding-top:4px;
+    }
+    .value3{
+      margin-top:40px;
+    }
+    .card-title-equi{
+      margin-top: 48px;
+    }
+   .value4{
+    margin-top:58px;
+   }
+   .unities4{
+    padding-top:10px;
+   }
+   .value5, .unities5{
+    padding-top:10px;
+   
+   }
+   /* Media queries */
+
+
+   /* Dispositivos muito pequenos (telemóveis, 600px para baixo) */
+   @media (max-width: 767.98px) {
+  .row.graphrow {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fontes-card {
+    order: 1;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .cardco2 {
+    order: 2;
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .carden {
+    order: 3;
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  .yellow-card {
+    order: 4;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .last-card {
+    order: 5;
+    margin-right: 0 !important;
+  }
+
+  .green-card {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .highlight-card {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .chart-card {
+    width: 100% !important;
+  }
+
+  .chart-container,
+  .chart-container2,
+  .chart-container-fonte {
+    height: auto;
+  }
+
+  .cardnormal {
+    margin-left: 0 !important;
+  }
+
+  .row.text-center.mb-3 {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+   /* Dispositivos pequenos (tablets em modo retrato e telemóveis grandes) */
+   @media only screen and (min-width: 600px) {
+    .green-card, .yellow-card {
+      width: 320px;
+      margin-left: 18px;
+      margin-right: 8px;
+    }
+    .cardfonte {
+      width: 320px;
+      margin-left: 2px;
+    }
+    .cardco2 {
+      width: 656px;
+      margin-left: -86px;
+    }
+    .carden{
+      width: 652px;
+    }
+    .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 250px;
+    }
+   }
+   /* Dispositivos grandes (portateis e computadores) */
+    @media only screen and (min-width: 992px) {
+      .green-card, .yellow-card {
+        width: 320px;
+        margin-left: 18px;
+        margin-right: 8px;
+      }
+      .cardfonte {
+        width: 320px;
+        margin-left: 2px;
+      }
+      .cardco2 {
+        width: 656px;
+        margin-left: -86px;
+      }
+      .carden{
+        width: 652px;
+      }
+      .chart-container, .chart-container-fonte, .chart-container2 {
+        height: 250px;
+      }
+    }
+
+    /*  Dispositivos extra grandes (desktops com um ecrã grande e portateis com ecrã grande) */
+    @media only screen and (min-width: 1200px) {
+    
+    .green-bg, .yellow-bg {
+      width: 240px!important;
+      height:220px!important;
+      margin-left: 18px;
+      margin-right: 8px;
+    }
+    .cardfonte {
+      width: 240px;
+      height:294px;
+      margin-left: 2px;
+    }
+    .cardco2 {
+      width: 510px;
+      margin-left: -80px;
+    }
+    .carden{
+      width: 510px;
+      margin-left:22px;
+    }
+    .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 220px;
+    }
+    .container {
+      max-width: 1400px;
+      max-height: 900px;
+      padding:20px!important;
+      
+      margin:0 auto;
+    }
+    .card-title {
+      font-size: 22px;
+      margin-bottom:-16px;
+    }
+  
+    .value1, .value2, .value3, .value4, .unities4, .value5, .unities5 {
+      margin-bottom: 10px;
+      font-size: 20px!important;
+    }
+    .value1, .value2{
+      margin-top:12px;
+    }
+    .card-title-equi {
+      margin-top: 48px;
+      font-size: 22px;
+    }
+    .value4{
+      margin-top:24px;
+    }
+    .unities4{
+      margin-top:-10px;
+    }
+    .value5{
+      margin-top:14px;
+      margin-bottom:-1px;
+    }
+    .icon{
+      font-size: 22px!important;
+      margin-bottom:4px;
+    }
+    .unities1{
+      margin-top:-10px;
+    }
+   .unities2{
+      margin-top:-11px;
+    }
+    .chart-title{
+      font-size:20px;
+    }
+    .value3{
+      margin-top:32px;
+    }
+    .header-title {
+      margin-left: -1px;
+    }
+    
+   }
+
+
+  /*  Dispositivos extra grandes (desktops com um ecrã grande e portateis com ecrã grande) */
+   @media only screen and (min-width: 1800px) {
+    
+    .green-card, .yellow-card {
+      width: 320px;
+      margin-left: 18px;
+      margin-right: 8px;
+    }
+    .cardfonte {
+      width: 320px;
+      margin-left: 2px;
+    }
+    .cardco2 {
+      width: 656px;
+      margin-left: -80px;
+    }
+    .carden{
+      width: 652px;
+    }
+    .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 250px;
+    }
+    .container{
+      max-width: 1800px!important;
+      max-height: 1000px!important;
+     
+      border:1px solid black;
+      margin:0 auto;
+    }
+    
+    
+   }
+
+
   </style>
 </head>
 <body>
@@ -243,12 +498,14 @@
 
     <!-- Cards principais -->
     <div class="row text-center mb-3">
-      <div class="col-md-2 mx-auto  green-card">
-        <div class="card cardnormal  highlight-card green-bg square-card">
+      <div class="col-md-2 mx-auto green-card">
+        <div class="card cardnormal highlight-card green-bg square-card">
           <div class="card-body ">
             <h5 class="card-title">Produção Global Energia</h5>
-            <h1 class="value" id="energiasolartotal">-</h1>
-            <h5 class="unities">kWh</h5>
+          
+            <h1 class="value1" id="energiasolartotal">-</h1>
+            <h5 class="unities1">kWh</h5>
+            
           </div>
         </div>
       </div>
@@ -257,16 +514,20 @@
         <div class="card cardnormal highlight-card green-bg square-card">
           <div class="card-body">
             <h5 class="card-title">CO2 Evitado (acumulado)</h5>
-            <h1 class="value" id="co2evitadototal">-</h1>
-            <h5 class="unities">ton</h5>
+          
+            <h1 class="value2" id="co2evitadototal">-</h1>
+            <h5 class="unities2">ton</h5>
+           
           </div>
         </div>
       </div>
       <div class="col-md-2 mx-auto green-card">
         <div class="card cardnormal highlight-card green-bg square-card">
           <div class="card-body">
-            <h5 class="card-title">CO2 Equivalente</h5>
-            <h1 id="co2equivalente">-</h1><i class="material-icons icon-tree md-18 align-middle">forest</i>
+            <h5 class="card-title card-title-equi">CO2 Equivalente</h5>
+           
+            <h1 class="value3" id="co2equivalente">-</h1><i class="material-icons icon-tree md-18 align-middle icon">forest</i>
+            
           </div>
         </div>
       </div>
@@ -274,9 +535,11 @@
       <div class="col-md-2 mx-auto yellow-card">
         <div class="card cardnormal highlight-card yellow-bg square-card">
           <div class="card-body">
-            <h5 class="card-title">Energia Produzida (instantâneo)</h5>
-            <h1 class="value" id="producaoinstantaneo">-</h1>
-            <h5 class="unities">kWh</h5>
+            <h5 class="card-title">Energia Produzida</h5>
+            
+            <h1 class="value4" id="producaoinstantaneo">-</h1>
+            <h5 class="unities4">kWh</h5>
+           
           </div>
         </div>
       </div>
@@ -284,9 +547,11 @@
       <div class="col-md-2 mx-auto yellow-card last-card">
         <div class="card cardnormal highlight-card yellow-bg square-card">
           <div class="card-body">
-            <h5 class="card-title">Energia Consumida (instantâneo)</h5>
-            <h1 class="value" id="consumoinstantaneo">-</h1>
-            <h5 class="unities">kWh</h5>
+            <h5 class="card-title">Energia Consumida</h5>
+            
+            <h1 class="value5" id="consumoinstantaneo">-</h1>
+            <h5 class="unities5">kWh</h5>
+            
           </div>
         </div>
       </div>
@@ -300,7 +565,7 @@
           <div class="card chart-card cardfonte">
             
             <div class="card-body card-body-fonten text-center">
-              <h5>Fontes de Energia</h5>
+              <h5 class="chart-title">Fontes de Energia</h5>
               <div class="chart-container-fonte">
               
               <canvas id="ensource-chart"></canvas>
@@ -315,7 +580,7 @@
         <div class="card chart-card cardco2">
       
           <div class="card-body">
-            <h5 class="text-center"><span class="spacechart">Evolução Temporal</span> |   <span class="spacechart2">CO2</span></h5>
+            <h5 class="text-center chart-title"><span class="spacechart">Evolução Temporal</span> |   <span class="spacechart2">CO2</span></h5>
             <div class="chart-container2">
               <canvas id="chart-co2"></canvas>
             </div>
@@ -326,7 +591,7 @@
       <div class="col-md-5 mb-3">
         <div class="card chart-card carden">
           <div class="card-body">
-            <h5 class="text-center"><span class="spacechart">Evolução Temporal</span> |   <span class="spacechart2">Energia</span></h5>
+            <h5 class="text-center chart-title"><span class="spacechart">Evolução Temporal</span> |   <span class="spacechart2">Energia</span></h5>
             <div class="chart-container">
               <canvas id="chart-energia"></canvas>
             </div>
@@ -490,8 +755,8 @@
                   {
                     label: 'CO₂ Evitado (ton)',
                     data: avoided.values, 
-                    backgroundColor: 'rgba(27,220,215,255)',
-                    borderColor: 'rgba(0, 151, 167, 1)',
+                    backgroundColor: '#98F381FF',
+                    borderColor: '#5DCC41FF',
                     borderWidth: 1
                   },
                   {
@@ -523,7 +788,7 @@
                 },
                 scales: {
                   x: { 
-                    stacked: false,
+                    stacked: true,
                     grid: { display: false }  
                   },
                   y: {
