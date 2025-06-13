@@ -247,70 +247,76 @@
 
    /* Dispositivos muito pequenos (telemóveis, 600px para baixo) */
    @media (max-width: 767.98px) {
-  .row.graphrow {
-    display: flex;
-    flex-direction: column;
-  }
+      .row.text-center.mb-3,
+      .row.graphrow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-  .fontes-card {
-    order: 1;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
+      .green-card {
+        order: 1;
+        width: 100% !important;
+        margin: 10px 0 !important;
+      }
 
-  .cardco2 {
-    order: 2;
-    margin-left: 0 !important;
-    width: 100% !important;
-  }
+      .fontes-card {
+        order: 2;
+        width: 100% !important;
+        margin: 10px 0 !important;
+      }
 
-  .carden {
-    order: 3;
-    width: 100% !important;
-    margin-left: 0 !important;
-  }
+      .cardfonte {
+        width: 100% !important;
+        margin: 0 auto !important;
+      }
 
-  .yellow-card {
-    order: 4;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
+      .cardco2 {
+        order: 3;
+        width: 100% !important;
+        margin: 10px 0 !important;
+      }
 
-  .last-card {
-    order: 5;
-    margin-right: 0 !important;
-  }
+      .yellow-card {
+        order: 4;
+        width: 100% !important;
+        margin: 10px 0 !important;
+      }
 
-  .green-card {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
+      .last-card {
+        order: 5;
+        width: 100% !important;
+        margin: 10px 0 !important;
+      }
 
-  .highlight-card {
-    width: 100% !important;
-    height: auto !important;
-  }
+      .carden {
+        order: 6;
+        width: 100% !important;
+        margin: 10px 0 !important;
+      }
 
-  .chart-card {
-    width: 100% !important;
-  }
+      .highlight-card,
+      .chart-card {
+        width: 100% !important;
+        height: auto !important;
+      }
 
-  .chart-container,
-  .chart-container2,
-  .chart-container-fonte {
-    height: auto;
-  }
+      .chart-container,
+      .chart-container2,
+      .chart-container-fonte {
+        height: auto !important;
+      }
 
-  .cardnormal {
-    margin-left: 0 !important;
-  }
+      .cardnormal {
+        margin-left: 0 !important;
+      }
 
-  .row.text-center.mb-3 {
-    flex-direction: column;
-    align-items: center;
-  }
-}
+      .chart-title {
+        text-align: center;
+        font-size: 18px;
+      }
+    }
+
 
    /* Dispositivos pequenos (tablets em modo retrato e telemóveis grandes) */
    @media only screen and (min-width: 600px) {
@@ -438,6 +444,93 @@
    }
 
 
+   /* Para ecrãs com resolução de 1366px */
+   @media only screen and (min-width: 1300px){
+
+     .green-bg, .yellow-bg {
+      width: 220px!important;
+      height:220px!important;
+      margin-left: 18px;
+      margin-right: 8px;
+    }
+    .cardfonte {
+      width: 220px;
+      height:220px;
+      margin-left: 2px;
+
+    }
+    .cardco2 {
+      width: 458px;
+      margin-left: -75px;
+     height:220px;
+    }
+    .carden{
+      width: 470px;
+      margin-left:10px;
+      height:220px;
+    }
+    .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 150px;
+   
+    }
+    .container {
+      max-width: 1300px;
+      max-height: 628px;
+      padding:40px!important;
+      margin:0 auto;
+      margin-top:-20px!important;
+    }
+    .card-title {
+      font-size: 22px;
+      margin-bottom:-14px;
+    }
+  
+    .value1, .value2, .value3, .value4, .unities4, .value5, .unities5 {
+      margin-bottom: 10px;
+      font-size: 20px!important;
+    }
+    .value1, .value2{
+      margin-top:12px;
+    }
+    .card-title-equi {
+      margin-top: 28px;
+      font-size: 22px;
+    }
+    .value4{
+      margin-top:24px;
+    }
+    .unities4{
+      margin-top:-10px;
+    }
+    .value5{
+      margin-top:14px;
+      margin-bottom:-1px;
+    }
+    .icon{
+      font-size: 22px!important;
+      margin-bottom:4px;
+    }
+    .unities1{
+      margin-top:-10px;
+    }
+   .unities2{
+      margin-top:-11px;
+    }
+    .chart-title{
+      font-size:20px;
+    }
+    .value3{
+      margin-top:32px;
+    }
+    .header-title {
+      margin-left: -1px;
+    }
+    
+
+
+   }
+
+
   /*  Dispositivos extra grandes (desktops com um ecrã grande e portateis com ecrã grande) */
    @media only screen and (min-width: 1800px) {
     
@@ -489,6 +582,8 @@
     
    }
 
+
+   
 
   </style>
 </head>
@@ -712,7 +807,7 @@
               ctx.fillStyle = '#15200258';
               chart.data.datasets.forEach((dataset, index) => {
                 const barHeight = 36;
-                const yOffset = chartArea.top + (barHeight + 10) * index + 46;
+                const yOffset = chartArea.top + (barHeight + 10) * index + 24;
                 ctx.fillText(icons[index], chartArea.left + 16, yOffset);
               });
 
