@@ -1,34 +1,736 @@
-/* body {
-  background: #f4f6f8;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  padding: 15px 0;
-}
- */
+ .card h1 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .highlight-card {
+      border-radius: 12px;
+      padding: 10px;
+      color: white;
+    }
+    .green-bg { 
+      background-color: #06a04e; 
+      width:320px!important;
+      height:320px!important;
+      margin-left: -8px!important;
+   
+    }
+    .yellow-bg { 
+      background-color: #f9de29;
+      color: #333; 
+      width:320px!important;
+      height:320px!important;
+      
+    }
+    .header-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-left:8px;
+    }
+    .cardnormal {
+      width: auto;
+      height: auto;
+      margin-top: 10px;
+      margin-left: -10px;
+    }
+    .card-body-fonten {
+      padding-left: 20px;
+      padding-right: 10px;
+      width:100%;
+    
+    }
+    .chart-card {
+      border-radius: 12px;
+      background-color: #f8f9fa;
+      margin-left: 18px;
+      margin-right: -24px;
+    }
+    .card {
+      box-shadow: 0 4px 8px rgba(48, 48, 48, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      
+    }
+    .card:hover {
+      transform: scale(1.03);
+      cursor: pointer;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+    }
+ 
+    .badge-date {
+      font-size: 1.48rem;
+      font-weight: bold;
+      border-radius: 12px;
+    }
+    .icon-tree {
+      font-size: 36px;
+      color: #f8f9fa !important;
+    }
+    .material-icons {
+      color: #343a40;
+    }
+    .badge-light {
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); 
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background-color:#ffffff;
+    }
+    .badge-light:hover {
+      transform: scale(1.03);
+      cursor: pointer;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .energy-source {
+      display: flex;
+      align-items: center;
+      margin: 15px 0;
+    }
+
+    /* Ajustar a width do card fonte de energia */
+    .cardfonte{
+     width:320px;
+     min-width:120px;
+     
+    }
+    #tempicon{
+      color: #ff3300;
+    }
+    #humicon{
+      color: #00bcd4;
+    }
+    .green-card{
+      margin-left: 8px!important;
+      
+    }
+    .yellow-card{
+      margin-left: 10px!important;
+      margin-right:30px!important;
+  
+      
+    }
+    .last-card{
+      margin-right: 76px!important;
+    
+    }
+    .graphrow {
+      margin-top: 20px;
+  
+    }
+    .cardfonte{
+      margin-left:2px;
+    }
+    .humid{
+      color: #00bcd4;
+    }
+    .tempid{
+      color:#ff3300;
+    }
+    .chart-container{
+      height:250px;
+      
+     
+    }
+    .chart-container-fonte {
+      height: 250px;
+   
+    }
+    .chart-container2{
+      height:250px;
+      
+    }
+    .card-body{
+      width:100%;
+    }
+    /* Ajustar a width do card de CO2 */
+    .cardco2{
+      width:656px;
+      margin-left:-86px;
+      
+    }
+    body{
+      background-color: #f5fff9;
+      padding:0;
+      width:100%;
+    }
+    .spacechart{
+      margin-right: 8px;
+    }
+    .spacechart2{
+      margin-left: 8px;
+    }
+   
+    .sub-title {
+      font-size: 22.9px;
+      color: #1a8623;
+      margin-top:10px;
+      margin-bottom:20px;
+      
+    }
+    .h4bold {
+      font-weight: bold;
+      color: #1a8623;
+    }
+    .h4light {
+      font-weight: 400;
+      
+    }
+    .fontes-card{
+      margin-left:-4px;
+    }
+    .container{
+      max-width: 1700px;
+      max-height:1200px;
+      padding:5px;
+    }
+   
+    .card-title{
+      font-size: 30px;
+      font-weight: 500;
+      padding:0 auto;
+      margin-top:32px;
+      
+    }
+    /* Ajustar o width do chart de energia */
+    .carden{
+      width:650px;
+    }
+    .chart-title{
+      font-size:26px;
+    } 
+    /* Ajusta o padding to card de produção global */
+    .value1, .unities1{
+      padding-top:10px;
+    }
+    .value2, .unities2{
+      padding-top:10px;
+    }
+    .icon{
+      padding-top:4px;
+    }
+    .value3{
+      margin-top:40px;
+    }
+    .card-title-equi{
+      margin-top: 48px;
+    }
+   .value4{
+    margin-top:58px;
+   }
+   .unities4{
+    padding-top:10px;
+   }
+   .value5, .unities5{
+    padding-top:10px;
+   
+   }
+   /* Media queries */
 
 
-/* h5 {
-  color: #888!important;
-  margin-bottom: 4px;
-  margin-top: 10px;
-  font-weight: 500;
-  letter-spacing: 1px;
-} */
+   /* Dispositivos muito pequenos (telemóveis, 600px para baixo) */
+   @media only screen and (max-width: 767.98px) {
+      .row.text-center.mb-3,
+      .row.graphrow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .green-card {
+        order: 1;
+        width: 100% !important;
+        margin: 10px 0 !important;
+      }
+
+      .fontes-card {
+        order: 2;
+        width: 100% !important;
+        margin: 10px 0 !important;
+      }
+
+      .cardfonte {
+        width: 100% !important;
+        margin: 0 auto !important;
+      }
+
+      .cardco2 {
+        order: 3;
+        width: 100% !important;
+        margin: 10px 0 !important;
+      }
+
+      .yellow-card {
+        order: 4;
+        width: 100% !important;
+        margin: 10px 0 !important;
+      }
+
+      .last-card {
+        order: 5;
+        width: 100% !important;
+        margin: 10px 0 !important;
+      }
+
+      .carden {
+        order: 6;
+        width: 100% !important;
+        margin: 10px 0 !important;
+      }
+
+      .highlight-card,
+      .chart-card {
+        width: 100% !important;
+        height: auto !important;
+      }
+
+      .chart-container,
+      .chart-container2,
+      .chart-container-fonte {
+        height: auto !important;
+      }
+
+      .cardnormal {
+        margin-left: 0 !important;
+      }
+
+      .chart-title {
+        text-align: center;
+        font-size: 18px;
+      }
+    }
 
 
-.unities {
-  color: #aaa;
-  font-size: 1.1rem;
-  margin-bottom: 0;
-}
+   /* Dispositivos pequenos (tablets em modo retrato e telemóveis grandes) */
+    @media only screen and (max-height: 600px) {
+       .green-bg, .yellow-bg {
+        max-width: 128px!important;
+        max-height:190px!important;
+        margin-left: -22px !important;
+        
+      }
+      .cardfonte {
+        width: 80px;
+        margin-left: 2px;
+      }
+      .cardco2 {
+        width: 106px;
+        margin-left: -86px;
+      }
+      .carden{
+        width: 652px;
+      }
+      
+      .container {
+        max-width: 800px!important;
+        max-height: 550px!important;
+        padding:10px!important;
+        margin:0 auto;
+        border:solid 1px black;
+    }
+      .card-title{
+        font-size:11px!important;
+      }
+      .card-title-equi {
+        font-size: 12px!important;
+      }
+      .cardfonte{
+        max-width: 128px;
+        height:294px;
+        margin-left:-8px!important;
+      }
+      .cardco2{
+        max-width: 210px;
+        margin-left: 20px!important;
+      }
+      .carden{
+        max-width: 298px;
+        margin-left:-8px!important;
+      }
+      .chart-title{
+        font-size:12px!important;
+      }
+      .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 220px;
+    }
+    }
+   /* Dispositivos grandes (portateis e computadores) */
+    /* @media only screen and (max-width: 801px) {
+      .green-bg, .yellow-bg {
+        max-width: 128px!important;
+        max-height:190px!important;
+        margin-left: -22px !important;
+        
+      }
+      .cardfonte {
+        width: 80px;
+        margin-left: 2px;
+      }
+      .cardco2 {
+        width: 106px;
+        margin-left: -86px;
+      }
+      .carden{
+        width: 652px;
+      }
+      
+      .container {
+        max-width: 800px!important;
+        max-height: 550px!important;
+        padding:10px!important;
+        margin:0 auto;
+        border:solid 1px black;
+    }
+      .card-title{
+        font-size:11px!important;
+      }
+      .card-title-equi {
+        font-size: 12px!important;
+      }
+      .cardfonte{
+        max-width: 128px;
+        height:294px;
+        margin-left:-8px!important;
+      }
+      .cardco2{
+        max-width: 210px;
+        margin-left: 20px!important;
+      }
+      .carden{
+        max-width: 298px;
+        margin-left:-8px!important;
+      }
+      .chart-title{
+        font-size:12px!important;
+      }
+      .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 220px;
+    }
+  } */
 
-/* .square-card {
-  aspect-ratio: 1 / 1; 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-} */
+    /*  Dispositivos extra grandes (desktops com um ecrã grande e portateis com ecrã grande) */
+    @media only screen and (min-width: 1200px) {
+    
+    .green-bg, .yellow-bg {
+      width: 240px!important;
+      height:220px!important;
+      margin-left: 18px;
+      margin-right: 8px;
+    }
+    .cardfonte {
+      width: 240px;
+      height:294px;
+      margin-left: 2px;
+    }
+    .cardco2 {
+      width: 510px;
+      margin-left: -80px;
+    }
+    .carden{
+      width: 510px;
+      margin-left:22px;
+    }
+    .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 220px;
+    }
+    .container {
+      max-width: 1400px;
+      max-height: 900px;
+      padding:20px!important;
+      
+      margin:0 auto;
+    }
+    .card-title {
+      font-size: 22px;
+      margin-bottom:-16px;
+    }
+  
+    .value1, .value2, .value3, .value4, .unities4, .value5, .unities5 {
+      margin-bottom: 10px;
+      font-size: 20px!important;
+    }
+    .value1, .value2{
+      margin-top:12px;
+    }
+    .card-title-equi {
+      margin-top: 48px;
+      font-size: 22px;
+    }
+    .value4{
+      margin-top:24px;
+    }
+    .unities4{
+      margin-top:-10px;
+    }
+    .value5{
+      margin-top:14px;
+      margin-bottom:-1px;
+    }
+    .icon{
+      font-size: 22px!important;
+      margin-bottom:4px;
+    }
+    .unities1{
+      margin-top:-10px;
+    }
+   .unities2{
+      margin-top:-11px;
+    }
+    .chart-title{
+      font-size:20px;
+    }
+    .value3{
+      margin-top:32px;
+    }
+    .header-title {
+      margin-left: -1px;
+    }
+    
+   }
 
+    @media only screen and (max-width: 1285px) {
+    
+    .green-bg, .yellow-bg {
+      width: 210px!important;
+      height:200px!important;
+      margin-left: 18px;
+      margin-right: 8px;
+      margin-top:-6px;
+    }
+    .cardfonte {
+      width: 210px;
+      height:230px;
+      margin-left: 2px;
+    }
+    .cardco2 {
+      width: 432px;
+      margin-left: -72px;
+      height: 230px;
+    }
+    .carden{
+      width: 449.3px;
+      margin-left:5px;
+      height:230px;
+    }
+    .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 180px;
+      width:100%;
+    }
+    .container {
+      max-width: 1200px;
+      max-height: 900px!important;
+      height:550px;
+      padding:20px!important;
+      
+      margin:0 auto;
+    }
+    .card-title {
+      font-size: 20px;
+      margin-top:6px;
+    }
+  
+    .value1, .value2, .value3, .value4, .unities4, .value5, .unities5 {
+      margin-bottom: 10px;
+      font-size: 22px!important;
+    }
+    .value1, .value2{
+      margin-top:12px;
+    }
+    .card-title-equi {
+      margin-top: 6px;
+      font-size: 20px;
+    }
+    .value3{
+      margin-top:24px !important;
+    }
+    .value4{
+      margin-top:24px;
+    }
+    .unities4{
+      margin-top:-10px;
+    }
+    .value5{
+      margin-top:14px;
+      margin-bottom:-1px;
+    }
+    .icon{
+      font-size: 20px!important;
+      margin-bottom:4px;
+    }
+    .unities1{
+      margin-top:-10px;
+    }
+   .unities2{
+      margin-top:-11px;
+    }
+    .chart-title{
+      font-size:20px;
+    }
+    .value3{
+      margin-top:32px;
+    }
+    .header-title {
+      margin-left: -1px;
+      font-size: 24px;
+      margin-top:-10px;
+    }
+    .sub-title{
+      font-size: 16px;
+      margin-top:-14px;
+    }
+
+    
+   }
+
+   
+
+   /* Para ecrãs com resolução de 1366px */
+   @media only screen and (min-width: 1300px){
+
+     .green-bg, .yellow-bg {
+      width: 220px!important;
+      height:220px!important;
+      margin-left: 18px;
+      margin-right: 8px;
+    }
+    .cardfonte {
+      width: 220px;
+      height:220px;
+      margin-left: 2px;
+
+    }
+    .cardco2 {
+      width: 458px;
+      margin-left: -75px;
+     height:220px;
+    }
+    .carden{
+      width: 470px;
+      margin-left:10px;
+      height:220px;
+    }
+    .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 150px;
+   
+    }
+    .container {
+      max-width: 1300px;
+      max-height: 628px;
+      padding:40px!important;
+      margin:0 auto;
+      margin-top:-20px!important;
+    }
+    .card-title {
+      font-size: 22px;
+      margin-bottom:-14px;
+    }
+  
+    .value1, .value2, .value3, .value4, .unities4, .value5, .unities5 {
+      margin-bottom: 10px;
+      font-size: 20px!important;
+    }
+    .value1, .value2{
+      margin-top:12px;
+    }
+    .card-title-equi {
+      margin-top: 28px;
+      font-size: 22px;
+    }
+    .value4{
+      margin-top:24px;
+    }
+    .unities4{
+      margin-top:-10px;
+    }
+    .value5{
+      margin-top:14px;
+      margin-bottom:-1px;
+    }
+    .icon{
+      font-size: 22px!important;
+      margin-bottom:4px;
+    }
+    .unities1{
+      margin-top:-10px;
+    }
+   .unities2{
+      margin-top:-11px;
+    }
+    .chart-title{
+      font-size:20px;
+    }
+    .value3{
+      margin-top:32px;
+    }
+    .header-title {
+      margin-left: -1px;
+    }
+
+   }
+
+
+  /*  Dispositivos extra grandes (desktops com um ecrã grande e portateis com ecrã grande) */
+   @media only screen and (min-width: 1800px) {
+    
+    .green-bg{
+      width: 322px!important;
+      height:310px!important;
+      margin-left: 18px;
+      margin-right: 8px;
+    }
+    .equi-card{
+      margin-left:-2px!important;
+    }
+    .yellow-bg{
+      width: 312px!important;
+      height:310px!important;
+      margin-left: 18px;
+      margin-right: 8px;
+    }
+    .yellow-last{
+      margin-left: 30px!important;
+    }
+    .cardfonte {
+      width: 320px;
+      margin-left: 2px;
+      height:340px;
+    }
+    .cardco2 {
+      width: 676px;
+      height:340px;
+      margin-left:-90px!important;
+    }
+    .carden{
+      width: 654px;
+      height:340px;
+      margin-left:56px;
+    }
+    .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 250px;
+      width:100%;
+    }
+    .container{
+      max-width: 1800px!important;
+      min-height: 900px!important;
+      margin:0 auto;
+     
+    }
+    .card-title {
+      font-size: 28px;
+      margin-bottom:-12px;
+      margin-top:50px;
+    }
+  
+    .value1, .unities1, .value2, .unities2, .value3, .icon, .value4, .unities4, .value5, .unities5 {
+      margin-bottom: 10px;
+      font-size: 30px!important; 
+    }
+    .chart-title{
+      font-size:24px;
+    }
+    
+    
+   }
 
 
 
