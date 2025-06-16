@@ -114,7 +114,7 @@ Aceda à página em
 ## Configuração
 
 O dashboard pode ser configurado editando os seguintes ficheiros:
-- Estrutura principal e estilo do painel
+- Estrutura principal e estilo da página
 ```
 public/index.html 
 ```
@@ -133,6 +133,8 @@ server.js
 
 ## Endpoints da API
 - **GET /api/getdata** : Obtém dados de telemetria do ThingsBoard
+
+- **GET /api/gethistory** : Obtém os dados históricos que são usados nos gráficos
 
 - **GET /** : É usado pela página principal do dashboard
 
