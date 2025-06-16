@@ -25,7 +25,7 @@ async function getHistory(key, startTs, endTs) {
     const url = `/api/gethistory?key=${encodeURIComponent(key)}&startTs=${startTs}&endTs=${endTs}`;
     console.log('Fetching history:', url);
     
-    const response = await fetch(url);
+    const response = await fetch(url, { method: 'GET' });
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -46,7 +46,7 @@ async function getHistory(key, startTs, endTs) {
 /**
  * Process time-series data 
  */
-function processMonthlyData(data, debugKey = '') {
+function processMonthlyData(data, debugKey) {
   if (!Array.isArray(data)) {
     console.warn(`Invalid data received for ${debugKey}`);
     return { labels: [], values: Array(12).fill(0) };
@@ -61,7 +61,7 @@ function processMonthlyData(data, debugKey = '') {
   for (let i = 0; i < 12; i++) {
     const monthOffset = i;
     const date = new Date(currentYear, currentMonth - monthOffset, 1);
-    const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 0).padStart(2, '0')}`;
+    const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
     
     monthlyData[monthKey] = {
       monthName: date.toLocaleString('pt-PT', { month: 'short' }),
@@ -122,6 +122,7 @@ function processMonthlyData(data, debugKey = '') {
   
   return result;
 }
+
 
 /**
  * Refresh data

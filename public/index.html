@@ -246,7 +246,7 @@
 
 
    /* Dispositivos muito pequenos (telemóveis, 600px para baixo) */
-   @media (max-width: 767.98px) {
+   @media only screen and (max-width: 767.98px) {
       .row.text-center.mb-3,
       .row.graphrow {
         display: flex;
@@ -319,29 +319,7 @@
 
 
    /* Dispositivos pequenos (tablets em modo retrato e telemóveis grandes) */
-   @media only screen and (min-width: 600px) {
-    .green-card, .yellow-card {
-      width: 320px;
-      margin-left: 18px;
-      margin-right: 8px;
-    }
-    .cardfonte {
-      width: 320px;
-      margin-left: 2px;
-    }
-    .cardco2 {
-      width: 656px;
-      margin-left: -86px;
-    }
-    .carden{
-      width: 652px;
-    }
-    .chart-container, .chart-container-fonte, .chart-container2 {
-      height: 250px;
-    }
-   }
-   /* Dispositivos grandes (portateis e computadores) */
-    @media only screen and (min-width: 992px) {
+    @media only screen and (min-width: 600px) {
       .green-card, .yellow-card {
         width: 320px;
         margin-left: 18px;
@@ -362,6 +340,59 @@
         height: 250px;
       }
     }
+   /* Dispositivos grandes (portateis e computadores) */
+    @media only screen and (max-width: 801px) {
+      .green-bg, .yellow-bg {
+        max-width: 128px!important;
+        max-height:190px!important;
+        margin-left: -22px !important;
+        
+      }
+      .cardfonte {
+        width: 80px;
+        margin-left: 2px;
+      }
+      .cardco2 {
+        width: 106px;
+        margin-left: -86px;
+      }
+      .carden{
+        width: 652px;
+      }
+      
+      .container {
+        max-width: 800px!important;
+        max-height: 550px!important;
+        padding:10px!important;
+        margin:0 auto;
+        border:solid 1px black;
+    }
+      .card-title{
+        font-size:11px!important;
+      }
+      .card-title-equi {
+        font-size: 12px!important;
+      }
+      .cardfonte{
+        max-width: 128px;
+        height:294px;
+        margin-left:-8px!important;
+      }
+      .cardco2{
+        max-width: 210px;
+        margin-left: 20px!important;
+      }
+      .carden{
+        max-width: 298px;
+        margin-left:-8px!important;
+      }
+      .chart-title{
+        font-size:12px!important;
+      }
+      .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 220px;
+    }
+  }
 
     /*  Dispositivos extra grandes (desktops com um ecrã grande e portateis com ecrã grande) */
     @media only screen and (min-width: 1200px) {
@@ -443,6 +474,101 @@
     
    }
 
+    @media only screen and (max-width: 1285px) {
+    
+    .green-bg, .yellow-bg {
+      width: 210px!important;
+      height:200px!important;
+      margin-left: 18px;
+      margin-right: 8px;
+      margin-top:-6px;
+    }
+    .cardfonte {
+      width: 210px;
+      height:230px;
+      margin-left: 2px;
+    }
+    .cardco2 {
+      width: 432px;
+      margin-left: -72px;
+      height: 230px;
+    }
+    .carden{
+      width: 449.3px;
+      margin-left:5px;
+      height:230px;
+    }
+    .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 180px;
+      width:100%;
+    }
+    .container {
+      max-width: 1200px;
+      max-height: 900px!important;
+      height:550px;
+      padding:20px!important;
+      
+      margin:0 auto;
+    }
+    .card-title {
+      font-size: 20px;
+      margin-top:6px;
+    }
+  
+    .value1, .value2, .value3, .value4, .unities4, .value5, .unities5 {
+      margin-bottom: 10px;
+      font-size: 22px!important;
+    }
+    .value1, .value2{
+      margin-top:12px;
+    }
+    .card-title-equi {
+      margin-top: 6px;
+      font-size: 20px;
+    }
+    .value3{
+      margin-top:24px !important;
+    }
+    .value4{
+      margin-top:24px;
+    }
+    .unities4{
+      margin-top:-10px;
+    }
+    .value5{
+      margin-top:14px;
+      margin-bottom:-1px;
+    }
+    .icon{
+      font-size: 20px!important;
+      margin-bottom:4px;
+    }
+    .unities1{
+      margin-top:-10px;
+    }
+   .unities2{
+      margin-top:-11px;
+    }
+    .chart-title{
+      font-size:20px;
+    }
+    .value3{
+      margin-top:32px;
+    }
+    .header-title {
+      margin-left: -1px;
+      font-size: 24px;
+      margin-top:-10px;
+    }
+    .sub-title{
+      font-size: 16px;
+      margin-top:-14px;
+    }
+
+    
+   }
+
+   
 
    /* Para ecrãs com resolução de 1366px */
    @media only screen and (min-width: 1300px){
@@ -534,11 +660,23 @@
   /*  Dispositivos extra grandes (desktops com um ecrã grande e portateis com ecrã grande) */
    @media only screen and (min-width: 1800px) {
     
-    .green-bg, .yellow-bg {
-      width: 320px!important;
+    .green-bg{
+      width: 322px!important;
       height:310px!important;
       margin-left: 18px;
       margin-right: 8px;
+    }
+    .equi-card{
+      margin-left:-2px!important;
+    }
+    .yellow-bg{
+      width: 312px!important;
+      height:310px!important;
+      margin-left: 18px;
+      margin-right: 8px;
+    }
+    .yellow-last{
+      margin-left: 30px!important;
     }
     .cardfonte {
       width: 320px;
@@ -610,7 +748,7 @@
     <h4 class="sub-title"><span class="h4light">PRODUÇÃO DE ENERGIA RENOVÁVEL</span> | <span class="h4bold">CAMPUS POLITÉCNICO</span></h4>
 
     <!-- Cards principais -->
-    <div class="row text-center mb-3">
+    <div class="row justify-content-md-center text-center mb-3">
       <div class="col-md-2 mx-auto green-card">
         <div class="card cardnormal highlight-card green-bg square-card">
           <div class="card-body ">
@@ -635,7 +773,7 @@
         </div>
       </div>
       <div class="col-md-2 mx-auto green-card">
-        <div class="card cardnormal highlight-card green-bg square-card">
+        <div class="card cardnormal highlight-card green-bg equi-card square-card">
           <div class="card-body">
             <h5 class="card-title card-title-equi">CO2 Equivalente</h5>
            
@@ -658,7 +796,7 @@
       </div>
       
       <div class="col-md-2 mx-auto yellow-card last-card">
-        <div class="card cardnormal highlight-card yellow-bg square-card">
+        <div class="card cardnormal highlight-card yellow-bg square-card yellow-last">
           <div class="card-body">
             <h5 class="card-title">Energia Consumida</h5>
             
@@ -721,8 +859,6 @@
       function createEnergySourceChart(solarValue, redeValue) {
         const ctx = document.getElementById('ensource-chart').getContext('2d');
         
-        
-        // Calcular porcentagens se necessário (caso os valores não venham já em porcentagem)
         const total = solarValue + redeValue;
         const solarPercent = Math.round((solarValue / total) * 100);
         const redePercent = Math.round((redeValue / total) * 100);
@@ -735,13 +871,13 @@
               {
                 label: 'Solar',
                 data: [solarPercent],
-                backgroundColor: '#4fac50',
+                backgroundColor: 'rgba(8,158,84,255)',
                 borderRadius: 14,
                 borderSkipped: false,
                 barThickness: 40
               },
               {
-                label: 'Elétrica',
+                label: 'Rede',
                 data: [redePercent],
                 backgroundColor: '#eb9e0a',
                 borderRadius: 14,
@@ -754,6 +890,10 @@
             indexAxis: 'y',
             responsive: true,
             maintainAspectRatio: false,
+            onResize: function(chart) {
+              // This will force a redraw when the chart resizes
+              chart.update();
+            },
             plugins: {
               legend: {
                 display: true,
@@ -763,7 +903,7 @@
                 padding: 10,
                 labels: {
                   font: {
-                    size: 12
+                    size: 16
                   },
                   usePointStyle: true,
                   pointStyle: 'rectRounded'
@@ -782,11 +922,7 @@
               x: {
                 min: 0,
                 max: 100,
-                title: { display: false },
-                ticks: {
-                  callback: (val) => `${val}%`,
-                  font: { size: 10 }
-                },
+                title: { display: false },             
                 grid: { display: false }
               },
               y: {
@@ -794,26 +930,7 @@
                 grid: { display: false }
               }
             }
-          },
-          plugins: [{
-            id: 'materialIconPlugin',
-            afterDatasetsDraw(chart) {
-              const { ctx, chartArea } = chart;
-              const icons = ['solar_power', 'bolt']; //material icons
-              ctx.save();
-              ctx.font = '16px "Material Icons"';
-              ctx.textAlign = 'right';
-              ctx.textBaseline = 'middle';
-              ctx.fillStyle = '#15200258';
-              chart.data.datasets.forEach((dataset, index) => {
-                const barHeight = 36;
-                const yOffset = chartArea.top + (barHeight + 10) * index + 24;
-                ctx.fillText(icons[index], chartArea.left + 16, yOffset);
-              });
-
-              ctx.restore();
-            }
-          }]
+          }
         });
       }
       let energySourceChart;
@@ -838,10 +955,9 @@
       let co2Chart, energiaChart;     
 
       async function createCO2Chart() {
-        const now = new Date();
-        const endTs = now.getTime();
-        const startDate = new Date(now.getFullYear(), now.getMonth() - 11, 1);
-        const startTs = startDate.getTime();
+        
+        const endTs = new Date(new Date().getFullYear(), new Date().getMonth() + 1 , 0, 23, 59, 59, 999).getTime();
+        const startTs = new Date(new Date().getFullYear(), new Date().getMonth() - 11, 1).getTime();
 
         try {
           const [avoidedData, emittedData] = await Promise.all([
@@ -888,7 +1004,7 @@
                   legend: { position: 'bottom',
                     labels: {
                       font: {
-                        size: 12
+                        size: 16
                       },
                       usePointStyle: true,
                       pointStyle: 'rectRounded'
@@ -922,10 +1038,10 @@
       
 
       async function createEnergiaChart() {
-        const now = new Date();
-        const endTs = now.getTime();
-        const startDate = new Date(now.getFullYear(), now.getMonth() - 11, 1);
-        const startTs = startDate.getTime();
+
+
+        const endTs = new Date(new Date().getFullYear(), new Date().getMonth() + 1 , 0, 23, 59, 59, 999).getTime();
+        const startTs = new Date(new Date().getFullYear(), new Date().getMonth() - 11, 1).getTime();
        
 
         try {
@@ -958,7 +1074,7 @@
                     borderWidth: 1
                   },
                   {
-                    label: 'Energia da Rede (kWh)',
+                    label: 'Energia Rede (kWh)',
                     data: consumed.values,
                     backgroundColor: 'rgba(235,158,10,255)',
                     borderColor: 'rgba(235,158,10,255)',
@@ -973,7 +1089,7 @@
                   legend: { position: 'bottom',
                     labels: {
                       font: {
-                        size: 12
+                        size: 16
                       },
                       usePointStyle: true,
                       pointStyle: 'rectRounded'

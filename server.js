@@ -60,7 +60,7 @@ app.get('/api/getdata', async (req, res) => {
   }
 });
 
-// Add this endpoint to your server.js
+// Endpoint para os dados históricos
 app.get('/api/gethistory', async (req, res) => {
   try {
     const accessToken = await authenticateThingsBoard();
@@ -70,7 +70,7 @@ app.get('/api/gethistory', async (req, res) => {
     const { key, startTs, endTs } = req.query;
     
 
-    const url = `${thingsboardUrl}/api/plugins/telemetry/ASSET/${deviceId}/values/timeseries?keys=${key}&startTs=${startTs}&endTs=${endTs}&limit=100`;
+    const url = `${thingsboardUrl}/api/plugins/telemetry/ASSET/${deviceId}/values/timeseries?keys=${key}&startTs=${startTs}&endTs=${endTs}&limit=5000`;
 
     const response = await fetch(url, {
       headers: { 'X-Authorization': `Bearer ${accessToken}` }
@@ -82,6 +82,7 @@ app.get('/api/gethistory', async (req, res) => {
     }
 
     const data = await response.json();
+    console.log('ThingsBoard Telemetry History Data:', data);
     res.json(data[key] || []);
   } catch (error) {
     console.error('ThingsBoard Telemetry History Error:', error);
