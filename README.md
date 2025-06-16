@@ -83,7 +83,7 @@ Aceda à página em
 ```
 
 
-### Rodar com o docker
+### Rodar com o docker (Recomendado)
 
 Clone o repositório
 
