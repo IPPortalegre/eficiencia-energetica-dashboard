@@ -99,12 +99,12 @@ Entre no diretório do projeto
 
 Construa a imagem docker
 ```bash
-docker-compose build
+  docker-compose build
 ```
 
 Execute o container
 ```bash
-docker-compose up
+  docker-compose up
 ```
 
 Aceda à página em
