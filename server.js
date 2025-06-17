@@ -13,44 +13,68 @@ const port = process.env.PORT || 3000;
 // Security and performance middlewares
 app.use(express.static(path.join(__dirname, 'public')));
 
-async function authenticateThingsBoard() {
-  try {
-    const thingsboardUrl = process.env.THINGSBOARD_URL;
-    const username = process.env.THINGSBOARD_USERNAME;
-    const password = process.env.THINGSBOARD_PASSWORD;
 
-    const url = `${thingsboardUrl}/api/auth/login`;
+
+// async function authenticateThingsBoard() {
+//   try {
+//     const thingsboardUrl = process.env.THINGSBOARD_URL;
+//     const username = process.env.THINGSBOARD_USERNAME;
+//     const password = process.env.THINGSBOARD_PASSWORD;
+
+//     const url = `${thingsboardUrl}/api/auth/login`;
+//     const response = await fetch(url, {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify({ username, password })
+//     });
+
+//     if (!response.ok) throw new Error(`ThingsBoard authentication error: ${response.status}`);
+
+//     const data = await response.json();
+//     console.log('ThingsBoard access token:', data.token);
+//     return data.token; 
+//   } catch (error) {
+//     console.error('ThingsBoard Authentication Error:', error);
+//     throw new Error('Failed to authenticate with ThingsBoard');
+//   }
+// }
+
+
+
+async function fetchWithAuth(url, options = {}, retryCount = 0) {
+  try {
+    const accessToken = await authenticateThingsBoard();
     const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password })
+      ...options,
+      headers: {
+        ...options.headers,
+        'X-Authorization': `Bearer ${accessToken}`
+      }
     });
 
-    if (!response.ok) throw new Error(`ThingsBoard authentication error: ${response.status}`);
+    if (!response.ok) {
+      if (retryCount < 3 && (response.status === 401 || response.status === 403)) {
+        console.log('Token expired or invalid, retrying with new authentication...');
+        return fetchWithAuth(url, options, retryCount + 1);
+      }
+      throw new Error(`ThingsBoard API error: ${response.status}`);
+    }
 
-    const data = await response.json();
-    console.log('ThingsBoard access token:', data.token);
-    return data.token; 
+    return response;
   } catch (error) {
-    console.error('ThingsBoard Authentication Error:', error);
-    throw new Error('Failed to authenticate with ThingsBoard');
+    console.error('Fetch with auth error:', error);
+    throw error;
   }
 }
 
-// API Endpoint for ThingsBoard Telemetry
+// Update the API endpoints to use fetchWithAuth
 app.get('/api/getdata', async (req, res) => {
   try {
-    const accessToken = await authenticateThingsBoard();
     const thingsboardUrl = process.env.THINGSBOARD_URL;
-    const deviceId = process.env.THINGSBOARD_ASSETID; 
-
+    const deviceId = process.env.THINGSBOARD_ASSETID;
     const url = `${thingsboardUrl}/api/plugins/telemetry/ASSET/${deviceId}/values/timeseries`;
-    const response = await fetch(url, {
-      headers: { 'X-Authorization': `Bearer ${accessToken}` }
-    });
 
-    if (!response.ok) throw new Error(`ThingsBoard API error: ${response.status}`);
-
+    const response = await fetchWithAuth(url);
     const data = await response.json();
     console.log('ThingsBoard Telemetry Data:', data);
     res.json(data);
@@ -60,27 +84,15 @@ app.get('/api/getdata', async (req, res) => {
   }
 });
 
-// Endpoint para os dados históricos
 app.get('/api/gethistory', async (req, res) => {
   try {
-    const accessToken = await authenticateThingsBoard();
     const thingsboardUrl = process.env.THINGSBOARD_URL;
     const deviceId = process.env.THINGSBOARD_ASSETID;
-
     const { key, startTs, endTs } = req.query;
     
-
     const url = `${thingsboardUrl}/api/plugins/telemetry/ASSET/${deviceId}/values/timeseries?keys=${key}&startTs=${startTs}&endTs=${endTs}&limit=5000`;
 
-    const response = await fetch(url, {
-      headers: { 'X-Authorization': `Bearer ${accessToken}` }
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`ThingsBoard API error: ${response.status} - ${errorText}`);
-    }
-
+    const response = await fetchWithAuth(url);
     const data = await response.json();
     console.log('ThingsBoard Telemetry History Data:', data);
     res.json(data[key] || []);
@@ -92,8 +104,6 @@ app.get('/api/gethistory', async (req, res) => {
     });
   }
 });
-
-
 
 // Serve main page
 app.get('/', (req, res) => {

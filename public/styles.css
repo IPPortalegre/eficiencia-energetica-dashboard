@@ -25,6 +25,7 @@
       font-size: 1.8rem;
       font-weight: bold;
       margin-left:8px;
+      color:#046933;
     }
     .cardnormal {
       width: auto;
@@ -183,6 +184,7 @@
       max-width: 1700px;
       max-height:1200px;
       padding:5px;
+      display:block;
     }
    
     .card-title{
@@ -229,7 +231,7 @@
 
 
    /* Dispositivos muito pequenos (telemóveis, 600px para baixo) */
-   @media only screen and (max-width: 767.98px) {
+   @media only screen and (max-width: 768px) {
       .row.text-center.mb-3,
       .row.graphrow {
         display: flex;
@@ -298,35 +300,32 @@
         text-align: center;
         font-size: 18px;
       }
+      
     }
 
 
    /* Dispositivos pequenos (tablets em modo retrato e telemóveis grandes) */
-    @media only screen and (max-height: 600px) {
-       .green-bg, .yellow-bg {
+     @media only screen and (max-height: 600px) {
+       .green-bg {
         max-width: 128px!important;
         max-height:190px!important;
-        margin-left: -22px !important;
-        
+        margin-left:-10px!important;
       }
-      .cardfonte {
-        width: 80px;
-        margin-left: 2px;
+      .last-card{
+        margin-right:86px!important;
       }
-      .cardco2 {
-        width: 106px;
-        margin-left: -86px;
-      }
-      .carden{
-        width: 652px;
+      .yellow-bg{
+        max-width: 138px!important;
+        max-height:190px!important;
+        margin-left:-10px!important;
       }
       
       .container {
         max-width: 800px!important;
-        max-height: 550px!important;
-        padding:10px!important;
+        max-height: 650px!important;
         margin:0 auto;
-        border:solid 1px black;
+        height:610px!important;
+        
     }
       .card-title{
         font-size:11px!important;
@@ -336,50 +335,58 @@
       }
       .cardfonte{
         max-width: 128px;
-        height:294px;
-        margin-left:-8px!important;
+        height:300px!important;  
+
       }
       .cardco2{
-        max-width: 210px;
-        margin-left: 20px!important;
+        max-width: 278px;
+        margin-left: -44px!important;
+        height:300px!important; 
       }
       .carden{
-        max-width: 298px;
-        margin-left:-8px!important;
+        max-width: 302px;
+        margin-left:-4px!important;
+        height:300px!important; 
       }
       .chart-title{
         font-size:12px!important;
       }
-      .chart-container, .chart-container-fonte, .chart-container2 {
-      height: 220px;
-    }
-    }
+      .chart-container, .chart-container2 {
+        height: 240px!important;
+        width:100%!important;
+      }
+      .chart-container-fonte {
+        height: 240px !important; 
+        padding-bottom: 20px !important; 
+      }
+      .last-card-col {
+          flex: 0 0 8.333333% !important; 
+          max-width: 8.333333% !important;
+        }
+      } 
    /* Dispositivos grandes (portateis e computadores) */
-    /* @media only screen and (max-width: 801px) {
-      .green-bg, .yellow-bg {
+     /* @media only screen and (max-width: 801px) {
+      .green-bg {
         max-width: 128px!important;
         max-height:190px!important;
-        margin-left: -22px !important;
-        
+        margin-left:-10px!important;
       }
-      .cardfonte {
-        width: 80px;
-        margin-left: 2px;
+      .last-card{
+        margin-right:86px!important;
       }
-      .cardco2 {
-        width: 106px;
-        margin-left: -86px;
-      }
-      .carden{
-        width: 652px;
+      .yellow-bg{
+        max-width: 138px!important;
+        max-height:190px!important;
+        margin-left:-10px!important;
       }
       
       .container {
         max-width: 800px!important;
-        max-height: 550px!important;
-        padding:10px!important;
+        max-height: 650px!important;
         margin:0 auto;
-        border:solid 1px black;
+        
+        height:620px!important;
+        
     }
       .card-title{
         font-size:11px!important;
@@ -389,24 +396,237 @@
       }
       .cardfonte{
         max-width: 128px;
-        height:294px;
-        margin-left:-8px!important;
+        height:280px!important;  
+        
+
       }
       .cardco2{
-        max-width: 210px;
-        margin-left: 20px!important;
+        max-width: 278px;
+        margin-left: -44px!important;
+        height:280px!important;
       }
       .carden{
-        max-width: 298px;
-        margin-left:-8px!important;
+        max-width: 302px;
+        margin-left:-4px!important;
+        height:280px!important;
       }
       .chart-title{
         font-size:12px!important;
       }
-      .chart-container, .chart-container-fonte, .chart-container2 {
-      height: 220px;
+      .chart-container, .chart-container2 {
+        height: 240px!important;
+        width:100%!important;
+      }
+      .chart-container-fonte {
+        height: 200px !important; 
+        width:100%!important;
+        
+      }
+      
+      
+      .last-card-col {
+          flex: 0 0 8.333333% !important; 
+          max-width: 8.333333% !important;
+        }
+  }  */
+
+
+ @media only screen and (max-width: 1024px) and (max-height: 768px) {
+  /* Your custom styles here */
+    .yellow-bg {
+      max-width:190px!important;
+      margin-left:20px!important;
+      border:solid 1px black;
+      max-height:180px!important;
+
     }
-  } */
+
+    .green-bg {
+      max-width:180px!important;
+      margin-left:10px!important;
+      border:solid 1px black;
+      max-height:180px!important;
+    }
+
+    .last-card{
+      margin-right:64px!important;
+    }
+
+    .sub-title{
+      font-size: 19.8px!important;
+     
+      margin-bottom: 20px;
+    }
+    .first-card{
+      margin-left:-10px!important;
+      max-width: 188px!important;
+      
+    }
+    .cardfonte {
+      width: 188px!important;
+      height:264px!important;
+      margin-left: 2px;
+    }
+    .cardco2 {
+      width: 366px!important;
+      margin-left: -44px!important;
+      height:264px!important;
+    }
+    .carden{
+      width: 398px!important;
+      margin-left:-0.3px!important;
+      height:264px!important;
+    }
+    .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 214px!important;
+      width: 100%!important;
+    }
+    .container {
+      max-width: 180vh!important;
+      height: 100vh!important; 
+      border:solid 1px black;
+     
+    }
+    .card-title {
+      font-size: 22px;
+      margin-bottom:-16px;
+    }
+    .chart-title{
+      font-size:16px!important;
+    }
+  
+    .value1, .value2, .value3, .value4, .value5 {
+      
+      font-size: 16px!important;
+    }
+    .value1, .value2{
+      margin-top:12px;
+    }
+    .card-title-equi {
+      margin-top: 48px;
+      font-size: 22px;
+    }
+    .value4{
+      margin-top:24px;
+    }
+    .unities4{
+      margin-top:-10px;
+    }
+    .value5{
+      margin-top:14px;
+      margin-bottom:-1px;
+    }
+    .icon{
+      font-size: 22px!important;
+      margin-bottom:4px;
+    }
+    .unities1{
+      margin-top:-10px;
+      font-size: 16px!important;
+    }
+   .unities2{
+      margin-top:-11px;
+      font-size: 16px!important;
+    }
+    .unities4{
+      font-size: 16px!important;
+    }
+    .unities5{
+      font-size: 16px!important;
+    }
+    .chart-title{
+      font-size:20px;
+    }
+    .value3{
+      margin-top:32px;
+    }
+    .header-title {
+      margin-left: -1px;
+    }
+
+  }
+    
+    /* @media only screen and (max-width: 1280px) and (max-height:720px){
+     .green-bg{
+      max-width: 412px!important;
+      max-height:300px!important;
+     
+    }
+    .equi-card{
+      margin-left:-86px!important;
+    }
+    .yellow-bg{
+      max-width: 412px!important;
+      max-height:300px!important;
+     }
+    .green-second{
+      margin-left: -48px!important;
+    }
+
+    .yellow-first{
+      margin-left:-88px!important;
+    }
+    
+    .yellow-last{
+      margin-left: -88px!important;
+    }
+    .first-card{
+      margin-left:-10px!important;     
+    }
+    .cardfonte {
+      max-width: 412px;
+      margin-left: 4px;
+      height:278px!important;
+    }
+
+    .graphrow{
+      margin-top: -6px!important;
+    }
+    .cardco2 {
+      min-width: 440px!important;
+      height:340px;
+      margin-left:-82px!important;
+      height:278px!important;
+    }
+    .carden{
+      min-width: 460px;
+      height:340px;
+      margin-left:56px;
+      height:278px!important;
+    }
+    .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 220px!important;
+      width:100%!important;
+    }
+    .container{
+      max-width: 1800px!important;
+      height: 110vh!important;
+      margin:0 auto;
+      display:block;
+      margin-top:-6px!important;   
+    }
+
+    .badges-container{
+      margin-right:38px!important;
+    }
+
+    .card-title {
+      font-size: 20px!important;
+      margin-bottom:-12px;
+      margin-top:50px;
+    }
+  
+    .value1, .unities1, .value2, .unities2, .value3, .icon, .value4, .unities4, .value5, .unities5 {
+      margin-bottom: 10px;
+      font-size: 30px!important; 
+    }
+    .chart-title{
+      font-size:18px!important;
+    }
+    
+    } */
+
+
 
     /*  Dispositivos extra grandes (desktops com um ecrã grande e portateis com ecrã grande) */
     @media only screen and (min-width: 1200px) {
@@ -582,6 +802,8 @@
     
    }
 
+
+
    
 
    /* Para ecrãs com resolução de 1366px */
@@ -692,7 +914,7 @@
     }
     .cardfonte {
       width: 320px;
-      margin-left: 2px;
+      margin-left: 4px;
       height:340px;
     }
     .cardco2 {

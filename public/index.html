@@ -20,13 +20,18 @@
 
   
 </head>
-
+<script>
+  // Atualiza a página a cada 5 minutos
+  setInterval(() => {
+    location.reload();
+  }, 60000); // 300000 ms = 5 minutos
+</script>
 <body>
   
   <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap"> 
       <h2 class="header-title ">EFICIÊNCIA ENERGÉTICA</h2>
-      <div class="d-flex align-items-center gap-3">
+      <div class="d-flex align-items-center gap-3 badges-container">
         <span class="badge badge-light p-2 mr-2" data-toggle="tooltip" data-placement="top" title="Temperatura">
           <i class="material-icons md-18 align-middle" id="tempicon">device_thermostat</i>
           <span class="align-middle ml-1 tempid" id="temperatura"></span>
@@ -46,8 +51,8 @@
 
     <!-- Cards principais -->
     <div class="row justify-content-md-center text-center mb-3">
-      <div class="col-md-2 mx-auto green-card">
-        <div class="card cardnormal highlight-card green-bg square-card">
+      <div class="col-md-2 mx-auto green-card ">
+        <div class="card cardnormal first-card highlight-card green-bg square-card">
           <div class="card-body ">
             <h5 class="card-title">Produção Global Energia</h5>
           
@@ -59,7 +64,7 @@
       </div>
       
       <div class="col-md-2 mx-auto green-card">
-        <div class="card cardnormal highlight-card green-bg square-card">
+        <div class="card cardnormal highlight-card green-bg square-card green-second">
           <div class="card-body">
             <h5 class="card-title">CO2 Evitado (acumulado)</h5>
           
@@ -81,7 +86,7 @@
       </div>
       
       <div class="col-md-2 mx-auto yellow-card">
-        <div class="card cardnormal highlight-card yellow-bg square-card">
+        <div class="card cardnormal highlight-card yellow-bg square-card yellow-first">
           <div class="card-body">
             <h5 class="card-title">Energia Produzida</h5>
             
@@ -92,7 +97,7 @@
         </div>
       </div>
       
-      <div class="col-md-2 mx-auto yellow-card last-card">
+      <div class="col-md-2 mx-auto yellow-card last-card last-card-col">
         <div class="card cardnormal highlight-card yellow-bg square-card yellow-last">
           <div class="card-body">
             <h5 class="card-title">Energia Consumida</h5>
@@ -114,16 +119,13 @@
             
             <div class="card-body card-body-fonten text-center">
               <h5 class="chart-title">Fontes de Energia</h5>
-              <div class="chart-container-fonte">
-              
+              <div class="chart-container-fonte">   
               <canvas id="ensource-chart"></canvas>
              </div>
             </div>
           </div>
       </div>
-     
-
-    
+         
       <div class="col-md-4 mb-3">
         <div class="card chart-card cardco2">
       
@@ -149,8 +151,6 @@
     </div>
   </div>
 
-  <!--gráficos scripts -->
-  
   
 </body>
 </html>

@@ -20,27 +20,34 @@ async function getData() {
  * Get historical data from API
  */
 
-async function getHistory(key, startTs, endTs) {
+async function getHistory(key, startTs, endTs, retryOnce = true) {
   try {
     const url = `/api/gethistory?key=${encodeURIComponent(key)}&startTs=${startTs}&endTs=${endTs}`;
-    console.log('Fetching history:', url);
-    
-    const response = await fetch(url, { method: 'GET' });
+    const response = await fetch(url);
 
     if (!response.ok) {
       const errorText = await response.text();
       console.error('API Error Response:', errorText);
+
+      // Retry once if authentication failed or it's a 500 error
+      if (retryOnce && (response.status === 500 || errorText.includes('Failed to authenticate'))) {
+        console.warn('Retrying getHistory after failed authentication...');
+        return await getHistory(key, startTs, endTs, false); // Retry only once
+      }
+
       throw new Error(`Network response was not ok (${response.status})`);
     }
 
     const data = await response.json();
-    console.log(`Received data for ${key}:`, data);
     return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error('Error getting history:', error);
     return [];
   }
 }
+
+
+
 
 
 /**
@@ -166,5 +173,8 @@ async function refreshData() {
 }
 
 
-// Initialize
-refreshData();
+// Inicializa
+setInterval(() => {
+  refreshData();
+}, 1000); //refresh a cada segundo
+

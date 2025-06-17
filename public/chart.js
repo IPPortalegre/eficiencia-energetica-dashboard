@@ -35,7 +35,7 @@
             responsive: true,
             maintainAspectRatio: false,
             onResize: function(chart) {
-              // This will force a redraw when the chart resizes
+              
               chart.update();
             },
             plugins: {
@@ -95,7 +95,7 @@
         energySourceChart.update();
       }
 
-    // Update your chart initialization in index.html
+    // Cria os gráficos de CO2 e Energia
       let co2Chart, energiaChart;     
 
       async function createCO2Chart() {
@@ -264,16 +264,76 @@
         }
       }
 
+        //função que dá refresh nos gráficos de energia e CO2
+    async function refreshHistory(retryCount = 0) {
+        const maxRetries = 5;
+        const retryDelay = 1000;
+
+        try {
+            console.log('Refreshing historical data...');
+            const now = new Date();
+            const endTs = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999).getTime();
+            const startTs = new Date(now.getFullYear(), now.getMonth() - 11, 1).getTime();
+
+            const [avoidedData, emittedData, producedData, consumedData] = await Promise.all([
+                getHistory('co2evitado', startTs, endTs),
+                getHistory('co2emitido', startTs, endTs),
+                getHistory('energiasolarconsumida', startTs, endTs),
+                getHistory('energiaredeconsumida', startTs, endTs)
+            ]);
+
+            const avoided = processMonthlyData(avoidedData, 'co2evitado');
+            const emitted = processMonthlyData(emittedData, 'co2emitido');
+            const produced = processMonthlyData(producedData, 'energiasolarconsumida');
+            const consumed = processMonthlyData(consumedData, 'energiaredeconsumida');
+
+            if (co2Chart) {
+                co2Chart.data.labels = avoided.labels;
+                co2Chart.data.datasets[0].data = avoided.values;
+                co2Chart.data.datasets[1].data = emitted.values;
+                co2Chart.update();
+            }
+
+            if (energiaChart) {
+                energiaChart.data.labels = produced.labels;
+                energiaChart.data.datasets[0].data = produced.values;
+                energiaChart.data.datasets[1].data = consumed.values;
+                energiaChart.update();
+            }
+
+        } catch (error) {
+            console.error('Error refreshing historical data:', error);
+
+            if (retryCount < maxRetries) {
+                console.log(`Retrying refreshHistory in ${retryDelay / 1000}s... (${retryCount + 1}/${maxRetries})`);
+                setTimeout(() => refreshHistory(retryCount + 1), retryDelay);
+            } else {
+                console.error('Max retry limit reached. Could not refresh historical data.');
+            }
+        }
+        }
+
+
+        // DOMContentLoaded event que inicializa os gráficos e dados
+        document.addEventListener("DOMContentLoaded", async () => {
+            document.getElementById("currentDate").textContent = moment().format('D/MM/YYYY');
+            await createCO2Chart();
+            await createEnergiaChart();
+            refreshHistory();
+        });
+
+        window.addEventListener('error', (event) => {
+        if (event.message.includes('500') || event.message.includes('Failed to authenticate')) {
+            console.warn('Global error detected, retrying refresh...');
+            refreshHistory();
+        }
+        });
+
+
+
+
       
 
 
-document.addEventListener("DOMContentLoaded", async () => {
-  const date = moment();
-  const currentDate = date.format('D/MM/YYYY');
-  document.getElementById("currentDate").textContent = currentDate;
-
-  await createCO2Chart();
-  await createEnergiaChart();
-});
 
 
