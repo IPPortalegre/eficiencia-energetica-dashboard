@@ -183,7 +183,6 @@
 
       async function createEnergiaChart() {
 
-
         const endTs = new Date(new Date().getFullYear(), new Date().getMonth() + 1 , 0, 23, 59, 59, 999).getTime();
         const startTs = new Date(new Date().getFullYear(), new Date().getMonth() - 11, 1).getTime();
        

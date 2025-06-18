@@ -151,7 +151,7 @@
       
     }
     body{
-      background-color: #f5fff9;
+      background-color: #eafaf1;
       padding:0;
       width:100%;
     }
@@ -231,77 +231,82 @@
 
 
    /* Dispositivos muito pequenos (telemóveis, 600px para baixo) */
-   @media only screen and (max-width: 768px) {
-      .row.text-center.mb-3,
-      .row.graphrow {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+  @media only screen and (max-width: 530px) and (max-height: 950px) {
+  .container {
+    min-width: 420px !important;
+    min-height: 220vh !important;
+    padding: 0px !important;
+    margin: 0 auto !important;
+    
+  }
 
-      .green-card {
-        order: 1;
-        width: 100% !important;
-        margin: 10px 0 !important;
-      }
+  .first-card {
+    margin-left: -10px !important;
+    min-width: 380px!important;
+    max-height: 190px !important;
+  }
+  .green-second{
+    margin-left:-12px!important;
+    max-width: 178px !important;
+    max-height: 190px !important;
+    margin-top:310px!important;
+  }
 
-      .fontes-card {
-        order: 2;
-        width: 100% !important;
-        margin: 10px 0 !important;
-      }
+  .cardfonte {
+    min-width: 380px!important;
+    height: 280px !important;
+    margin-left: 0px !important;
+    margin-right:0!important;
+    margin-top:-960px!important;
 
-      .cardfonte {
-        width: 100% !important;
-        margin: 0 auto !important;
-      }
+  }
+  .equi-card{
+    margin-left: 188px !important;
+    max-width: 178px !important;
+    max-height: 190px !important;
+    margin-top:-190px!important;
+  }
 
-      .cardco2 {
-        order: 3;
-        width: 100% !important;
-        margin: 10px 0 !important;
-      }
+  .cardco2{
+    max-width: 380px!important;
+    margin-left: -4px !important;
+    min-height: 230px !important;
+    margin-top:-470px!important;
+  }
+  .yellow-first{
+    margin-top:260px!important;
+    margin-left:-14px!important;
+    max-width: 178px !important;
+    max-height: 190px !important;
+  }
+  .yellow-last{
+    max-width: 178px !important;
+    max-height: 190px !important;
+    margin-top:-190px!important;
+    margin-left:188px!important;
 
-      .yellow-card {
-        order: 4;
-        width: 100% !important;
-        margin: 10px 0 !important;
-      }
+  }
+  .carden{
+    min-height: 250px !important;
+    max-width: 380px!important;
+    margin-left:-6px!important;
+    margin-top:-28px!important;
+  }
+  .chart-title{
+    font-size: 16px !important;
+    margin-top: 10px !important;
+  }
+  .card-title {
+    font-size: 16px !important;
+    margin-top: 10px !important;
+  }
 
-      .last-card {
-        order: 5;
-        width: 100% !important;
-        margin: 10px 0 !important;
-      }
-
-      .carden {
-        order: 6;
-        width: 100% !important;
-        margin: 10px 0 !important;
-      }
-
-      .highlight-card,
-      .chart-card {
-        width: 100% !important;
-        height: auto !important;
-      }
-
-      .chart-container,
-      .chart-container2,
-      .chart-container-fonte {
-        height: auto !important;
-      }
-
-      .cardnormal {
-        margin-left: 0 !important;
-      }
-
-      .chart-title {
-        text-align: center;
-        font-size: 18px;
-      }
-      
-    }
+  .chart-container2{
+    max-height:164px!important;
+  }
+ 
+  
+}
 
 
    /* Dispositivos pequenos (tablets em modo retrato e telemóveis grandes) */
@@ -431,20 +436,19 @@
   }  */
 
 
- @media only screen and (max-width: 1024px) and (max-height: 768px) {
-  /* Your custom styles here */
+ @media only screen and (width: 1016px) and (height: 642px), /* 1024x768 */
+ only screen and (device-width: 1016px) and (device-height: 642px) {
+ 
     .yellow-bg {
       max-width:190px!important;
       margin-left:20px!important;
-      border:solid 1px black;
       max-height:180px!important;
 
     }
 
     .green-bg {
       max-width:180px!important;
-      margin-left:10px!important;
-      border:solid 1px black;
+      margin-left:10px!important;     
       max-height:180px!important;
     }
 
@@ -453,9 +457,9 @@
     }
 
     .sub-title{
-      font-size: 19.8px!important;
-     
+      font-size: 16px!important;
       margin-bottom: 20px;
+      letter-spacing: 2.2px!important;
     }
     .first-card{
       margin-left:-10px!important;
@@ -484,7 +488,6 @@
     .container {
       max-width: 180vh!important;
       height: 100vh!important; 
-      border:solid 1px black;
      
     }
     .card-title {
@@ -545,8 +548,121 @@
     }
 
   }
+
+
+
+@media 
+only screen and (width: 1272px) and (max-height: 599px), /* 1280x720 */
+only screen and (device-width: 1272px) and (device-height: 594px) {
+     
+  .green-bg{
+      max-width: 412px!important;
+      max-height:300px!important;
+     
+    }
+    .equi-card{
+      margin-left:-86px!important;
+    }
+    .yellow-bg{
+      max-width: 412px!important;
+      max-height:300px!important;
+     }
+    .green-second{
+      margin-left: -48px!important;
+    }
+
+    .yellow-first{
+      margin-left:-88px!important;
+    }
     
-    /* @media only screen and (max-width: 1280px) and (max-height:720px){
+    .yellow-last{
+      margin-left: -88px!important;
+    }
+    .first-card{
+      margin-left:-10px!important;     
+    }
+    .cardfonte {
+      max-width: 412px;
+      margin-left: 4px;
+      height:278px!important;
+    }
+
+    .graphrow{
+      margin-top: -6px!important;
+    }
+    .cardco2 {
+      min-width: 440px!important;
+      height:340px;
+      margin-left:-82px!important;
+      height:278px!important;
+    }
+    .carden{
+      min-width: 460px;
+      height:340px;
+      margin-left:56px;
+      height:278px!important;
+    }
+    .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 220px!important;
+      width:100%!important;
+    }
+    .container{
+      max-width: 1800px!important;
+      height: 110vh!important;
+      margin:0 auto;
+      display:block;
+      margin-top:-6px!important;   
+    }
+
+    .badges-container{
+      margin-right:38px!important;
+    }
+
+    .card-title {
+      font-size: 20px!important;
+      margin-bottom:-12px;
+      margin-top:50px;
+    }
+  
+    .value1, .unities1, .value2, .unities2, .value3, .icon, .value4, .unities4, .value5, .unities5 {
+      margin-bottom: 10px;
+      font-size: 30px!important; 
+    }
+    .chart-title{
+      font-size:18px!important;
+    }
+    .sub-title{
+      
+      letter-spacing: 4.3px!important;
+    }
+}
+
+
+  @media 
+  only screen and (width: 1144px) and (height: 738px), /* 1152x864 */
+  only screen and (device-width: 1144px) and (device-height: 738px) {
+
+    .first-card{
+      margin-left:-18px!important;
+    }
+    .cardfonte{
+      margin-left:-8px!important;
+    }
+    .equi-card{
+      margin-left:3px!important;
+    }
+    .yellow-first{
+      margin-left:22px!important;
+    }
+    .yellow-last{
+      margin-left: 34px!important;
+    }
+
+  }
+
+ 
+    
+    /* @media only screen and (width: 1280px) and (height:720px){
      .green-bg{
       max-width: 412px!important;
       max-height:300px!important;
@@ -657,7 +773,6 @@
       max-width: 1400px;
       max-height: 900px;
       padding:20px!important;
-      
       margin:0 auto;
     }
     .card-title {
@@ -708,7 +823,7 @@
     
    }
 
-    @media only screen and (max-width: 1285px) {
+    @media only screen and (max-width: 1285px){
     
     .green-bg, .yellow-bg {
       width: 210px!important;
@@ -797,6 +912,7 @@
     .sub-title{
       font-size: 16px;
       margin-top:-14px;
+      letter-spacing: 4.1px;
     }
 
     
@@ -886,7 +1002,13 @@
     }
     .header-title {
       margin-left: -1px;
+      font-size: 26px;
     }
+    .sub-title{
+      font-size:20px;
+      letter-spacing: 2.55px;
+    }
+    
 
    }
 
@@ -950,7 +1072,20 @@
     .chart-title{
       font-size:24px;
     }
-    
+    .sub-title{
+      font-size:26px;
+      letter-spacing: 5.8px;
+    }
+    .header-title{
+      font-size: 32px;
+      
+    }
+    .equi-card{
+      margin-left:-4px!important;
+    }
+    .green-second{
+      margin-left:-10px!important;
+    }
     
    }
 

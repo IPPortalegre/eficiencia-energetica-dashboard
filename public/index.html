@@ -24,7 +24,37 @@
   // Atualiza a página a cada 5 minutos
   setInterval(() => {
     location.reload();
-  }, 60000); // 300000 ms = 5 minutos
+  }, 300000); // 300000 ms = 5 minutos
+
+  
+  function checkViewport() {
+    
+    document.body.clientWidth;
+  }
+
+  // Run on initial load and whenever window resizes
+  window.addEventListener('load', checkViewport);
+  window.addEventListener('resize', checkViewport);
+
+  // Um indicador de debug para verificar o tamanho da viewport
+  document.addEventListener('DOMContentLoaded', function() {
+    const debugDiv = document.createElement('div');
+    debugDiv.style.position = 'fixed';
+    debugDiv.style.bottom = '10px';
+    debugDiv.style.right = '10px';
+    debugDiv.style.backgroundColor = 'rgba(0,0,0,0.7)';
+    debugDiv.style.color = 'white';
+    debugDiv.style.padding = '5px';
+    debugDiv.style.zIndex = '9999';
+    debugDiv.style.fontFamily = 'monospace';
+    debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
+    document.body.appendChild(debugDiv);
+
+    window.addEventListener('resize', function() {
+      debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
+      checkViewport();
+    });
+  });
 </script>
 <body>
   
@@ -63,6 +93,7 @@
         </div>
       </div>
       
+      
       <div class="col-md-2 mx-auto green-card">
         <div class="card cardnormal highlight-card green-bg square-card green-second">
           <div class="card-body">
@@ -74,7 +105,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-2 mx-auto green-card">
+      <div class="col-md-2 mx-auto green-card card-equi">
         <div class="card cardnormal highlight-card green-bg equi-card square-card">
           <div class="card-body">
             <h5 class="card-title card-title-equi">CO2 Equivalente</h5>
@@ -126,7 +157,7 @@
           </div>
       </div>
          
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4 mb-3 co2-card">
         <div class="card chart-card cardco2">
       
           <div class="card-body">
@@ -138,7 +169,7 @@
         </div>
       </div>
 
-      <div class="col-md-5 mb-3">
+      <div class="col-md-5 mb-3 cardenergia">
         <div class="card chart-card carden">
           <div class="card-body">
             <h5 class="text-center chart-title"><span class="spacechart">Evolução Temporal</span> |   <span class="spacechart2">Energia</span></h5>

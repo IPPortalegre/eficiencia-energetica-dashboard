@@ -15,29 +15,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-// async function authenticateThingsBoard() {
-//   try {
-//     const thingsboardUrl = process.env.THINGSBOARD_URL;
-//     const username = process.env.THINGSBOARD_USERNAME;
-//     const password = process.env.THINGSBOARD_PASSWORD;
+async function authenticateThingsBoard() { 
+   try {
+     const thingsboardUrl = process.env.THINGSBOARD_URL;
+     const username = process.env.THINGSBOARD_USERNAME;
+     const password = process.env.THINGSBOARD_PASSWORD;
 
-//     const url = `${thingsboardUrl}/api/auth/login`;
-//     const response = await fetch(url, {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({ username, password })
-//     });
+     const url = `${thingsboardUrl}/api/auth/login`;
+     const response = await fetch(url, {
+       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify({ username, password })
+     });
 
-//     if (!response.ok) throw new Error(`ThingsBoard authentication error: ${response.status}`);
-
-//     const data = await response.json();
-//     console.log('ThingsBoard access token:', data.token);
-//     return data.token; 
-//   } catch (error) {
-//     console.error('ThingsBoard Authentication Error:', error);
-//     throw new Error('Failed to authenticate with ThingsBoard');
-//   }
-// }
+     if (!response.ok) throw new Error(`ThingsBoard authentication error: ${response.status}`);
+     const data = await response.json();
+     console.log('ThingsBoard access token:', data.token);
+     return data.token; 
+   } catch (error) {
+     console.error('ThingsBoard Authentication Error:', error);
+     throw new Error('Failed to authenticate with ThingsBoard');
+   }
+ }
 
 
 
@@ -53,7 +52,7 @@ async function fetchWithAuth(url, options = {}, retryCount = 0) {
     });
 
     if (!response.ok) {
-      if (retryCount < 3 && (response.status === 401 || response.status === 403)) {
+      if (retryCount < 3 && (response.status === 401 || response.status === 403)) { //retry se tiver erros de autenticação
         console.log('Token expired or invalid, retrying with new authentication...');
         return fetchWithAuth(url, options, retryCount + 1);
       }
@@ -67,7 +66,7 @@ async function fetchWithAuth(url, options = {}, retryCount = 0) {
   }
 }
 
-// Update the API endpoints to use fetchWithAuth
+// API endpoints
 app.get('/api/getdata', async (req, res) => {
   try {
     const thingsboardUrl = process.env.THINGSBOARD_URL;
