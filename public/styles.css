@@ -26,6 +26,7 @@
       font-weight: bold;
       margin-left:8px;
       color:#046933;
+      
     }
     .cardnormal {
       width: auto;
@@ -227,6 +228,64 @@
     padding-top:10px;
    
    }
+
+   .paragraph{
+    font-size: 24px;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: justify;
+    color: #0f5215;
+   }
+   .context-title {
+    font-size: 38px;
+    font-weight: bold;
+    color: #1a8623;
+    margin-bottom: 20px;
+    text-align: left;
+
+   }
+
+   .sobre-projeto{
+    margin-top:114px!important;
+   
+   }
+   .notas-text{
+    font-size: 20px;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: justify;
+    color: #0f5215;
+    
+   }
+   .newslink {
+      display: block;
+      margin: 10px 0;
+      font-size: 1.2rem;
+      color: #007bff;
+      text-decoration: none;
+      margin-left: 8px;
+    }
+    .header-titlenews{
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-left:8px;
+      margin-top:-160px;
+      margin-bottom: 20px;
+    }
+    .btnnews{
+      color: black !important;
+    }
+    .btnnews:hover{
+      color: rgb(255, 255, 255) !important;
+      background-color: #333 !important;
+    }
+    .container-news{
+      margin:0;
+     
+    }
+
    /* Media queries */
 
 
@@ -241,7 +300,7 @@
   }
 
   .first-card {
-    margin-left: -10px !important;
+    margin-left: -12px !important;
     min-width: 380px!important;
     max-height: 190px !important;
   }
@@ -546,6 +605,13 @@
     .header-title {
       margin-left: -1px;
     }
+    .header-titlenews{
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-left:0px;
+      margin-top:160px;
+      margin-bottom: 20px;
+    }
 
   }
 
@@ -656,6 +722,13 @@ only screen and (device-width: 1272px) and (device-height: 594px) {
     }
     .yellow-last{
       margin-left: 34px!important;
+    }
+    .header-titlenews{
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-left:0px;
+      margin-top:180px;
+      margin-bottom: 20px;
     }
 
   }
@@ -820,6 +893,13 @@ only screen and (device-width: 1272px) and (device-height: 594px) {
     .header-title {
       margin-left: -1px;
     }
+    .header-titlenews{
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-left:0px;
+      margin-top:180px;
+      margin-bottom: 20px;
+    }
     
    }
 
@@ -914,6 +994,7 @@ only screen and (device-width: 1272px) and (device-height: 594px) {
       margin-top:-14px;
       letter-spacing: 4.1px;
     }
+    
 
     
    }
@@ -1008,6 +1089,13 @@ only screen and (device-width: 1272px) and (device-height: 594px) {
       font-size:20px;
       letter-spacing: 2.55px;
     }
+    .header-titlenews{
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-left:0px;
+      margin-top:90px;
+      margin-bottom: 20px;
+    }
     
 
    }
@@ -1085,6 +1173,13 @@ only screen and (device-width: 1272px) and (device-height: 594px) {
     }
     .green-second{
       margin-left:-10px!important;
+    }
+    .header-titlenews{
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-left:0px;
+      margin-top:-210px;
+      margin-bottom: 20px;
     }
     
    }

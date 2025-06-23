@@ -27,7 +27,7 @@
   }, 300000); // 300000 ms = 5 minutos
 
   
-  function checkViewport() {
+   function checkViewport() {
     
     document.body.clientWidth;
   }
@@ -53,7 +53,7 @@
     window.addEventListener('resize', function() {
       debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
       checkViewport();
-    });
+   });
   });
 </script>
 <body>
@@ -180,7 +180,153 @@
         </div>
       </div>
     </div>
+    <div class="notas">
+      <p class="text-muted notas-text">Notas: Os valores apresentados nos gráficos de evolução temporal anteriores a maio não são válidos. O CO2 equivalente diz respeito a
+        quantas árvores seriam necessárias para absorver a mesma quantidade de CO2 evitado. A produção de energia é proveniente das centrais fotovoltaicas instaladas no Campus Politécnico,
+        enquanto o consumo de energia é a quantidade de energia elétrica consumida por todos os edifícios do Campus Politécnico.
+      </p>
+
+    </div>
   </div>
+
+  <div class="container mt-3 container-text">
+    <div class="text-left sobre-projeto">
+      <h2 class="context-title">SOBRE O PROJETO</h2>
+      <br>
+      <p class="paragraph">O Instituto Politécnico de Portalegre (IPP) tem vindo a desenvolver, desde 2023, quatro projetos financiados pelo Plano de Recuperação e Resiliência (PRR), 
+        no âmbito do investimento TC-C13-i02 – Eficiência Energética em Edifícios da Administração Pública Central, com um investimento de mais de 2,4 milhões de euros. 
+        Estas iniciativas visam aumentar a eficiência energética da infraestrutura do IPP, incluindo o Campus Politécnico, a Escola Superior de Educação e Ciências Sociais (ESECS), 
+        a Escola Superior Agrária de Elvas (ESAE) e a Residência de Elvas. </p>
+
+        <P class="paragraph">As intervenções incluíram a instalação de centrais fotovoltaicas para produção de energia renovável, melhorias no isolamento térmico, 
+          substituição de equipamentos antigos por soluções mais eficientes, como trocar as lâmpadas antigas por lâmpadas LED, 
+          e modernização dos sistemas de climatização para um maior conforto térmico. ​
+        Foram instalados sistemas de monitorização que disponibilizam dados em tempo real sobre a produção de energia, o consumo dos edifícios, as emissões de CO₂ 
+        e os valores evitados graças às medidas implementadas. Estas informações encontram-se visíveis também em ecrãs no Campus, na ESECS, na ESAE e na Residência de Elvas.
+      </P>
+    </div>
+  </div>
+
+  <!-- Seção de notícias --> 
+   
+  <section class="container mt-3 container-news">
+  <h2 class="header-titlenews text-light bg-success">Notícias sobre o projeto em diferentes sites</h2>
+  <div class="row">
+
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title-news">
+            <i class="material-icons align-middle text-primary">public</i>
+            <span class="ml-2">Edifícios e Energia</span>
+          </h5>
+          <p class="card-text text-muted small">
+            Politécnico de Portalegre recebe luz verde para investir em eficiência energética e renováveis.
+          </p>
+          <a href="https://edificioseenergia.pt/noticias/1304-politecnico-portalegre-eficiencia-energetica-edificios-publicos-prr-fundo-ambiental/" 
+             class="btn btn-outline-primary btn-sm" target="_blank">Ler mais</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title-news">
+            <i class="material-icons align-middle text-success">eco</i>
+            <span class="ml-2">O Digital</span>
+          </h5>
+          <p class="card-text text-muted">
+            Politécnico de Portalegre com mais de 2,4M€ para melhorar eficiência energética.
+          </p>
+          <a href="https://odigital.sapo.pt/politecnico-de-portalegre-com-mais-de-24me-para-melhorar-eficiencia-energetica/" 
+             class="btn btn-outline-success btn-sm" target="_blank">Ler mais</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title-news">
+            <i class="material-icons align-middle text-warning">bolt</i>
+            <span class="ml-2">IPP</span>
+          </h5>
+          <p class="card-text text-muted">
+            Politécnico de Portalegre com financiamento para melhoria da eficiência energética.
+          </p>
+          <a href="https://www.ipportalegre.pt/pt/2023/03/27/politecnico-de-portalegre-com-financiamento-para-melhoria-da-eficiencia-energetica/" 
+             class="btn btn-outline-warning btn-sm" target="_blank">Ler mais</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title-news">
+            <i class="material-icons align-middle text-danger">newspaper</i>
+            <span class="ml-2">Jornal Alto Alentejo</span>
+          </h5>
+          <p class="card-text text-muted">
+            Politécnico de Portalegre com apoio para investimentos em eficiência energética.
+          </p>
+          <a href="https://jornalaltoalentejo.sapo.pt/politecnico-de-portalegre-com-apoio-para-investimentos-em-eficiencia-energetica/" 
+             class="btn btn-outline-danger btn-sm" target="_blank">Ler mais</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title-news">
+            <i class="fa-solid fa-solar-panel fa-sm align-middle text-info"></i>
+            <span class="ml-2">Ensino Magazine</span>
+          </h5>
+          <p class="card-text text-muted">
+            Politécnico de Portalegre com mais de 2,4ME para melhorar eficiência energética.
+          </p>
+          <a href="https://www.ensino.eu/ensino-magazine/politecnico/2023/portalegre-reforca-efiviencia-energetica/#" 
+             class="btn btn-outline-info btn-sm" target="_blank">Ler mais</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title-news">
+            <i class="material-icons align-middle text-secondary">article</i>
+            <span class="ml-2">Tribuna Alentejo</span>
+          </h5>
+          <p class="card-text text-muted">
+            Politécnico de Portalegre vai melhorar eficiência energética com 2,4 ME
+          </p>
+          <a href="https://www.tribunaalentejo.pt/artigos/politecnico-de-portalegre-vai-melhorar-eficiencia-energetica-com-2-4-me" 
+             class="btn btn-outline-secondary btn-sm" target="_blank">Ler mais</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 mb-4">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title-news">
+            <i class="material-icons align-middle text-secondary-emphasis">radio</i>
+            <span class="ml-2">Antena Sul</span>
+          </h5>
+          <p class="card-text text-muted">
+            Politécnico de Portalegre com mais de 2,4M€ para melhorar eficiência energética
+          </p>
+          <a href="https://www.antenasul.pt/politecnico-de-portalegre-com-mais-de-24me-para-melhorar-eficiencia-energetica/" 
+             class="btn btn-outline-secondary btnnews btn-sm" target="_blank">Ler mais</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section> 
 
   
 </body>
