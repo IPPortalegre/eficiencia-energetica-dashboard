@@ -1,4 +1,15 @@
 
+    function getResponsiveFontSize() {
+      const width = window.innerWidth;
+      
+      if (width > 1400) return 18;
+      if (width > 1030) return 12;
+      if (width > 1010) return 10;
+      if (width > 768) return 14;
+      
+      return 12;
+    }
+
 //gráfico fonte de energia
       function createEnergySourceChart(solarValue, redeValue) {
         const ctx = document.getElementById('ensource-chart').getContext('2d');
@@ -13,7 +24,7 @@
             labels: ['Fontes de Energia'],
             datasets: [
               {
-                label: 'Solar',
+                label: 'Solar(%)',
                 data: [solarPercent],
                 backgroundColor: 'rgba(8,158,84,255)',
                 borderRadius: 14,
@@ -21,7 +32,7 @@
                 barThickness: 40
               },
               {
-                label: 'Rede',
+                label: 'Rede(%)',
                 data: [redePercent],
                 backgroundColor: '#eb9e0a',
                 borderRadius: 14,
@@ -47,7 +58,7 @@
                 padding: 10,
                 labels: {
                   font: {
-                    size: 16
+                    size: getResponsiveFontSize()
                   },
                   usePointStyle: true,
                   pointStyle: 'rectRounded'
@@ -326,6 +337,16 @@
             console.warn('Global error detected, retrying refresh...');
             refreshHistory();
         }
+        });
+
+        window.addEventListener('resize', () => {
+          if (co2Chart) co2Chart.options.plugins.legend.labels.font.size = getResponsiveFontSize();
+          if (energiaChart) energiaChart.options.plugins.legend.labels.font.size = getResponsiveFontSize();
+          if (energySourceChart) energySourceChart.options.plugins.legend.labels.font.size = getResponsiveFontSize();
+
+          if (co2Chart) co2Chart.update();
+          if (energiaChart) energiaChart.update();
+          if (energySourceChart) energySourceChart.update();
         });
 
 

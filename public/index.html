@@ -27,34 +27,34 @@
   }, 300000); // 300000 ms = 5 minutos
 
   
-   function checkViewport() {
+  function checkViewport() {
     
-    document.body.clientWidth;
+   document.body.clientWidth;
   }
 
   // Run on initial load and whenever window resizes
-  window.addEventListener('load', checkViewport);
-  window.addEventListener('resize', checkViewport);
+    window.addEventListener('load', checkViewport);
+    window.addEventListener('resize', checkViewport);
 
   // Um indicador de debug para verificar o tamanho da viewport
-  document.addEventListener('DOMContentLoaded', function() {
-    const debugDiv = document.createElement('div');
-    debugDiv.style.position = 'fixed';
-    debugDiv.style.bottom = '10px';
-    debugDiv.style.right = '10px';
-    debugDiv.style.backgroundColor = 'rgba(0,0,0,0.7)';
-    debugDiv.style.color = 'white';
-    debugDiv.style.padding = '5px';
-    debugDiv.style.zIndex = '9999';
-    debugDiv.style.fontFamily = 'monospace';
-    debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
-    document.body.appendChild(debugDiv);
+    document.addEventListener('DOMContentLoaded', function() {
+     const debugDiv = document.createElement('div');
+     debugDiv.style.position = 'fixed';
+     debugDiv.style.bottom = '10px';
+     debugDiv.style.right = '10px';
+     debugDiv.style.backgroundColor = 'rgba(0,0,0,0.7)';
+     debugDiv.style.color = 'white';
+     debugDiv.style.padding = '5px';
+     debugDiv.style.zIndex = '9999';
+     debugDiv.style.fontFamily = 'monospace';
+     debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
+     document.body.appendChild(debugDiv);
 
-    window.addEventListener('resize', function() {
-      debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
-      checkViewport();
+     window.addEventListener('resize', function() {
+       debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
+       checkViewport();
+    });
    });
-  });
 </script>
 <body>
   
@@ -84,7 +84,7 @@
       <div class="col-md-2 mx-auto green-card ">
         <div class="card cardnormal first-card highlight-card green-bg square-card">
           <div class="card-body ">
-            <h5 class="card-title">Produção Global Energia</h5>
+            <h5 class="card-title">Produção Global Energia (acumulada)</h5>
           
             <h1 class="value1" id="energiasolartotal">-</h1>
             <h5 class="unities1">kWh</h5>
@@ -149,9 +149,12 @@
           <div class="card chart-card cardfonte">
             
             <div class="card-body card-body-fonten text-center">
+             
               <h5 class="chart-title">Fontes de Energia</h5>
               <div class="chart-container-fonte">   
               <canvas id="ensource-chart"></canvas>
+              <i class="material-icons icon-solar md-18 align-middle ">solar_power</i>
+              <i class="material-icons icon-bolt md-18 align-middle ">bolt</i>
              </div>
             </div>
           </div>
@@ -181,8 +184,8 @@
       </div>
     </div>
     <div class="notas">
-      <p class="text-muted notas-text">Notas: Os valores apresentados nos gráficos de evolução temporal anteriores a maio não são válidos. O CO2 equivalente diz respeito a
-        quantas árvores seriam necessárias para absorver a mesma quantidade de CO2 evitado. A produção de energia é proveniente das centrais fotovoltaicas instaladas no Campus Politécnico,
+      <p class="text-muted notas-text">Notas: O CO2 equivalente diz respeito a
+        quantas árvores seriam necessárias para absorver a mesma quantidade de CO2 evitado. A produção de energia é proveniente das centrais fotovoltaicas instaladas no Campus Politécnico e diz respeito à produção de energia solar desde as instalações dos painéis,
         enquanto o consumo de energia é a quantidade de energia elétrica consumida por todos os edifícios do Campus Politécnico.
       </p>
 
