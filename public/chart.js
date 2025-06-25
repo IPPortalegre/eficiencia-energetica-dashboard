@@ -14,7 +14,8 @@
       const width = window.innerWidth;
       
       if (width > 1400) return 14;
-      if (width > 1030) return 12;
+      if (width > 1200) return 8.7;
+      if (width > 1030) return 10;
       if (width > 1010) return 10;
       if (width > 768) return 14;
       

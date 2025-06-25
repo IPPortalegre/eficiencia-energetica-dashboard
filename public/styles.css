@@ -542,7 +542,7 @@
   }  */
 
 
- @media only screen and (width: 1016px) and (height: 642px), /* 1024x768 */
+ @media only screen and (max-width: 1024px) and (height: 642px), /* 1024x768 */
  only screen and (device-width: 1016px) and (device-height: 642px) {
  
     .yellow-bg {
@@ -661,13 +661,13 @@
     }
     .icon-solar{
       color:#15200258;
-      margin-top:-350px!important;
-      margin-left:-124px!important;
+      margin-top:-320px!important;
+      margin-left:-134px!important;
       font-size: 18px!important;
     }
     .icon-bolt{
       color:#15200258;
-      margin-top:-258px!important;
+      margin-top:-228px!important;
       margin-left:-20px!important;
       font-size: 18px!important;
     }
@@ -675,7 +675,7 @@
   }
 
 @media 
-only screen and (width: 1272px) and (height: 474px), /* 1280x600 */
+only screen and (max-width: 1280px) and (max-height: 480px), /* 1280x600 */
 only screen and (device-width: 1272px) and (device-height: 474px){
   .context-title{
       font-size: 1.8rem;
@@ -696,57 +696,60 @@ only screen and (device-width: 1272px) and (device-height: 474px){
       margin-left:-20px!important;
       font-size: 18px!important;
     }
+  
 }
 
 @media 
-only screen and (width: 1272px) and (max-height: 599px), /* 1280x720 */
+only screen and (max-width: 1280px) and (max-height: 599px), /* 1280x720 */
 only screen and (device-width: 1272px) and (device-height: 594px) {
      
   .green-bg{
       max-width: 412px!important;
       max-height:300px!important;
-     
+      
     }
     .equi-card{
-      margin-left:-86px!important;
+      margin-left:-32px!important;
     }
     .yellow-bg{
       max-width: 412px!important;
       max-height:300px!important;
      }
     .green-second{
-      margin-left: -48px!important;
+      margin-left: 8px!important;
     }
 
     .yellow-first{
-      margin-left:-88px!important;
+      margin-left:-68px!important;
     }
     
     .yellow-last{
       margin-left: -88px!important;
     }
     .first-card{
-      margin-left:-10px!important;     
+      margin-left:-10px!important;    
+      min-width: 264px!important;
     }
     .cardfonte {
-      max-width: 412px;
+      min-width: 254px!important;
       margin-left: 4px;
       height:278px!important;
+      min-width: 264px!important;
     }
 
     .graphrow{
       margin-top: -6px!important;
     }
     .cardco2 {
-      min-width: 440px!important;
+      min-width: 438px!important;
       height:340px;
-      margin-left:-82px!important;
+      margin-left:-28px!important;
       height:278px!important;
     }
     .carden{
-      min-width: 460px;
+      min-width: 438px;
       height:340px;
-      margin-left:56px;
+      margin-left:18px!important;
       height:278px!important;
     }
     .chart-container, .chart-container-fonte, .chart-container2 {
@@ -754,11 +757,20 @@ only screen and (device-width: 1272px) and (device-height: 594px) {
       width:100%!important;
     }
     .container{
-      max-width: 1800px!important;
+      max-width: 1600px!important;
       height: 110vh!important;
       margin:0 auto;
       display:block;
       margin-top:-6px!important;   
+      
+    }
+    .container-text{
+      width:1210px!important;
+      text-align: left;
+      margin-right:62px!important;
+    }
+    .notas{
+      width:1180px!important;
     }
 
     .badges-container{
@@ -773,20 +785,41 @@ only screen and (device-width: 1272px) and (device-height: 594px) {
   
     .value1, .unities1, .value2, .unities2, .value3, .icon, .value4, .unities4, .value5, .unities5 {
       margin-bottom: 10px;
-      font-size: 30px!important; 
+      font-size: 20px!important; 
     }
     .chart-title{
       font-size:18px!important;
     }
     .sub-title{
-      
       letter-spacing: 4.3px!important;
+    }
+    .container-text{
+      margin-top:-50px!important;
+    }
+    .container-news{
+      width:1214px!important;
+      text-align: left;
+      margin-right:62px!important;
+    }
+    .icon-solar{
+      color:#15200258;
+      margin-bottom:-26px!important;
+      margin-right:-2px!important;
+      font-size: 18px!important;
+      
+    }
+    .icon-bolt{
+      color:#15200258;
+      margin-bottom:-26px!important;
+      margin-right:50px!important;
+      font-size: 18px!important;
+      
     }
 }
 
 
   @media 
-  only screen and (width: 1272px) and (height: 898px), /* 1280x1024 */
+  only screen and (max-width: 1280px) and (height: 898px), /* 1280x1024 */
   only screen and (device-width: 1272px) and (device-height: 898px) {
 
     .icon-solar{
@@ -805,7 +838,7 @@ only screen and (device-width: 1272px) and (device-height: 594px) {
   }
 
    @media 
-  only screen and (width: 1272px) and (height: 834px), /* 1280x960 */
+  only screen and (max-width: 1280px) and (height: 834px), /* 1280x960 */
   only screen and (device-width: 1272px) and (device-height:834px) {
 
     .icon-solar{
@@ -916,8 +949,12 @@ only screen and (device-width: 1272px) and (device-height: 594px) {
     .equi-card{
       margin-left:3px!important;
     }
+    .carden{
+      margin-left: 14px!important;
+      width:436px!important;
+    }
     .yellow-first{
-      margin-left:22px!important;
+      margin-left:36px!important;
     }
     .yellow-last{
       margin-left: 34px!important;
