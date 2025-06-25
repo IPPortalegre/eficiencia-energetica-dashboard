@@ -113,6 +113,19 @@ Aceda à página em
 ```bash
   http://localhost:3000
 ```
+## Atualizar repositório
+
+Quando o utilizador quiser atualizar os ficheiros do repositório basta rodar os seguintes comandos (faça isso dentro do ficheiro main, que é o node-app através de um terminal)
+```bash
+  git pull
+```
+Em caso de erros
+```bash
+  git stash
+  git pull
+  git stash pop
+```
+
 ## Configuração
 
 O dashboard pode ser configurado editando os seguintes ficheiros:
