@@ -1367,9 +1367,7 @@ only screen and (device-width: 1272px) and (device-height: 594px) {
       margin-left: 18px;
       margin-right: 8px;
     }
-    .equi-card{
-      margin-left:-2px!important;
-    }
+    
     .yellow-bg{
       width: 312px!important;
       height:310px!important;
@@ -1380,14 +1378,14 @@ only screen and (device-width: 1272px) and (device-height: 594px) {
       margin-left: 30px!important;
     }
     .cardfonte {
-      width: 320px;
+      width: 354px;
       margin-left: 4px;
       height:340px;
     }
     .cardco2 {
-      width: 676px;
+      width: 674px;
       height:340px;
-      margin-left:-90px!important;
+      margin-left:-62px!important;
     }
     .carden{
       width: 654px;
@@ -1426,10 +1424,10 @@ only screen and (device-width: 1272px) and (device-height: 594px) {
       
     }
     .equi-card{
-      margin-left:-4px!important;
+      margin-left:22px!important;
     }
     .green-second{
-      margin-left:-10px!important;
+      margin-left:20px!important;
     }
     .header-titlenews{
       font-size: 1.8rem;
@@ -1438,6 +1436,21 @@ only screen and (device-width: 1272px) and (device-height: 594px) {
       margin-top:-210px;
       margin-bottom: 20px;
     }
+    .first-card{
+      width: 354px!important;
+    }
+    .icon-solar{
+        color:#15200258;
+        margin-top:-356px!important;
+        margin-left:-282px!important;
+        font-size: 22px!important;
+      }
+    .icon-bolt{
+        color:#15200258;
+        margin-top:-280px!important;
+        margin-left:-28px!important;
+        font-size: 22px!important;
+      }
     
    }
 

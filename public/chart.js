@@ -10,6 +10,17 @@
       return 12;
     }
 
+    function getResponsiveDataLabelFontSize() {
+      const width = window.innerWidth;
+      
+      if (width > 1400) return 14;
+      if (width > 1030) return 12;
+      if (width > 1010) return 10;
+      if (width > 768) return 14;
+      
+      return 12;
+    }
+
 //gráfico fonte de energia
       function createEnergySourceChart(solarValue, redeValue) {
         const ctx = document.getElementById('ensource-chart').getContext('2d');
@@ -46,7 +57,6 @@
             responsive: true,
             maintainAspectRatio: false,
             onResize: function(chart) {
-              
               chart.update();
             },
             plugins: {
@@ -71,13 +81,26 @@
                     return `${context.dataset.label}: ${value}%`;
                   }
                 }
+              },
+              datalabels: {
+                color: '#000',
+                anchor: 'end',
+                align: 'right',
+                
+                formatter: function(value) {
+                  return value + '%';
+                },
+                font: {
+                  size: getResponsiveDataLabelFontSize(),
+                }
               }
             },
             scales: {
               x: {
                 min: 0,
                 max: 100,
-                title: { display: false },             
+                display: false,
+                title: { display: false },
                 grid: { display: false }
               },
               y: {
@@ -85,9 +108,11 @@
                 grid: { display: false }
               }
             }
-          }
+          },
+          plugins: [ChartDataLabels] // Habilita o plugin
         });
       }
+
       let energySourceChart;
 
       function updateEnergySourceChart(solarValue, redeValue) {
