@@ -1,6 +1,7 @@
 # Dashboard de Eficiência Energética - IPP
 
-![Captura de ecrã 2025-06-23 135243](https://github.com/user-attachments/assets/026d4eb4-294f-4d10-a3a9-0e4b478165a3)
+![image](https://github.com/user-attachments/assets/f8ff4213-9356-4f59-8936-508d9082a250)
+
 
 
 Um dashboard para a monitorização de métricas de eficiência energética do IPP (Instituto Politécnico de Portalegre), apresentando dados em tempo real provenientes da plataforma IoT ThingsBoard.
