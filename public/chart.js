@@ -2,7 +2,8 @@
     function getResponsiveFontSize() {
       const width = window.innerWidth;
       
-      if (width > 1400) return 18;
+      if (width > 1800) return 18;
+      if (width > 1400) return 14;
       if (width > 1030) return 12;
       if (width > 1010) return 10;
       if (width > 768) return 14;
@@ -13,7 +14,8 @@
     function getResponsiveDataLabelFontSize() {
       const width = window.innerWidth;
       
-      if (width > 1400) return 14;
+      if (width > 1800) return 14;
+      if (width > 1400) return 10;
       if (width > 1200) return 8.7;
       if (width > 1030) return 10;
       if (width > 1010) return 10;
@@ -185,7 +187,7 @@
                   legend: { position: 'bottom',
                     labels: {
                       font: {
-                        size: 16
+                        size: getResponsiveFontSize()
                       },
                       usePointStyle: true,
                       pointStyle: 'rectRounded'
@@ -269,7 +271,7 @@
                   legend: { position: 'bottom',
                     labels: {
                       font: {
-                        size: 16
+                        size: getResponsiveFontSize()
                       },
                       usePointStyle: true,
                       pointStyle: 'rectRounded'

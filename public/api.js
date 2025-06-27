@@ -176,5 +176,5 @@ async function refreshData() {
 // Inicializa
 setInterval(() => {
   refreshData();
-}, 1000); //refresh a cada segundo
+}, 2000); //refresh a cada segundo
 
