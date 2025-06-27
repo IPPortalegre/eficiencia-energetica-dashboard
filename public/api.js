@@ -19,31 +19,42 @@ async function getData() {
 /**
  * Get historical data from API
  */
+async function getHistory(key, startTs, endTs, maxRetries = 3, retryDelay = 500) {
+  let attempt = 0;
+  
+  while (attempt <= maxRetries) {
+    try {
+      const url = `/api/gethistory?key=${encodeURIComponent(key)}&startTs=${startTs}&endTs=${endTs}`;
+      const response = await fetch(url);
 
-async function getHistory(key, startTs, endTs, retryOnce = true) {
-  try {
-    const url = `/api/gethistory?key=${encodeURIComponent(key)}&startTs=${startTs}&endTs=${endTs}`;
-    const response = await fetch(url);
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('API Error Response:', errorText);
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('API Error Response:', errorText);
+        // Retry quando tem erro 500
+        if (attempt < maxRetries && (response.status === 500 || errorText.includes('Failed to authenticate'))) {
+          attempt++;
+          console.warn(`Retry attempt ${attempt} for getHistory after error ${response.status}...`);
+          await new Promise(resolve => setTimeout(resolve, retryDelay * attempt)); 
+          continue;
+        }
 
-      // Retry once if authentication failed or it's a 500 error
-      if (retryOnce && (response.status === 500 || errorText.includes('Failed to authenticate'))) {
-        console.warn('Retrying getHistory after failed authentication...');
-        return await getHistory(key, startTs, endTs, false); // Retry only once
+        throw new Error(`Network response was not ok (${response.status})`);
       }
 
-      throw new Error(`Network response was not ok (${response.status})`);
+      const data = await response.json();
+      return Array.isArray(data) ? data : [];
+    } catch (error) {
+      console.error(`Error getting history (attempt ${attempt}):`, error);
+      if (attempt >= maxRetries) {
+        return [];
+      }
+      attempt++;
+      await new Promise(resolve => setTimeout(resolve, retryDelay * attempt)); // Exponential backoff
     }
-
-    const data = await response.json();
-    return Array.isArray(data) ? data : [];
-  } catch (error) {
-    console.error('Error getting history:', error);
-    return [];
   }
+  
+  return [];
 }
 
 
@@ -105,76 +116,76 @@ function processMonthlyData(data, debugKey) {
     } catch (e) {
       console.warn('Error processing item:', item, e);
     }
-  });
+    });
 
-  // Prepare result in chronological order
-  const result = {
-    labels: [],
-    values: []
-  };
+    // Prepare result in chronological order
+    const result = {
+      labels: [],
+      values: []
+    };
 
-  // Sort by year and month in ascending order
-  const sortedMonths = Object.values(monthlyData).sort((a, b) => {
-    if (a.year !== b.year) return a.year - b.year;
-    return a.month - b.month;
-  });
+    // Sort by year and month in ascending order
+    const sortedMonths = Object.values(monthlyData).sort((a, b) => {
+      if (a.year !== b.year) return a.year - b.year;
+      return a.month - b.month;
+    });
 
-  sortedMonths.forEach(month => {
-    result.labels.push(month.monthName);
-    result.values.push(month.sum);
-  });
+    sortedMonths.forEach(month => {
+      result.labels.push(month.monthName);
+      result.values.push(month.sum);
+    });
 
- 
-  console.log(`Processed monthly data for ${debugKey}:`, result);
   
-  return result;
-}
+    console.log(`Processed monthly data for ${debugKey}:`, result);
+    
+    return result;
+  }
 
 
-/**
- * Refresh data
- */
-async function refreshData() {
-  try {
-    const data = await getData();
-    if (data) {
-      // Update current values
-      for (const key in data) {
-        if (data.hasOwnProperty(key)) {
-          const targetElement = document.getElementById(key);
-          if (targetElement) {
-            if (key === "temperatura") {
-              const tempValue = parseFloat(data[key][0].value.replace(",", "."));
-              targetElement.textContent = isNaN(tempValue) ? "-" : Math.round(tempValue);
-            } else if (key === "co2equivalente") {
-              const co2Value = parseFloat(data[key][0].value);
-              targetElement.textContent = isNaN(co2Value) ? "-" : co2Value.toFixed(0);
-            } else if (key === "co2evitadototal") {
-              const co2Saved = parseFloat(data[key][0].value);
-              targetElement.textContent = isNaN(co2Saved) ? "-" : co2Saved.toFixed(2);
-            } else {
-              targetElement.textContent = data[key][0].value;
+  /**
+   * Refresh data
+   */
+  async function refreshData() {
+    try {
+      const data = await getData();
+      if (data) {
+        // Update current values
+        for (const key in data) {
+          if (data.hasOwnProperty(key)) {
+            const targetElement = document.getElementById(key);
+            if (targetElement) {
+              if (key === "temperatura") {
+                const tempValue = parseFloat(data[key][0].value.replace(",", "."));
+                targetElement.textContent = isNaN(tempValue) ? "-" : Math.round(tempValue);
+              } else if (key === "co2equivalente") {
+                const co2Value = parseFloat(data[key][0].value);
+                targetElement.textContent = isNaN(co2Value) ? "-" : co2Value.toFixed(0);
+              } else if (key === "co2evitadototal") {
+                const co2Saved = parseFloat(data[key][0].value);
+                targetElement.textContent = isNaN(co2Saved) ? "-" : co2Saved.toFixed(2);
+              } else {
+                targetElement.textContent = data[key][0].value;
+              }
             }
           }
         }
-      }
 
-      // Update energy source chart
-      if (data.fontesenergiarede && data.fontesenergiarsolar) {
-        updateEnergySourceChart(
-          parseFloat(data.fontesenergiarsolar[0].value),
-          parseFloat(data.fontesenergiarede[0].value)
-        );
+        // Atualiza o gráfico de fontes de energia
+        if (data.fontesenergiarede && data.fontesenergiarsolar) {
+          updateEnergySourceChart(
+            parseFloat(data.fontesenergiarsolar[0].value),
+            parseFloat(data.fontesenergiarede[0].value)
+          );
+        }
       }
+    } catch (error) {
+      console.error('refreshData error:', error);
     }
-  } catch (error) {
-    console.error('refreshData error:', error);
   }
-}
 
 
-// Inicializa
-setInterval(() => {
-  refreshData();
-}, 2000); //refresh a cada segundo
+  // Inicializa
+  setInterval(() => {
+    refreshData();
+  }, 2000); //refresh a cada segundo
 

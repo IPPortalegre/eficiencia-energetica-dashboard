@@ -174,7 +174,7 @@
                   {
                     label: 'CO₂ Emitido (ton)',
                     data: emitted.values, 
-                    backgroundColor: 'rgba(248,109,34,255)',
+                    backgroundColor: '#f86d22',
                     borderColor: 'rgba(248,109,34,255)',
                     borderWidth: 1
                   }
