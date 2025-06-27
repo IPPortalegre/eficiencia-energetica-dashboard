@@ -29,7 +29,7 @@ Um dashboard para a monitorização de métricas de eficiência energética do I
 
 ## Variáveis de Ambiente
 
-Para rodar este projeto, vais precisar adicionar as seguintes variáveis de ambiente ao teu ficheiro .env
+Para rodar este projeto, vais precisar adicionar as seguintes variáveis de ambiente ao teu ficheiro .env (lembre-se de alterar o ficheiro .env-example para .env ou crie um novo ficheiro com nome de .env)
 
 - `THINGSBOARD_URL`= https://o-teu-url-do-thingsboard
 
