@@ -1,6 +1,6 @@
 # Dashboard de Eficiência Energética - IPP
 
-![image](https://github.com/user-attachments/assets/f8ff4213-9356-4f59-8936-508d9082a250)
+![image](https://github.com/user-attachments/assets/004ebe5b-0d67-453b-86fe-14aaecb9f444)
 
 
 
