@@ -48,7 +48,7 @@
               {
                 label: 'Rede(%)',
                 data: [redePercent],
-                backgroundColor: '#eb9e0a',
+                backgroundColor: 'rgb(235,158,10)',
                 borderRadius: 14,
                 borderSkipped: false,
                 barThickness: 40
@@ -167,15 +167,14 @@
                   {
                     label: 'CO₂ Evitado (ton)',
                     data: avoided.values, 
-                    backgroundColor: '#98F381FF',
-                    borderColor: '#5DCC41FF',
+                    backgroundColor: 'rgb(150,218,158)',
+                    borderColor: 'rgb(150,218,158)',
                     borderWidth: 1
                   },
                   {
                     label: 'CO₂ Emitido (ton)',
                     data: emitted.values, 
-                    backgroundColor: '#f86d22',
-                    borderColor: 'rgba(248,109,34,255)',
+                    backgroundColor: 'rgb(235,158,10)',
                     borderWidth: 1
                   }
                 ]
@@ -258,8 +257,8 @@
                   {
                     label: 'Energia Rede (kWh)',
                     data: consumed.values,
-                    backgroundColor: 'rgba(235,158,10,255)',
-                    borderColor: 'rgba(235,158,10,255)',
+                    backgroundColor: 'rgb(235,158,10)',
+                    borderColor: 'rgb(235,158,10)',
                     borderWidth: 1
                   }
                 ]

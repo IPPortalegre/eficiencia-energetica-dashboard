@@ -29,40 +29,64 @@
   }, 300000); // 300000 ms = 5 minutos
 
   
-  function checkViewport() {
+   function checkViewport() {
     
-   document.body.clientWidth;
+  document.body.clientWidth;
   }
 
-  // Run on initial load and whenever window resizes
-    window.addEventListener('load', checkViewport);
-    window.addEventListener('resize', checkViewport);
+  // // Run on initial load and whenever window resizes
+  // window.addEventListener('load', checkViewport);
+  // window.addEventListener('resize', checkViewport);
 
-  // Um indicador de debug para verificar o tamanho da viewport
-    document.addEventListener('DOMContentLoaded', function() {
-     const debugDiv = document.createElement('div');
-     debugDiv.style.position = 'fixed';
-     debugDiv.style.bottom = '10px';
-     debugDiv.style.right = '10px';
-     debugDiv.style.backgroundColor = 'rgba(0,0,0,0.7)';
-     debugDiv.style.color = 'white';
-     debugDiv.style.padding = '5px';
-     debugDiv.style.zIndex = '9999';
-     debugDiv.style.fontFamily = 'monospace';
-     debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
-     document.body.appendChild(debugDiv);
+  // // Um indicador de debug para verificar o tamanho da viewport
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   const debugDiv = document.createElement('div');
+  //   debugDiv.style.position = 'fixed';
+  //   debugDiv.style.bottom = '10px';
+  //   debugDiv.style.right = '10px';
+  //   debugDiv.style.backgroundColor = 'rgba(0,0,0,0.7)';
+  //   debugDiv.style.color = 'white';
+  //   debugDiv.style.padding = '5px';
+  //   debugDiv.style.zIndex = '9999';
+  //   debugDiv.style.fontFamily = 'monospace';
+  //   debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
+  //   document.body.appendChild(debugDiv);
 
-     window.addEventListener('resize', function() {
-       debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
-       checkViewport();
-    });
-   });
+  // window.addEventListener('resize', function() {
+  //   debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
+  //   checkViewport();
+  //   });
+  // });
 
 
 
 </script>
 <body>
   
+  <!-- <div id="header-section" class="h-on-top no-transparent">
+    <div class="followwrap" style="height: 75px;">
+        <header id="masthead" class="site-header header-contained is-sticky no-t h-on-top header-fixed" role="banner" style="top: 0px;">
+       
+            <div>
+                <div class="site-branding">
+                    <div class="site-brand-inner has-logo-img no-desc">
+                        <div></div>
+                    </div>
+                </div>
+                <div class="header-right-wrapper">
+                    <div></div>
+                </div>
+            </div>
+          
+        </header>
+    </div>
+</div>
+<div class="page-header">
+  
+    <div >
+        <h1 class="entry-title">Energia no CAMPUS</h1>
+    </div>
+</div> -->
   <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap"> 
       <h2 class="header-title ">EFICIÊNCIA ENERGÉTICA</h2>
@@ -113,7 +137,7 @@
       <div class="col-md-2 mx-auto green-card card-equi">
         <div class="card cardnormal highlight-card green-bg equi-card square-card">
           <div class="card-body card-body-equi">
-            <h5 class="card-title card-title-equi">CO2 Equivalente</h5>
+            <h5 class="card-title card-title-equi">CO2 <span class="break">Equivalente</span></h5>
            
             <h1 class="value3" id="co2equivalente">-</h1><i class="material-icons icon-tree md-18 align-middle icon">forest</i>
             
@@ -122,9 +146,9 @@
       </div>
       
       <div class="col-md-2 mx-auto yellow-card">
-        <div class="card cardnormal highlight-card yellow-bg square-card yellow-first">
+        <div class="card cardnormal highlight-card green-bg square-card yellow-first">
           <div class="card-body">
-            <h5 class="card-title">Energia Produzida</h5>
+            <h5 class="card-title card-title-en">Energia <span class="break">Produzida</span><span class="break">(instantânea)</span></h5>
             
             <h1 class="value4" id="producaoinstantaneo">-</h1>
             <h5 class="unities4">kWh</h5>
@@ -136,7 +160,7 @@
       <div class="col-md-2 mx-auto yellow-card last-card last-card-col">
         <div class="card cardnormal highlight-card yellow-bg square-card yellow-last">
           <div class="card-body">
-            <h5 class="card-title">Energia Consumida</h5>
+            <h5 class="card-title card-title-consu">Energia Consumida<span class="break">(instantânea)</span></h5>
             
             <h1 class="value5" id="consumoinstantaneo">-</h1>
             <h5 class="unities5">kWh</h5>
@@ -158,11 +182,14 @@
               <h5 class="chart-title">Fontes de Energia</h5>
               <div class="chart-container-fonte">   
               <canvas id="ensource-chart"></canvas>
-              <i class="material-icons icon-solar md-18 align-middle ">solar_power</i>
-              <i class="material-icons icon-bolt md-18 align-middle ">bolt</i>
+            
              </div>
             </div>
           </div>
+          <div class="context-div green-blob-div">
+          <div class="context-blob green-blob"></div>
+          <p class="context-text context-text-green">Energia solar produzida no Campus Politécnico.</p>
+        </div>
       </div>
          
       <div class="col-md-4 mb-3 co2-card">
@@ -175,6 +202,10 @@
             </div>
           </div>
         </div>
+        <div class="context-div light-green-blob-div">
+          <div class="context-blob light-green-blob"></div>
+          <p class="context-text">CO₂ evitado e equivalente ao número de árvores necessárias para absorver essa quantidade de CO₂.</p>
+        </div>
       </div>
 
       <div class="col-md-5 mb-3 cardenergia">
@@ -186,16 +217,20 @@
             </div>
           </div>
         </div>
+        <div class="context-div orange-blob-div">
+          <div class="context-blob orange-blob"></div>
+          <p class="context-text">Energia da rede consumida e CO₂ emitido.</p>
+        </div>
       </div>
     </div>
-    <div class="notas">
+    <!-- <div class="notas">
       <p class="text-muted notas-text">Notas: O CO2 equivalente diz respeito a
-        quantas árvores seriam necessárias para absorver a mesma quantidade de CO2 evitado. A produção de energia é proveniente das centrais fotovoltaicas instaladas no Campus Politécnico e diz respeito à produção de energia solar desde as instalações dos painéis,
-        enquanto o consumo de energia é a quantidade de energia elétrica consumida por todos os edifícios do Campus Politécnico.
+        quantas árvores seriam necessárias para absorver a mesma quantidade de CO2 evitado. A "energia produzida" é proveniente das centrais fotovoltaicas instaladas no Campus Politécnico e diz respeito à produção de energia solar desde as instalações dos painéis,
+        enquanto a "energia consumida" é a quantidade de energia elétrica consumida por todos os edifícios do Campus Politécnico.
       </p>
 
 
-    </div>
+    </div> -->
   </div>
 
   
