@@ -1,4 +1,4 @@
-# Dashboard de Eficiência Energética - IPP
+# Dashboard de Eficiência Energética - Campus IPP
 
 ![image](https://github.com/user-attachments/assets/4589ac33-67f7-41d1-a0fb-2783f54ef264)
 
