@@ -95,6 +95,7 @@
                 },
                 font: {
                   size: getResponsiveDataLabelFontSize(),
+                  family:"Open Sans, sans-serif",
                 }
               }
             },
@@ -186,7 +187,8 @@
                   legend: { position: 'bottom',
                     labels: {
                       font: {
-                        size: getResponsiveFontSize()
+                        size: getResponsiveFontSize(),
+                        family:"Open Sans, sans-serif",
                       },
                       usePointStyle: true,
                       pointStyle: 'rectRounded'
@@ -270,7 +272,8 @@
                   legend: { position: 'bottom',
                     labels: {
                       font: {
-                        size: getResponsiveFontSize()
+                        size: getResponsiveFontSize(),
+                        family:"Open Sans, sans-serif",
                       },
                       usePointStyle: true,
                       pointStyle: 'rectRounded'
