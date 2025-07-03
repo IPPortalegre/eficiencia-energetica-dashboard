@@ -33,7 +33,7 @@ async function getHistory(key, startTs, endTs, maxRetries = 3, retryDelay = 500)
 
         // Retry quando tem erro 500
         if (attempt < maxRetries && (response.status === 500 || errorText.includes('Failed to authenticate'))) {
-          attempt++;
+          attempt += 1;
           console.warn(`Retry attempt ${attempt} for getHistory after error ${response.status}...`);
           await new Promise(resolve => setTimeout(resolve, retryDelay * attempt)); 
           continue;

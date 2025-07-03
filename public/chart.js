@@ -16,12 +16,30 @@
       
       if (width > 1800) return 14;
       if (width > 1400) return 10;
-      if (width > 1200) return 8.7;
+      if (width > 1200) return 8.5;
       if (width > 1030) return 10;
       if (width > 1010) return 10;
       if (width > 768) return 14;
       
       return 12;
+    }
+    async function fetchAndSetTitle() {
+      try {
+        
+        const baseUrl = window.location.origin;
+        const response = await fetch(`${baseUrl}/api/title`);
+        
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const { title } = await response.json();
+        document.getElementById('title_id').textContent = title;
+      } catch (error) {
+        console.error('Error setting title:', error);
+      
+      }
     }
 
 //gráfico fonte de energia
@@ -356,10 +374,12 @@
 
         // DOMContentLoaded event que inicializa os gráficos e dados
         document.addEventListener("DOMContentLoaded", async () => {
-            document.getElementById("currentDate").textContent = moment().format('D/MM/YYYY');
+            document.getElementById("currentDate").textContent = moment().format('DD/MM/YYYY');
+            await fetchAndSetTitle();
             await createCO2Chart();
             await createEnergiaChart();
             refreshHistory();
+            
         });
 
         window.addEventListener('error', (event) => {

@@ -157,6 +157,7 @@
       background-color: #f5fffa;
       padding:0;
       width:100%;
+      
     }
     .spacechart{
       margin-right: 8px;
@@ -174,6 +175,7 @@
     }
     .h4bold {
       font-weight: bold;
+      text-transform: uppercase;
       color: #1a8623;
     }
     .h4light {
@@ -234,9 +236,7 @@
       margin-top:40px;
       font-family: "Open Sans", Helvetica, Arial, sans-serif;
     }
-    .card-title-equi{
-      margin-top: 48px;
-    }
+   
    .value4{
     margin-top:58px;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
@@ -350,402 +350,84 @@
     .green-blob{
       background-color: rgb(8,158,84);
     }
+    .break{
+      display:block;
+    }
    
 
    /* Media queries */
 
-
-   /* Dispositivos muito pequenos (telemóveis, 600px para baixo) */
-  /* @media only screen and (max-width: 560px) and (max-height: 980px) {
-    .container {
-      min-width: 500px !important;
-      min-height: 320vh !important;
-      margin: 0 auto !important;
-      border:solid 1px black;
-     
-    }
-    .container-text{
-      max-width: 480px !important;
-      
-    }
-    .container-news{
-     max-width: 480px !important;
-    }
-
-    .first-card {
-      margin-left: 2px !important;
-      min-width: 370px!important;
-      max-height: 190px !important;
-
-    }
-    .green-second{
-      left:4px!important;
-      max-width: 218px !important;
-      max-height: 210px !important;
-      margin-top:310px!important;
-      margin-bottom:10px!important;
-
-    }
-
-    .cardfonte {
-      width: 480px!important;
-      height: 280px !important;
-      margin-left: 12px !important;
-      margin-right:0!important;
-      margin-top:-980px!important;
-
-    }
-    .chart-container-fonte{
-      height:200px!important;
-    }
-    .equi-card{
-      left: -82px !important;
-      max-width: 218px !important;
-      max-height: 210px !important;
-      margin-top:-220px!important;
-    }
-
-    .cardco2{
-      max-width: 380px!important;
-      margin-left: 4px !important;
-      min-height: 230px !important;
-      margin-top:-470px!important;
-    }
-    .yellow-first{
-      margin-top:260px!important;
-      margin-left:-14px!important;
-      max-width: 178px !important;
-      max-height: 190px !important;
-    }
-    .yellow-last{
-      max-width: 178px !important;
-      max-height: 190px !important;
-      margin-top:-190px!important;
-      margin-left:188px!important;
-
-    }
-    .carden{
-      min-height: 250px !important;
-      max-width: 380px!important;
-      margin-left:-6px!important;
-      margin-top:-28px!important;
-    }
-    .chart-title{
-      font-size: 16px !important;
-      margin-top: 10px !important;
-    }
-    .card-title {
-      font-size: 16px !important;
-      margin-top: 10px !important;
-    }
-
-    .chart-container2{
-      max-height:164px!important;
-    }
-    .icon-solar{
-      color:#15200258;
-      margin-top:-280px!important;
-      margin-left:-316px!important;
-      font-size: 22px!important;
-    }
-    .icon-bolt{
-      color:#15200258;
-      margin-top:-210px!important;
-      margin-left:-30px!important;
-    }
-
-    .notas-text{
-      font-size:18px;
-      
-    }
-    .header-title{
-      margin-top:10px!important;
-    }
-    .badges-container{
-      margin-bottom:14px!important;
-    }
-    .sub-title{
-      margin-bottom:28px!important;
-    }
-    .notas-text{
-      font-size:12px;
-    }
-    .sobre-projeto{
-      margin-top:20px!important;
-    }
-    .notas{
-      max-width: 480px !important;
-    }
-} */
-
-
-/* @media only screen and (max-width: 400px) {
-    .container {
-      min-width: 320px !important;
-      min-height: 260vh !important;
-      margin-left: 6px !important;
-      border:1px solid black;
-    }
-    .container-text{
-      max-width: 480px !important;
-      
-    }
-    .container-news{
-     max-width: 480px !important;
-    }
-
-    .first-card {
-      margin-left: 2px !important;
-      min-width: 370px!important;
-      max-height: 190px !important;
-
-    }
-    .green-second{
-      left:-20px!important;
-      max-width: 118px !important;
-      max-height: 210px !important;
-      margin-top:310px!important;
-      margin-bottom:10px!important;
-
-    }
-
-    .cardfonte {
-      width: 480px!important;
-      min-width:440px!important;
-      height: 280px !important;
-      margin-left: 12px !important;
-      margin-right:0!important;
-      margin-top:-980px!important;
-
-    }
-    .chart-container-fonte{
-      height:200px!important;
-    }
-    .equi-card{
-      left: 232px !important;
-      max-width: 218px !important;
-      max-height: 210px !important;
-      margin-top:-220px!important;
-    }
-
-    .cardco2{
-      min-width: 470px!important;
-      max-width:500px;
-      left: 56px !important;
-      min-height: 230px !important;
-      margin-top:-480px!important;
-    }
-    .yellow-first{
-      margin-top:260px!important;
-     
-      min-width: 198px !important;
-      max-height: 190px !important;
-    
-      left:-26px!important;
-     
-    }
-    .yellow-last{
-      min-width: 198px !important;
-      max-height: 190px !important;
-      margin-top:-190px!important;
-      left:88px!important;
-
-    }
-    .value4{
-      margin-top:-2px;
-    }
-    .carden{
-      min-height: 250px !important;
-      min-width: 466px!important;
-      max-width:500px;
-      margin-left:-6px!important;
-      margin-top:-28px!important;
-    }
-    .chart-title{
-      font-size: 16px !important;
-      margin-top: 10px !important;
-    }
-    .card-title {
-      font-size: 16px !important;
-      margin-top: 10px !important;
-    }
-
-    .chart-container2{
-      max-height:164px!important;
-    }
-    .chart-container-fonte{
-      max-height:164px!important;
-    }
-    .icon-solar{
-      color:#15200258;
-      margin-bottom:-48px!important;
-      margin-left:-316px!important;
-      font-size: 22px!important;
-    }
-    .icon-bolt{
-      color:#15200258;
-      margin-bottom:-40px!important;
-      margin-right:250px!important;
-    }
-
-    .notas-text{
-      font-size:16px;
-      
-    }
-    .header-title{
-      margin-top:10px!important;
-    }
-    .badges-container{
-      margin-bottom:14px!important;
-    }
-    .sub-title{
-      margin-bottom:28px!important;
-    }
-  
-    .sobre-projeto{
-      margin-top:20px!important;
-    }
-    .notas{
-      max-width: 460px !important;
-      margin-left:16px!important;
-    }
-} */
-
-@media only screen and (max-width: 530px) {
- 
-  .row.justify-content-md-center.text-center.mb-3 {
-    flex-direction: column;
-  }
-  
- 
-  .col-md-2.mx-auto {
-    width: 100%;
-    max-width: 100%;
-    flex: 0 0 100%;
-    margin-bottom: 10px;
-  }
-  
-
-  .green-bg, .yellow-bg {
-    margin-bottom: 10px;
-    margin-left:-10px!important;
-    height:150px;
-    width: 100%;
-  }
-  .cardfonte{
-    width:320px!important;
-  }
-  .carden{
-    width:320px!important;
-    left:-22px!important;
-  }
-  .cardco2{
-    left: 38px!important;
-    max-width:320px!important;
-    margin-top:-30px!important;
-  }
-  .container{
-    margin-right:-20px!important;
-  }
-  
-  .graphrow {
-    flex-direction: column;
-  }
-  
-  .col-md-3, .col-md-4, .col-md-5 {
-    width: 100%;
-    max-width: 100%;
-    flex: 0 0 100%;
-  }
-  
-  .chart-container, .chart-container-fonte {
-    height: 150px !important; 
-  }
-  .chart-container2{
-    height:150px!important;
-  }
-  .unities1,.unities2,.unities5{
-    font-size:12px!important;
-  }
-  .unities4{
-    margin-top:-18px!important;
-  }
-  .value4{
-    margin-top:18px!important;
-  }
-  
- 
-  .d-flex.justify-content-between.align-items-center.mb-3.flex-wrap {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .badges-container {
-    width: 100%;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  
-  .value1, .value2, .value3, .value4, .value5 {
-    font-size: 1.8rem;
-  }
-  
-  .card-title {
-    font-size: 22px!important;
-  }
-  .unities1,.unities2,.icon,.unities4,.unities5{
-    font-size:32px!important;
-  }
-  
-
-  .icon-tree {
-    font-size: 1.5rem !important;
-  }
-  
-  
-  .header-title {
-    font-size: 1.5rem;
-    text-align:center!important;
-    margin-left:-8px!important;
-  }
-  
-  .sub-title {
-    font-size: 0.9rem;
-  }
-  
- 
-  .notas-text {
-    font-size: 0.8rem;
-  }
-  
-  
-  .badge-date {
-    width: 100%;
-    text-align: center;
-    margin-top: 5px;
-  }
-  .green-second{
-    left:-26px!important;
-  }
-  .yellow-last{
-    max-width:320px!important;
-  }
-  .equi-card{
-    left:-34px!important;
-  }
-  .yellow-first{
-    left:-36px!important;
-  }
-  .light-green-blob-div{
-    margin-left:-8px!important;
-  }
-  .orange-blob-div{
-    margin-left:-12px!important;
-  }
-  .context-text{
+@media only screen and (max-width: 401px) and (max-height: 2000px)  { 
+.cardco2{
     width:320px;
   }
+  .carden{
+    width:320px;
+  }
+  .green-bg,.yellow-bg{
+    width:320px;
+  }
+  .row.justify-content-md-center > div {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
 
+  .square-card {
+    width: 100% !important;
+    height: auto;
+  }
+  .chart-card{
+    width: 100% !important;
+    height: auto;
+  }
+  .container{
+    min-height: 100%!important;
+  }
+   .container{
+    min-height: 100%!important;
+  }
+  body{
+    height:3500px;
+  }
+  .green-second{
+    left:none;
+    right:none;
+    margin:0 auto;
+  }
+}
+
+@media only screen and (max-width: 700px) and (max-height: 2000px) {
+  .cardco2{
+    width:320px;
+  }
+  .carden{
+    width:320px;
+  }
+  .green-bg,.yellow-bg{
+    min-width:100%;
+  }
+  .row.justify-content-md-center > div {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .square-card {
+    width: 100% !important;
+    height: auto;
+  }
+  .chart-card{
+    width: 100% !important;
+    height: auto;
+  }
+  .container{
+    min-height: 100%!important;
+  }
+  body{
+    height:3500px;
+  }
+ 
   
 }
 
@@ -902,7 +584,7 @@
   }  */
 
 
- @media only screen and (max-width: 1024px) and (height: 642px), /* 1024x768 */
+ /* @media only screen and (max-width: 1024px) and (max-height: 768px),  1024x768 
  only screen and (device-width: 1016px) and (device-height: 642px) {
  
     .yellow-bg {
@@ -1033,11 +715,11 @@
       font-size: 18px!important;
     }
 
-  }
+  } */
 
 
-   @media 
-  only screen and (max-width: 1152px) and (min-height: 738px), /* 1152x864 */
+   /* @media 
+  only screen and (max-width: 1152px) and (min-height: 738px),  1152x864 
   only screen and (device-width: 1144px) and (device-height: 738px) {
 
 
@@ -1126,315 +808,246 @@
       font-size: 18px!important;
     }
 
-  }
+  } */
 
-@media 
-only screen and (min-width: 1272px) and (max-height: 480px), /* 1280x600 */
-only screen and (device-width: 1272px) and (device-height: 474px){
-  .context-title{
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-left:0px;
-      margin-top:200px!important;
-      margin-bottom: 20px;
-    }
-     .icon-solar{
-      color:#15200258;
-      margin-top:-320px!important;
-      margin-left:-144px!important;
-      font-size: 18px!important;
-    }
-    .icon-bolt{
-      color:#15200258;
-      margin-top:-250px!important;
-      margin-left:-20px!important;
-      font-size: 18px!important;
-    }
-    .yellow-first{
-      margin-right:-76px!important;
-    }
-    .cardco2{
-      left:16px!important;
-      width:380px!important;
-    }
-    .green-second{
-      left:62px!important;
-    }
-    .equi-card{
-      left:58px!important;
-    }
-    .first-card{
-      min-width: 264px!important;
-    }
-    .cardfonte{
-      min-width: 264px!important;
+  /*Resolução 1024*/
+  @media only screen and (min-width: 1000px) and (max-width:1030px) {
     
+    .yellow-bg {
+      max-width:180px!important;
+      margin-left:20px!important;
+      max-height:194px!important;
+
     }
-    .container{
-      margin-right:-50px!important;
+
+    .green-bg {
+      max-width:180px!important;
+      margin-left:10px!important;     
+      max-height:194px!important;
     }
-     .green-bg{
-      max-width: 412px!important;
-      max-height:300px!important;
-      
+
+    .last-card{
+      margin-right:64px!important;
     }
- 
-    .yellow-bg{
-      max-width: 412px!important;
-      max-height:300px!important;
-     }
- 
-    .yellow-last{
-      margin-left: 18px!important;
-    }
-    .yellow-first{
-      margin-left:36px!important;
+
+    .sub-title{
+      font-size: 16px!important;
+      margin-bottom: 20px;
+      letter-spacing: 1.7px!important;
     }
     .first-card{
-      margin-left:-10px!important;    
-      min-width: 264px!important;
+      margin-left:-10px!important;
+      max-width: 188px!important;
+      
     }
     .cardfonte {
-      min-width: 254px!important;
-      margin-left: 4px;
-      height:278px!important;
-      min-width: 264px!important;
-    }
-
-    .graphrow{
-      margin-top: -6px!important;
+      width: 188px!important;
+      height:234px!important;
+      margin-left: 2px;
     }
     .cardco2 {
-      min-width: 438px!important;
-      height:340px;
-      margin-left:-28px!important;
-      height:278px!important;
+      width: 366px!important;
+      margin-left: -44px!important;
+      height:234px!important;
     }
     .carden{
-      width: 440px!important;
-      height:340px;
-      margin-left:28px!important;
-      height:278px!important;
+      width: 378px!important;
+      margin-left:18px!important;
+      height:234px!important;
     }
     .chart-container, .chart-container-fonte, .chart-container2 {
-      height: 210px!important;
-      width:100%!important;
+      height: 184px!important;
+      width: 100%!important;
     }
-    .container{
-      max-width: 1600px!important;
-      height: 110vh!important;
-      margin:0 auto;
-      display:block;
-      margin-top:-6px!important;   
-      
+    .container {
+      max-width: 180vh!important;
+      height: 100vh!important; 
+     
     }
-    .container-text{
-      width:1210px!important;
-      text-align: left;
-      margin-right:62px!important;
-    }
-    .notas{
-      width:1180px!important;
-    }
-
-    .badges-container{
-      margin-right:38px!important;
-    }
-
     .card-title {
-      font-size: 20px!important;
-      margin-bottom:-12px;
-      margin-top:50px;
-    }
-  
-    .value1, .unities1, .value2, .unities2, .value3, .icon, .value4, .unities4, .value5, .unities5 {
-      margin-bottom: 10px;
-      font-size: 20px!important; 
+      font-size: 16px!important;
+      
     }
     .chart-title{
-      font-size:18px!important;
-    }
-    .sub-title{
-      letter-spacing: 4.3px!important;
-    }
-    .container-text{
-      margin-top:-50px!important;
-    }
-    .container-news{
-      width:1214px!important;
-      text-align: left;
-      margin-right:62px!important;
-    }
-    .notas-text{
-      font-size:16px;
-    }
-    .header-title{
-      margin-top:12px!important;
-    }
-    .sub-title{
-      margin-bottom:30px!important;
-    }
-     .orange-blob-div{
-      margin-left:26px;
-    }
-    .light-green-blob-div{
-      margin-left:-14px;
-    }
-    .green-blob-div{
-      margin-left:2px;
+      font-size:16px!important;
     }
   
-}
-
-
-  @media 
-  only screen and (max-width: 1280px) and (min-height: 594px), /* 1280x720 */
-  only screen and (device-width: 1272px) and (device-height: 594px) {
-
-    .icon-solar{
-      color:#15200258;
-      margin-top:-328px!important;
-      margin-left:-144px!important;
-      font-size: 18px!important;
+    .value1, .value2, .value3, .value4, .value5 {
+      font-size: 16px!important;
     }
-    .icon-bolt{
-      color:#15200258;
-      margin-top:-248px!important;
-      margin-left:-20px!important;
-      font-size: 18px!important;
+    .value1, .value2{
+      margin-top:12px;
     }
-    .cardfonte{
-      height:260px!important;
-      min-width:240px!important;
+   
+    .value4{
+      margin-top:24px;
     }
-    .cardco2{
-      height:260px!important;
-      margin-left: -42px!important;
-      width: 436px!important;
+    .unities4{
+      margin-top:-10px;
     }
-    .carden{
-      height:260px!important;
-      margin-left:16px!important;
-      max-width: 438px!important;
+    .value5{
+      margin-top:14px;
+      margin-bottom:-1px;
     }
-    .equi-card{
-      margin-left:28px!important;
+    .icon{
+      font-size: 22px!important;
+      margin-bottom:4px;
     }
-    .green-second{
-      margin-left:22px!important;
+    .unities1{
+      margin-top:-10px;
+      font-size: 16px!important;
     }
-    .first-card{
-      min-width:240px!important;
+   .unities2{
+      margin-top:-11px;
+      font-size: 16px!important;
     }
-    .yellow-first{
-      margin-left:28px!important;
+    .unities4{
+      font-size: 16px!important;
     }
-    .sobre-projeto{
-      margin-top:140px!important;
+    .unities5{
+      font-size: 16px!important;
     }
-    .notas{
-      width:1146px!important;
+    .chart-title{
+      font-size:20px;
     }
-    .container-text{
-      width:1186px!important;
-      margin-left:28px!important;
+    .value3{
+      margin-top:32px;
+    }
+    .header-title {
+      margin-left: -1px;
       
     }
-    .container-news{
-      width:1186px!important;
-      margin-left:28px!important;
+    .yellow-first{
+      margin-left:34px!important;
     }
-    .badge-date{
-      margin-right:18px!important;
+    .context-text{
+      font-size: 12px;
+    }
+    .light-green-blob-div{
+      margin-left:-46px;
     }
     .orange-blob-div{
       margin-left:16px;
     }
-    .light-green-blob-div{
-      margin-left:-44px;
-    }
-    .green-blob-div{
-      margin-left:2px;
-    }
-   
+    
 
-  }
+   }
 
-  
 
-  @media 
-  only screen and (max-width: 1280px) and (max-height: 674px), /* 1280x800 */
-  only screen and (device-width: 1272px) and (device-height:834px) {
 
-    .icon-solar{
-      color:#15200258;
-      margin-top:-320px!important;
-      margin-left:-144px!important;
-      font-size: 18px!important;
+
+   /*  Dispositivos  grandes (desktops com um ecrã grande e portateis com ecrã grande) */
+    @media only screen and (min-width: 1100px) {
+    
+    .green-bg, .yellow-bg {
+      width: 200px!important;
+      height:220px!important;
+      margin-left: 18px;
+      margin-right: 8px;
     }
-    .icon-bolt{
-      color:#15200258;
-      margin-top:-230px!important;
-      margin-left:-20px!important;
-      font-size: 18px!important;
+    .cardfonte {
+      width: 200px;
+      height:294px;
+      margin-left: 2px;
     }
- 
-
-  }
-
-   @media 
-  only screen and (max-width: 1280px) and (height: 834px), /* 1280x960 */
-  only screen and (device-width: 1272px) and (device-height:834px) {
-
-    .icon-solar{
-      color:#15200258;
-      margin-top:-320px!important;
-      margin-left:-144px!important;
-      font-size: 18px!important;
-    }
-    .icon-bolt{
-      color:#15200258;
-      margin-top:-230px!important;
-      margin-left:-20px!important;
-      font-size: 18px!important;
-    }
-    .cardfonte{
-      height:260px!important;
-    }
-    .cardco2{
-      height:260px!important;
+    .cardco2 {
+      width: 410px;
+      margin-left: -52px;
     }
     .carden{
-      height:260px!important;
+      width: 510px;
+      margin-left:22px;
+    }
+    .chart-container, .chart-container-fonte, .chart-container2 {
+      height: 220px;
+    }
+    .container {
+      max-width: 1400px;
+      max-height: 900px;
+      padding:20px!important;
+      margin:0 auto;
+    }
+    .card-title {
+      font-size: 22px;
+    }
+    .sub-title{
+      font-size: 20px;
+      letter-spacing: 0.35px;
+    }
+  
+    .value1, .value2, .value3, .value4, .unities4, .value5, .unities5 {
+      margin-bottom: 10px;
+      font-size: 20px!important;
+    }
+    .value1, .value2{
+      margin-top:12px;
+    }
+   
+    .value4{
+      margin-top:24px;
+    }
+    .unities4{
+      margin-top:-10px;
+    }
+    .value5{
+      margin-top:14px;
+      margin-bottom:-1px;
+    }
+    .icon{
+      font-size: 22px!important;
+      margin-bottom:4px;
+    }
+    .unities1{
+      margin-top:-10px;
+    }
+   .unities2{
+      margin-top:-11px;
+    }
+    .chart-title{
+      font-size:20px;
+    }
+    .value3{
+      margin-top:32px;
+    }
+    .header-title {
+      margin-left: -1px;
+    }
+    .header-titlenews{
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-left:0px;
+      margin-top:180px;
+      margin-bottom: 20px;
+    }
+    .yellow-first{
+      margin-left:28px!important;
+    }
+    .light-green-blob-div{
+      margin-left:-70px;
+    }
+    .context-text-green{
+      width:180px;
+    }
+    .equi-card{
+      margin-left:12px!important;
+    }
+    .green-second{
+      margin-left:10px!important;
+    }
+    .carden{
+      margin-left:8px;
+      width:418px;
+    }
+    .card-title{
+      font-size: 18px;
     }
 
-  }
+   }
 
-  @media 
-  only screen and (max-width: 1280px) and (height: 898px), /* 1280x1024 */
-  only screen and (device-width: 1272px) and (device-height: 898px) {
-
-    .icon-solar{
-      color:#15200258;
-      margin-top:-320px!important;
-      margin-left:-144px!important;
-      font-size: 18px!important;
-    }
-    .icon-bolt{
-      color:#15200258;
-      margin-top:-230px!important;
-      margin-left:-20px!important;
-      font-size: 18px!important;
-    }
-
-  }
-
-
-   /*  Dispositivos extra grandes (desktops com um ecrã grande e portateis com ecrã grande) */
     @media only screen and (min-width: 1200px) {
     
     .green-bg, .yellow-bg {
-      width: 240px!important;
+      width: 230px!important;
       height:220px!important;
       margin-left: 18px;
       margin-right: 8px;
@@ -1449,8 +1062,8 @@ only screen and (device-width: 1272px) and (device-height: 474px){
       margin-left: -80px;
     }
     .carden{
-      width: 510px;
-      margin-left:22px;
+      width: 442px!important;
+      margin-left:28px!important;
     }
     .chart-container, .chart-container-fonte, .chart-container2 {
       height: 220px;
@@ -1513,11 +1126,28 @@ only screen and (device-width: 1272px) and (device-height: 474px){
       margin-top:180px;
       margin-bottom: 20px;
     }
+    .yellow-first{
+      margin-left:44px!important;
+    }
+    .light-green-blob-div{
+      margin-left:-54px;
+    }
+    .orange-blob-div{
+      margin-left:28px;
+    }
+    .context-text-green{
+      width:180px;
+    }
+    .yellow-last{
+      margin-left:36px!important;
+    }
+
 
 
    }
 
-    @media only screen and (min-width: 1272px) {
+
+    @media only screen and (min-width: 1250px) {
     
     .green-bg, .yellow-bg {
       width: 210px!important;
@@ -1527,18 +1157,21 @@ only screen and (device-width: 1272px) and (device-height: 474px){
       margin-top:-6px;
     }
     .cardfonte {
-      width: 210px;
+      width: 224px;
       height:230px;
       margin-left: 2px;
     }
+    .first-card{
+      width: 224px!important;
+    }
     .cardco2 {
       width: 432px;
-      margin-left: -72px;
+      margin-left: -52px;
       height: 230px;
     }
     .carden{
       width: 449.3px;
-      margin-left:5px;
+      margin-left:30px!important;
       height:230px;
     }
     .chart-container, .chart-container-fonte, .chart-container2 {
@@ -1606,9 +1239,11 @@ only screen and (device-width: 1272px) and (device-height: 474px){
     .sub-title{
       font-size: 16px;
       margin-top:-14px;
-      letter-spacing: 4.1px;
+      letter-spacing: 3.7px;
     }
-    
+    .context-text{
+      font-size: 14px;
+    }
     
 
     
@@ -1620,7 +1255,7 @@ only screen and (device-width: 1272px) and (device-height: 474px){
      .green-bg, .yellow-bg {
       width: 220px!important;
       height:220px!important;
-      margin-left: 18px;
+      
       margin-right: 8px;
     }
     .cardfonte {
@@ -1631,7 +1266,7 @@ only screen and (device-width: 1272px) and (device-height: 474px){
     }
     .cardco2 {
       width: 458px;
-      margin-left: -75px;
+      margin-left: -75px!important;
      height:220px;
     }
     .carden{
@@ -1663,7 +1298,7 @@ only screen and (device-width: 1272px) and (device-height: 474px){
       margin-top:12px;
     }
     .card-title-equi {
-      margin-top: 28px;
+    
       font-size: 22px;
     }
     .value4{
@@ -1698,7 +1333,7 @@ only screen and (device-width: 1272px) and (device-height: 474px){
     }
     .sub-title{
       font-size:20px;
-      letter-spacing: 2.55px;
+      letter-spacing: 2px;
     }
     .header-titlenews{
       font-size: 1.8rem;
@@ -1707,42 +1342,28 @@ only screen and (device-width: 1272px) and (device-height: 474px){
       margin-top:90px;
       margin-bottom: 20px;
     }
-    
+    .yellow-first{
+      margin-left:8px!important;
+    }
     
 
    }
 
 
  @media 
-    only screen and (min-width: 1352px) and (max-height: 650px), /* 1360x768 */
+    only screen and (min-width: 1330px) and (max-height: 650px), /* 1360x768 */
     only screen and (device-width: 1352px) and (device-height: 642px) {
 
-      .icon-solar{
-        color:#15200258;
-        margin-top:-272px!important;
-        margin-left:-194px!important;
-        font-size: 18px!important;
-      }
-      .icon-bolt{
-        color:#15200258;
-        margin-top:-194px!important;
-        margin-left:-24px!important;
-        font-size: 18px!important;
-
-      }
+     
       .equi-card{
-        left:30px;
+        margin-left:26px!important;
         max-width:210px!important;
       }
       .green-second{
-        left:30px;
+        margin-left:24px!important;
         max-width:210px!important;
       }
-      .card-body-equi{
-        margin-top:-18px!important;
-       
-      }
-  
+      
       .yellow-bg{
         right:16px;
         max-width:210px!important;
@@ -1765,11 +1386,11 @@ only screen and (device-width: 1272px) and (device-height: 474px){
         min-height:170px!important;
       }
       .carden{
-        width: 450px!important;
-        margin-left: 26px!important;
+        width: 454px!important;
+        margin-left: 42px!important;
       }
       .cardco2{
-        margin-left:-44px!important;
+        margin-left:-42px!important;
         width: 448px!important;
       }
       .cardfonte {
@@ -1780,7 +1401,7 @@ only screen and (device-width: 1272px) and (device-height: 474px){
         min-width: 248px!important;
       }
       .orange-blob-div{
-        margin-left:22px;
+        margin-left:24px!important;
       }
       .light-green-blob-div{
         margin-left:-22px;
@@ -1795,14 +1416,17 @@ only screen and (device-width: 1272px) and (device-height: 474px){
         font-size: 28px!important;
       }
        .orange-blob-div{
-      margin-left:16px;
-    }
-    .light-green-blob-div{
-      margin-left:-44px;
-    }
-    .green-blob-div{
-      margin-left:2px;
-    }
+      margin-left:40px!important;
+      }
+      .light-green-blob-div{
+        margin-left:-40px!important;
+      }
+      .green-blob-div{
+        margin-left:2px;
+      }
+      .context-text{
+        font-size: 11px;;
+      }
     }
 
  
@@ -1811,64 +1435,14 @@ only screen and (device-width: 1272px) and (device-height: 474px){
 
 
 
-   @media 
-    only screen and (width: 1358px) and (height: 642px), /* 1366x768 */
-    only screen and (device-width: 1358px) and (device-height: 642px) {
 
-      .icon-solar{
-        color:#15200258;
-        margin-top:-290px!important;
-        margin-left:-154px!important;
-        font-size: 18px!important;
-      }
-      .icon-bolt{
-        color:#15200258;
-        margin-top:-200px!important;
-        margin-left:-20px!important;
-        font-size: 18px!important;
-      }
-
-    }
 
    
 
 
-    @media 
-      only screen and (min-width: 1392px) and (min-height: 924px), /* 1400x1050 */
-      only screen and (device-width: 1392px) and (device-height: 924px) {
+    @media only screen and (min-width: 1370px) /*1400 e 1440 res*/ {
 
-
-        .icon-solar{
-          color:#15200258;
-          margin-top:-290px!important;
-          margin-left:-152px!important;
-          font-size: 18px!important;
-        }
-        .icon-bolt{
-          color:#15200258;
-          margin-top:-200px!important;
-          margin-left:-20px!important;
-          font-size: 18px!important;
-        }
-
-         .container-news{
-          min-width: 1050px!important;
-          margin-right:100px!important;
-          margin-left:76px!important;
-          margin:0 auto;
-        }
-        .container-text{
-          min-width: 1050px!important;
-          margin-right:100px!important;
-          margin-left:76px!important;
-        
-        }
-        .sobre-projeto{
-          margin-top:160px!important;
-        }
-       .header-titlenews{
-        margin-top:-20px!important;
-       }
+       
        .yellow-first{
           margin-left: 18px!important;
         }
@@ -1891,158 +1465,49 @@ only screen and (device-width: 1272px) and (device-height: 474px){
         .context-text-orange{
           width:280px;
         }
-
-      }
-
-     @media 
-      only screen and (min-width: 1432px) and (min-height: 774px), /* 1440x900 */
-      only screen and (device-width: 1432px) and (device-height: 774px) {
-
-
-        .icon-solar{
-          color:#15200258;
-          margin-top:-290px!important;
-          margin-left:-152px!important;
-          font-size: 18px!important;
-        }
-        .icon-bolt{
-          color:#15200258;
-          margin-top:-210px!important;
-          margin-left:-20px!important;
-          font-size: 18px!important;
-        }
-
-        .container-news{
-          max-width: 1210px!important;
-          margin-right:100px!important;
-          margin-left:96px!important;
-          margin:0 auto;
-        }
-        .container-text{
-          max-width: 1210px!important;
-          margin-right:100px!important;
-          margin-left:96px!important;
-          
-        
-        }
-        .notas{
-          max-width: 1210px!important;
-        }
-        .sobre-projeto{
-          margin-top:160px!important;
-        }
-        .header-titlenews{
-          margin-top:-90px!important;
-        }
         .equi-card{
-          margin-left:38px!important;
+          margin-left:-10px!important;
         }
         .green-second{
-          margin-left:38px!important;
-        }
-        .cardco2{
-          margin-left:-28px!important;
-          width: 456px!important;
-        }
-        .cardfonte{
-          width: 262px!important;
-        }
-        .yellow-last{
-          margin-left: 36px!important;
+          margin-left:-10px!important;
         }
         .yellow-first{
-          margin-left: 44px!important;
+          margin-left:24px!important;
         }
         .carden{
-          margin-left: 36px!important;
-          width: 460px!important;
+           width: 482px!important;
+           margin-left:14px!important;
         }
-        .first-card{
-          min-width: 262px!important;
-        }
-        .notas-text{
-          font-size: 14px!important;
-        }
-        .orange-blob-div{
-          margin-left:32px;
-        }
-        .light-green-blob-div{
-          margin-left:-30px;
-        }
-        .green-blob-div{
-          margin-left:2px;
+        .sub-title{
+          font-size: 19.2px;
         }
       }
+
 
 
       @media 
-    only screen and (width: 1592px) and (height: 774px), /* 1600x900 */
-    only screen and (device-width: 1592px) and (device-height: 774px) {
+    only screen and (min-width: 1570px) /*1600 e 1680 res*/ {
 
-
-      .icon-solar{
-        color:#15200258;
-        margin-top:-290px!important;
-        margin-left:-150px!important;
-        font-size: 18px!important;
-      }
-      .icon-bolt{
-        color:#15200258;
-        margin-top:-210px!important;
-        margin-left:-20px!important;
-        font-size: 18px!important;
-      }
-
-
-
-    }
- 
-    @media 
-    only screen and (min-width: 1672px) and (max-height: 924px), /* 1680x1050 */
-    only screen and (device-width: 1680px) and (device-height: 1050px) {
-
-
-      .icon-solar{
-        color:#15200258;
-        margin-top:-290px!important;
-        margin-left:-150px!important;
-        font-size: 18px!important;
-      }
-      .icon-bolt{
-        color:#15200258;
-        margin-top:-210px!important;
-        margin-left:-20px!important;
-        font-size: 18px!important;
-      }
-
-    
-    .container-news{
-        max-width: 1250px!important;
-       margin-left:212px!important;
-       border:solid 1px black;
-    }
-    .container-text{
-       max-width: 1250px!important;
-       margin-left:212px!important;
-    }
-
-    .orange-blob-div{
-        margin-left:34px;
+      .orange-blob-div{
+        margin-left:14px;
       }
     .light-green-blob-div{
-        margin-left:-30px;
+        margin-left:-76px!important;
       }
     .green-blob-div{
         margin-left:2px;
       }
-
-
-
+      .green-second{
+        margin-left:-8px!important;
+      }
+      .equi-card{
+        margin-left: -8px!important;
+      }
+      .carden{
+        margin-left:14px!important;
+      }
     }
-
-    
-   
-
+ 
 
   /*  Dispositivos extra grandes (desktops com um ecrã grande e portateis com ecrã grande) */
    @media only screen and (min-width: 1800px) {
@@ -2176,7 +1641,7 @@ only screen and (device-width: 1272px) and (device-height: 474px){
         margin-left:4px;
       }
       .light-green-blob-div{
-        margin-left:-64px;
+        margin-left:-64px!important;
       }
       .orange-blob-div{
         margin-left:78px;

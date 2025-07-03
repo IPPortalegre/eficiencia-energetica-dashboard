@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Eficiência Energética | Campus IPP</title>
-
+  
   <!-- Estilos e bibliotecas -->
   
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -34,29 +34,51 @@
   document.body.clientWidth;
   }
 
-  // // Run on initial load and whenever window resizes
-  // window.addEventListener('load', checkViewport);
-  // window.addEventListener('resize', checkViewport);
+  // Run on initial load and whenever window resizes
 
-  // // Um indicador de debug para verificar o tamanho da viewport
-  // document.addEventListener('DOMContentLoaded', function() {
-  //   const debugDiv = document.createElement('div');
-  //   debugDiv.style.position = 'fixed';
-  //   debugDiv.style.bottom = '10px';
-  //   debugDiv.style.right = '10px';
-  //   debugDiv.style.backgroundColor = 'rgba(0,0,0,0.7)';
-  //   debugDiv.style.color = 'white';
-  //   debugDiv.style.padding = '5px';
-  //   debugDiv.style.zIndex = '9999';
-  //   debugDiv.style.fontFamily = 'monospace';
-  //   debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
-  //   document.body.appendChild(debugDiv);
+//   window.addEventListener('load', checkViewport);
 
-  // window.addEventListener('resize', function() {
-  //   debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
-  //   checkViewport();
-  //   });
-  // });
+//   window.addEventListener('resize', checkViewport);
+
+  
+
+//   // Um indicador de debug para verificar o tamanho da viewport
+
+//   document.addEventListener('DOMContentLoaded', function() {
+
+//     const debugDiv = document.createElement('div');
+
+//     debugDiv.style.position = 'fixed';
+
+//     debugDiv.style.bottom = '10px';
+
+//     debugDiv.style.right = '10px';
+
+//     debugDiv.style.backgroundColor = 'rgba(0,0,0,0.7)';
+
+//     debugDiv.style.color = 'white';
+
+//     debugDiv.style.padding = '5px';
+
+//     debugDiv.style.zIndex = '9999';
+
+//     debugDiv.style.fontFamily = 'monospace';
+
+//     debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
+
+//     document.body.appendChild(debugDiv);
+
+  
+
+//   window.addEventListener('resize', function() {
+
+//     debugDiv.textContent = window.innerWidth + '×' + window.innerHeight;
+
+//     checkViewport();
+
+//     });
+
+//   });
 
 
 
@@ -88,7 +110,8 @@
     </div>
 </div> -->
   <div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap"> 
+
+    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap little-container"> 
       <h2 class="header-title ">EFICIÊNCIA ENERGÉTICA</h2>
       <div class="d-flex align-items-center gap-3 badges-container">
         <span class="badge badge-light p-2 mr-2" data-toggle="tooltip" data-placement="top" title="Temperatura">
@@ -106,7 +129,7 @@
       
     </div>
 
-    <h4 class="sub-title"><span class="h4light">PRODUÇÃO DE ENERGIA RENOVÁVEL</span> | <span class="h4bold">CAMPUS POLITÉCNICO</span></h4>
+    <h4 class="sub-title"><span class="h4light">PRODUÇÃO DE ENERGIA RENOVÁVEL</span> | <span id="title_id" class="h4bold"></span></h4>
 
     <!-- Cards principais -->
     <div class="row justify-content-md-center text-center mb-3">

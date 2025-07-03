@@ -38,6 +38,7 @@ async function authenticateThingsBoard() {
    }
  }
 
+ 
 
 
 async function fetchWithAuth(url, options = {}, retryCount = 0) {
@@ -66,6 +67,10 @@ async function fetchWithAuth(url, options = {}, retryCount = 0) {
   }
 }
 
+app.get('/api/title', (req, res) => {
+  res.json({ title: process.env.TITLE_IPP || 'CAMPUS POLITÉCNICO' });
+});
+
 // API endpoints
 app.get('/api/getdata', async (req, res) => {
   try {
@@ -88,9 +93,7 @@ app.get('/api/gethistory', async (req, res) => {
     const thingsboardUrl = process.env.THINGSBOARD_URL;
     const deviceId = process.env.THINGSBOARD_ASSETID;
     const { key, startTs, endTs } = req.query;
-    
     const url = `${thingsboardUrl}/api/plugins/telemetry/ASSET/${deviceId}/values/timeseries?keys=${key}&startTs=${startTs}&endTs=${endTs}&limit=5000`;
-
     const response = await fetchWithAuth(url);
     const data = await response.json();
     console.log('ThingsBoard Telemetry History Data:', data);
