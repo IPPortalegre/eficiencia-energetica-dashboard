@@ -43,6 +43,8 @@ Para rodar este projeto, vais precisar adicionar as seguintes variáveis de ambi
 
 - `CACHE_TTL`= 300
 
+- `TITLE_IPP` = nome_do_local
+
 
 ## Pré-requisitos
 - Node.js (versão 14 ou superior)
