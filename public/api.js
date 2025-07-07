@@ -119,13 +119,13 @@ function processMonthlyData(data, debugKey) {
     }
     });
 
-    // Prepare result in chronological order
+    // Resultado em ordem cronológica
     const result = {
       labels: [],
       values: []
     };
 
-    // Sort by year and month in ascending order
+    // Agrupa por ano e mês em ordem ascendente
     const sortedMonths = Object.values(monthlyData).sort((a, b) => {
       if (a.year !== b.year) return a.year - b.year;
       return a.month - b.month;

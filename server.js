@@ -135,7 +135,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Error handling
+// Em caso de erro
 app.use((req, res) => {
   res.status(404).send('Page not found');
 });
@@ -145,7 +145,7 @@ app.use((err, req, res, next) => {
   res.status(500).send('Server error');
 });
 
-// Start server
+// Começa server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

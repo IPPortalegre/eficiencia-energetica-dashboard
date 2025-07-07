@@ -22,33 +22,33 @@ function getResponsiveFontSize() {
       
       return 12;
     }
-async function fetchAndSetTitle() {
-  try {
-    const urlParams = new URLSearchParams(window.location.search);
-    const titleFromUrl = urlParams.get('title');
+    async function fetchAndSetTitle() {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const titleFromUrl = urlParams.get('title');
 
-    if (titleFromUrl) {
-      // Titulo diretamente da url
-      document.getElementById('title_id').textContent = decodeURIComponent(titleFromUrl);
-    } else {
-      // Fallback para a API se não tiver nenhum título
-      const baseUrl = window.location.origin;
-      const response = await fetch(`${baseUrl}/api/title`);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        if (titleFromUrl) {
+          // Titulo diretamente da url
+          document.getElementById('title_id').textContent = decodeURIComponent(titleFromUrl);
+        } else {
+          // Fallback para a API se não tiver nenhum título
+          const baseUrl = window.location.origin;
+          const response = await fetch(`${baseUrl}/api/title`);
+          
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          
+          const { title } = await response.json();
+          document.getElementById('title_id').textContent = title;
+        }
+      } catch (error) {
+        console.error('Error setting title:', error);
+        document.getElementById('title_id').textContent = 'CAMPUS POLITÉCNICO'; // Fallback title
       }
-      
-      const { title } = await response.json();
-      document.getElementById('title_id').textContent = title;
     }
-  } catch (error) {
-    console.error('Error setting title:', error);
-    document.getElementById('title_id').textContent = 'CAMPUS POLITÉCNICO'; // Fallback title
-  }
-}
 
-//gráfico fonte de energia
+      //gráfico fonte de energia
       function createEnergySourceChart(solarValue, redeValue) {
         const ctx = document.getElementById('ensource-chart').getContext('2d');
         
