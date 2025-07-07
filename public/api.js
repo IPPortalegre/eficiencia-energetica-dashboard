@@ -3,7 +3,11 @@
  */
 async function getData() {
   try {
-    const url = '/api/getdata';
+    const urlParams = new URLSearchParams(window.location.search);
+    const assetid = urlParams.get('assetid');
+    
+    
+    const url = `/api/getdata${assetid ? `?assetid=${assetid}` : ''}`;
     const response = await fetch(url, { method: 'GET' });
 
     if (!response.ok) throw new Error('Network response was not ok');
@@ -14,24 +18,22 @@ async function getData() {
   }
 }
 
-
-
-/**
- * Get historical data from API
- */
 async function getHistory(key, startTs, endTs, maxRetries = 3, retryDelay = 500) {
   let attempt = 0;
+  const urlParams = new URLSearchParams(window.location.search);
+  const assetid = urlParams.get('assetid');
   
   while (attempt <= maxRetries) {
     try {
-      const url = `/api/gethistory?key=${encodeURIComponent(key)}&startTs=${startTs}&endTs=${endTs}`;
+      const baseUrl = `/api/gethistory?key=${encodeURIComponent(key)}&startTs=${startTs}&endTs=${endTs}`;
+      const url = assetid ? `${baseUrl}&assetid=${assetid}` : baseUrl;
+      
       const response = await fetch(url);
 
       if (!response.ok) {
         const errorText = await response.text();
         console.error('API Error Response:', errorText);
 
-        // Retry quando tem erro 500
         if (attempt < maxRetries && (response.status === 500 || errorText.includes('Failed to authenticate'))) {
           attempt += 1;
           console.warn(`Retry attempt ${attempt} for getHistory after error ${response.status}...`);
@@ -50,10 +52,9 @@ async function getHistory(key, startTs, endTs, maxRetries = 3, retryDelay = 500)
         return [];
       }
       attempt++;
-      await new Promise(resolve => setTimeout(resolve, retryDelay * attempt)); // Exponential backoff
+      await new Promise(resolve => setTimeout(resolve, retryDelay * attempt));
     }
   }
-  
   return [];
 }
 
@@ -188,4 +189,3 @@ function processMonthlyData(data, debugKey) {
   setInterval(() => {
     refreshData();
   }, 2000); //refresh a cada segundo
-

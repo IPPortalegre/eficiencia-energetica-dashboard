@@ -67,17 +67,30 @@ async function fetchWithAuth(url, options = {}, retryCount = 0) {
   }
 }
 
+//endpoint do titulo
 app.get('/api/title', (req, res) => {
-  res.json({ title: process.env.TITLE_IPP || 'CAMPUS POLITÉCNICO' });
+  const title = req.query.title;
+  if (!title) {
+    console.error('[SERVER] Title parameter is required');
+    return res.status(400).json({ error: 'title parameter is required' });
+  }
+  res.json({ title });
+  
 });
 
-// API endpoints
+
 app.get('/api/getdata', async (req, res) => {
   try {
     const thingsboardUrl = process.env.THINGSBOARD_URL;
-    const deviceId = process.env.THINGSBOARD_ASSETID;
-    const url = `${thingsboardUrl}/api/plugins/telemetry/ASSET/${deviceId}/values/timeseries`;
+    const deviceId = req.query.assetid;
+    
+    console.log(`[SERVER] GetData request - Query assetid: ${req.query.assetid} | Using assetid: ${deviceId}`);
 
+    if (!deviceId) {
+      return res.status(400).json({ error: 'assetid parameter is required' });
+    }
+    
+    const url = `${thingsboardUrl}/api/plugins/telemetry/ASSET/${deviceId}/values/timeseries`;
     const response = await fetchWithAuth(url);
     const data = await response.json();
     console.log('ThingsBoard Telemetry Data:', data);
@@ -88,12 +101,22 @@ app.get('/api/getdata', async (req, res) => {
   }
 });
 
+
 app.get('/api/gethistory', async (req, res) => {
   try {
     const thingsboardUrl = process.env.THINGSBOARD_URL;
-    const deviceId = process.env.THINGSBOARD_ASSETID;
+    const deviceId = req.query.assetid;
     const { key, startTs, endTs } = req.query;
+    
+    console.log(`[SERVER] GetHistory request - Query assetid: ${req.query.assetid} | Using assetid: ${deviceId}`);
+    
+    if (!deviceId) {
+      console.error('[SERVER] AssetID parameter is required');
+      return res.status(400).json({ error: 'assetid parameter is required' });
+    }
+    
     const url = `${thingsboardUrl}/api/plugins/telemetry/ASSET/${deviceId}/values/timeseries?keys=${key}&startTs=${startTs}&endTs=${endTs}&limit=5000`;
+    console.log(`[SERVER] Fetching ThingsBoard history from: ${url}`);
     const response = await fetchWithAuth(url);
     const data = await response.json();
     console.log('ThingsBoard Telemetry History Data:', data);
@@ -126,4 +149,3 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
-
