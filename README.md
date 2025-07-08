@@ -163,6 +163,3 @@ server.js
 
 - **GET /** : É usado pela página principal do dashboard
 
-### Licença
-
-Este projeto está licenciado sob a Licença MIT - consulte o ficheiro LICENSE para mais informações.
