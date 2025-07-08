@@ -26,6 +26,13 @@ Um dashboard para a monitorização de métricas de eficiência energética do I
   - Integração com API do ThingsBoard
 - **Implementação**:
   - Containerização com Docker
+ 
+
+## Atualizações
+
+Nas últimas atualizações do dashboard duas variáveis de ambiente foram transformadas em query strings que devem ser inseridas na url da seguinte forma:
+
+- `https://seu-site/?assetid=asset_id_aqui&title=titulo_do_local_aqui`.
 
 ## Variáveis de Ambiente
 
@@ -37,13 +44,13 @@ Para rodar este projeto, vais precisar adicionar as seguintes variáveis de ambi
 
 - `THINGSBOARD_PASSWORD`= sua_palavra_passe
 
-- `THINGSBOARD_ASSETID`= seu_id_de_asset
+- `THINGSBOARD_ASSETID`= seu_id_de_asset (não utilizado mais)
 
 - `PORT`= 3000
 
 - `CACHE_TTL`= 300
 
-- `TITLE_IPP` = nome_do_local
+- `TITLE_IPP` = nome_do_local (não utilizado mais)
 
 
 ## Pré-requisitos
