@@ -1343,13 +1343,84 @@
     .yellow-first{
       margin-left:8px!important;
     }
-    
+    .equi-card{
+        margin-left:26px!important;
+        max-width:210px!important;
+      }
+      .green-second{
+        margin-left:24px!important;
+        max-width:210px!important;
+      }
+      
+      .yellow-bg{
+        right:16px;
+        max-width:210px!important;
+      }
+      .yellow-first{
+        left:42px;
+      }
+      .yellow-last{
+        left:10px;
+      }
+      .chart-container-fonte{
+        min-height:170px!important;
+        
+      }
+      .chart-container{
+        min-height:170px!important;
+        
+      }
+      .chart-container2{
+        min-height:170px!important;
+      }
+      .carden{
+        width: 454px!important;
+        margin-left: 42px!important;
+      }
+      .cardco2{
+        margin-left:-42px!important;
+        width: 448px!important;
+      }
+      .cardfonte {
+        width: 248px!important;
+      
+      }
+      .first-card{
+        min-width: 248px!important;
+      }
+      .orange-blob-div{
+        margin-left:24px!important;
+      }
+      .light-green-blob-div{
+        margin-left:-22px;
+      }
+      .break{
+        display: block;
+      }
+      .card-title{
+        font-size: 18px;
+      }
+      .value1,.value2,.value3,.value4,.value5{
+        font-size: 28px!important;
+      }
+       .orange-blob-div{
+      margin-left:40px!important;
+      }
+      .light-green-blob-div{
+        margin-left:-40px!important;
+      }
+      .green-blob-div{
+        margin-left:2px;
+      }
+      .context-text{
+        font-size: 11px;;
+      }
 
    }
 
 
- @media 
-    only screen and (min-width: 1330px) and (max-height: 650px), /* 1360x768 */
+ /* @media 
+    only screen and (min-width: 1330px) and (max-height: 650px),  1360x768 
     only screen and (device-width: 1352px) and (device-height: 642px) {
 
      
@@ -1425,18 +1496,9 @@
       .context-text{
         font-size: 11px;;
       }
-    }
+    } */
 
  
-
-  
-
-
-
-
-
-   
-
 
     @media only screen and (min-width: 1370px) /*1400 e 1440 res*/ {
 
@@ -1445,7 +1507,7 @@
           margin-left: 18px!important;
         }
          .orange-blob-div{
-          margin-left:12px;
+          margin-left:12px!important;
         }
         .light-green-blob-div{
           margin-left:-76px;
@@ -1464,13 +1526,13 @@
           width:280px;
         }
         .equi-card{
-          margin-left:-10px!important;
+          margin-left:26px!important;
         }
         .green-second{
-          margin-left:-10px!important;
+          margin-left:24px!important;
         }
         .yellow-first{
-          margin-left:24px!important;
+          margin-left:-20px!important;
         }
         .carden{
            width: 482px!important;
@@ -1487,19 +1549,19 @@
     only screen and (min-width: 1570px) /*1600 e 1680 res*/ {
 
       .orange-blob-div{
-        margin-left:14px;
+        margin-left:14px!important;
       }
     .light-green-blob-div{
-        margin-left:-76px!important;
+        margin-left:-40px!important;
       }
     .green-blob-div{
         margin-left:2px;
       }
       .green-second{
-        margin-left:-8px!important;
+        margin-left:24px!important;
       }
       .equi-card{
-        margin-left: -8px!important;
+        margin-left: 22px!important;
       }
       .carden{
         margin-left:14px!important;
@@ -1511,25 +1573,25 @@
    @media only screen and (min-width: 1800px) {
     
     .green-bg{
-      width: 322px!important;
+      min-width: 322px!important;
       min-height:310px!important;
       margin-left: 18px;
       margin-right: 8px;
     }
     
     .yellow-bg{
-      width: 312px!important;
+      min-width: 312px!important;
       min-height:310px!important;
       margin-left: 18px;
       margin-right: 8px;
     }
     .yellow-last{
-      margin-left: 30px!important;
-      width: 302px!important;
+      margin-left: 20px!important;
+      min-width: 302px!important;
     }
     .yellow-first{
-      margin-left: 44px!important;
-      width: 302px!important;
+      margin-left: 2px!important;
+      min-width: 302px!important;
     }
     .cardfonte {
       width: 354px!important;
@@ -1642,7 +1704,7 @@
         margin-left:-64px!important;
       }
       .orange-blob-div{
-        margin-left:78px;
+        margin-left:78px!important;
       }
       .context-text-green{
         letter-spacing: 2px;
